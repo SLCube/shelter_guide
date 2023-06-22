@@ -57,6 +57,7 @@ dependencies {
 tasks.named('test') {
 	finalizedBy jacocoTestReport
 	useJUnitPlatform()
+	systemProperty "jasypt.encryptor.password", System.getProperties().get("jasypt.encryptor.password")
 }
 
 //tasks.named('asciidoctor') {
