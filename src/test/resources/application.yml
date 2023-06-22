@@ -25,3 +25,14 @@ logging:
   level:
     org.hibernate.sql: debug
     org.hibernate.type: trace
+
+
+external-service:
+  shelter-information:
+    seoul:
+      url: http://openapi.seoul.go.kr:8088/{apiKey}/json/LOCALDATA_114602/1/5/
+      api-key: ENC(jB8U4hlf2lE9t94u6SEwpW2nVsmZSxn1PJCoAfL6oDpAv3TBCW8GrQ==)
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
