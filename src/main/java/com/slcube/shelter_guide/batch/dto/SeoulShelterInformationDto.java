@@ -1,4 +1,4 @@
-package com.slcube.shelter_guide.scheduler.dto;
+package com.slcube.shelter_guide.batch.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
