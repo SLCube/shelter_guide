@@ -1,7 +1,7 @@
 external-service:
   shelter-information:
     seoul:
-      url: http://openapi.seoul.go.kr:8088/{apiKey}/json/LOCALDATA_114602/1/5/
+      url: http://openapi.seoul.go.kr:8088/{apiKey}/json/LOCALDATA_114602
       api-key: ENC(jB8U4hlf2lE9t94u6SEwpW2nVsmZSxn1PJCoAfL6oDpAv3TBCW8GrQ==)
 
 jasypt:
