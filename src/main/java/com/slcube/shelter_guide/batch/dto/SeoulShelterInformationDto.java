@@ -29,7 +29,8 @@ public class SeoulShelterInformationDto {
     }
 
     @Getter
-    private static class ResultCodeDto {
+    @NoArgsConstructor(access = AccessLevel.PRIVATE)
+    public static class ResultCodeDto {
 
         @JsonProperty("CODE")
         private String resultCode;
@@ -39,7 +40,8 @@ public class SeoulShelterInformationDto {
     }
 
     @Getter
-    private static class ResultDataDto {
+    @NoArgsConstructor(access = AccessLevel.PRIVATE)
+    public static class ResultDataDto {
 
         @JsonProperty("OPNSFTEAMCODE")
         private String municipalityCode;
