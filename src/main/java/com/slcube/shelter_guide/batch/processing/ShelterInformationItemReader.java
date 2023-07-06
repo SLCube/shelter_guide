@@ -6,17 +6,26 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.*;
 
 @RequiredArgsConstructor
-public class ShelterInformationItemReader extends ItemStreamSupport implements ItemReader<SeoulShelterInformationDto> {
+public class ShelterInformationItemReader implements ItemReader<SeoulShelterInformationDto> {
 
     private final ShelterInformationApiService shelterInformationApiService;
-
-    @Override
-    public void open(ExecutionContext executionContext) {
-
-    }
+    private int startIndex = 1;
+    private int endIndex = 100;
+    private boolean hasMoreData = true;
 
     @Override
     public SeoulShelterInformationDto read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
-        return shelterInformationApiService.fetchShelterInformation();
+        if (hasMoreData) {
+            SeoulShelterInformationDto seoulShelterInformationDto = shelterInformationApiService.fetchShelterInformation(startIndex, endIndex);
+            if (seoulShelterInformationDto.getResult().getResultDataDtoList().isEmpty()) {
+                hasMoreData = false;
+                return null;
+            }
+
+            startIndex += 100;
+            endIndex += 100;
+            return seoulShelterInformationDto;
+        }
+        return null;
     }
 }
