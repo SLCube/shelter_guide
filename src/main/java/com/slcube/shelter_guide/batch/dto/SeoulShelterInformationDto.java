@@ -1,9 +1,7 @@
 package com.slcube.shelter_guide.batch.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +13,6 @@ public class SeoulShelterInformationDto {
     private ResultDto result;
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class ResultDto {
 
         @JsonProperty("list_total_count")
@@ -29,7 +26,6 @@ public class SeoulShelterInformationDto {
     }
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class ResultCodeDto {
 
         @JsonProperty("CODE")
@@ -40,7 +36,6 @@ public class SeoulShelterInformationDto {
     }
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class ResultDataDto {
 
         @JsonProperty("OPNSFTEAMCODE")
