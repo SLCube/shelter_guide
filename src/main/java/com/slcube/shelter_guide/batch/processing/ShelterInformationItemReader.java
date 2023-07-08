@@ -1,12 +1,17 @@
 package com.slcube.shelter_guide.batch.processing;
 
-import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationDto;
+import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.service.ShelterInformationApiService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.batch.item.*;
+import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.NonTransientResourceException;
+import org.springframework.batch.item.ParseException;
+import org.springframework.batch.item.UnexpectedInputException;
+
+import java.util.List;
 
 @RequiredArgsConstructor
-public class ShelterInformationItemReader implements ItemReader<SeoulShelterInformationDto> {
+public class ShelterInformationItemReader implements ItemReader<List<SeoulShelterInformationResultDataDto>> {
 
     private final ShelterInformationApiService shelterInformationApiService;
     private int startIndex = 1;
@@ -14,17 +19,17 @@ public class ShelterInformationItemReader implements ItemReader<SeoulShelterInfo
     private boolean hasMoreData = true;
 
     @Override
-    public SeoulShelterInformationDto read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
+    public List<SeoulShelterInformationResultDataDto> read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
         if (hasMoreData) {
-            SeoulShelterInformationDto seoulShelterInformationDto = shelterInformationApiService.fetchShelterInformation(startIndex, endIndex);
-            if (seoulShelterInformationDto.getResult().getResultDataDtoList().isEmpty()) {
+            List<SeoulShelterInformationResultDataDto> seoulShelterInformationResultDataDtos = shelterInformationApiService.fetchShelterInformation(startIndex, endIndex);
+            if (seoulShelterInformationResultDataDtos.isEmpty()) {
                 hasMoreData = false;
                 return null;
             }
 
             startIndex += 100;
             endIndex += 100;
-            return seoulShelterInformationDto;
+            return seoulShelterInformationResultDataDtos;
         }
         return null;
     }

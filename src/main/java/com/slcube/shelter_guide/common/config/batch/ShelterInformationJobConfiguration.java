@@ -1,6 +1,6 @@
 package com.slcube.shelter_guide.common.config.batch;
 
-import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationDto;
+import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.processing.ShelterInformationItemReader;
 import com.slcube.shelter_guide.batch.processing.ShelterInformationItemWriter;
 import com.slcube.shelter_guide.batch.service.ShelterInformationApiService;
@@ -16,6 +16,8 @@ import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Slf4j
 @Configuration
@@ -40,7 +42,7 @@ public class ShelterInformationJobConfiguration {
     @JobScope
     public Step shelterInformationStep() {
         return stepBuilderFactory.get("shelterInformationStep")
-                .<SeoulShelterInformationDto, SeoulShelterInformationDto>chunk(CHUNK_SIZE)
+                .<List<SeoulShelterInformationResultDataDto>, List<SeoulShelterInformationResultDataDto>>chunk(CHUNK_SIZE)
                 .reader(shelterInformationItemReader())
                 .writer(shelterInformationItemWriter())
                 .build();
@@ -48,13 +50,13 @@ public class ShelterInformationJobConfiguration {
 
     @Bean
     @StepScope
-    public ItemReader<SeoulShelterInformationDto> shelterInformationItemReader() {
+    public ItemReader<List<SeoulShelterInformationResultDataDto>> shelterInformationItemReader() {
         return new ShelterInformationItemReader(shelterInformationApiService);
     }
 
     @Bean
     @StepScope
-    public ItemWriter<SeoulShelterInformationDto> shelterInformationItemWriter() {
+    public ItemWriter<List<SeoulShelterInformationResultDataDto>> shelterInformationItemWriter() {
         return new ShelterInformationItemWriter();
     }
 }
