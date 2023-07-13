@@ -51,6 +51,26 @@ public class ShelterInformationApiService {
 
         return Collections.emptyList();
     }
+
+
+    @Transactional
+    public void storeShelterInformation(List<SeoulShelterInformationResultDataDto> shelterInformations) {
+
+        validationShelterInformations(shelterInformations);
+
+        List<ShelterInformationStaging> shelterInformationStagings = shelterInformations
+                .stream()
+                .map(ShelterInformationMapper::toEntity)
+                .collect(Collectors.toList());
+
+        shelterInformationStagingRepository.saveAll(shelterInformationStagings);
+    }
+
+    private void validationShelterInformations(List<SeoulShelterInformationResultDataDto> shelterInformations) {
+        if (shelterInformations == null) {
+            throw new IllegalArgumentException("shelterInformations can not null");
+        }
+    }
 }
 
 
