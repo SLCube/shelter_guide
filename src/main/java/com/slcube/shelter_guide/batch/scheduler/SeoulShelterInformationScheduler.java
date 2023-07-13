@@ -32,7 +32,7 @@ public class SeoulShelterInformationScheduler implements ShelterInformationSched
             );
             log.info("Successfully complete Seoul Shelter Information Job");
         } catch (JobExecutionException e) {
-            log.error("JobExecutionException : {}", e.getMessage());
+            log.error("JobExecutionException : ", e);
         }
     }
 }
