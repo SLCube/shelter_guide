@@ -14,8 +14,9 @@ import java.util.List;
 public class ShelterInformationItemReader implements ItemReader<List<SeoulShelterInformationResultDataDto>> {
 
     private final ShelterInformationApiService shelterInformationApiService;
+    private static final int PAGE_SIZE = 100;
     private int startIndex = 1;
-    private int endIndex = 100;
+    private int endIndex = PAGE_SIZE;
     private boolean hasMoreData = true;
 
     @Override
@@ -27,8 +28,8 @@ public class ShelterInformationItemReader implements ItemReader<List<SeoulShelte
                 return null;
             }
 
-            startIndex += 100;
-            endIndex += 100;
+            startIndex += PAGE_SIZE;
+            endIndex += PAGE_SIZE;
             return seoulShelterInformationResultDataDtos;
         }
         return null;
