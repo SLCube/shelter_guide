@@ -3,6 +3,8 @@ package com.slcube.shelter_guide.batch.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
+import java.time.LocalDate;
+
 @Getter
 public class SeoulShelterInformationResultDataDto {
 
@@ -13,7 +15,7 @@ public class SeoulShelterInformationResultDataDto {
     private String managementNumber;
 
     @JsonProperty("APVPERMYMD")
-    private String licenseDate;
+    private LocalDate licenseDate;
 
     @JsonProperty("APVCANCELYMD")
     private String licenseCancellationDate;
@@ -31,7 +33,7 @@ public class SeoulShelterInformationResultDataDto {
     private String detailedBusinessStatusName;
 
     @JsonProperty("DCBYMD")
-    private String closingDate;
+    private LocalDate closingDate;
 
     @JsonProperty("CLGSTDT")
     private String closedStartDate;
@@ -46,7 +48,7 @@ public class SeoulShelterInformationResultDataDto {
     private String phoneNumber;
 
     @JsonProperty("SITEAREA")
-    private String locationArea;
+    private Double locationArea;
 
     @JsonProperty("SITEPOSTNO")
     private String locationPostalCode;
@@ -64,19 +66,19 @@ public class SeoulShelterInformationResultDataDto {
     private String businessEstablishmentName;
 
     @JsonProperty("LASTMODTS")
-    private String lastModifiedDate;
+    private String  lastModifiedDate;
 
     @JsonProperty("UPDATEGBN")
     private String dataUpdateCode;
 
     @JsonProperty("UPDATEDT")
-    private String dataUpdateDate;
+    private String  dataUpdateDate;
 
     @JsonProperty("X")
-    private String positionX;
+    private Double positionX;
 
     @JsonProperty("Y")
-    private String positionY;
+    private Double positionY;
 
     @JsonProperty("EMERFACILLOC")
     private String emergencyFalicityLocation;
