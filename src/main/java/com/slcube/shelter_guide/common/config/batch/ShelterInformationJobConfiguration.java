@@ -57,6 +57,6 @@ public class ShelterInformationJobConfiguration {
     @Bean
     @StepScope
     public ItemWriter<List<SeoulShelterInformationResultDataDto>> shelterInformationItemWriter() {
-        return new ShelterInformationItemWriter();
+        return new ShelterInformationItemWriter(shelterInformationApiService);
     }
 }
