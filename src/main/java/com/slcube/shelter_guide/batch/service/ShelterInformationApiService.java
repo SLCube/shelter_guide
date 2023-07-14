@@ -11,9 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,15 +26,10 @@ public class ShelterInformationApiService {
     private final ShelterInformationStagingRepository shelterInformationStagingRepository;
 
     public List<SeoulShelterInformationResultDataDto> fetchShelterInformation(int startIndex, int endIndex) {
-        String url = "/";
-
-        URI uri = UriComponentsBuilder.fromHttpUrl(url)
-                .pathSegment(String.valueOf(startIndex), String.valueOf(endIndex))
-                .build()
-                .toUri();
+        String url = "/" + startIndex + "/" + endIndex;
 
         try {
-            SeoulShelterInformationDto seoulShelterInformationDto = restTemplate.getForObject(uri, SeoulShelterInformationDto.class);
+            SeoulShelterInformationDto seoulShelterInformationDto = restTemplate.getForObject(url, SeoulShelterInformationDto.class);
 
             if (seoulShelterInformationDto != null) {
                 SeoulShelterInformationResultDto result = seoulShelterInformationDto.getResult();
