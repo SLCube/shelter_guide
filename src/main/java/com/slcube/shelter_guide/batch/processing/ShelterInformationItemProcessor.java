@@ -23,7 +23,8 @@ public class ShelterInformationItemProcessor implements ItemProcessor<List<Seoul
 
         while (iterator.hasNext()) {
             SeoulShelterInformationResultDataDto seoulShelterInformationResultDataDto = iterator.next();
-            Optional<ShelterInformationStaging> shelterInformationStaging = shelterInformationApiService.findByManagementNumber(seoulShelterInformationResultDataDto.getManagementNumber());
+            Optional<ShelterInformationStaging> shelterInformationStaging =
+                    shelterInformationApiService.findByManagementNumber(seoulShelterInformationResultDataDto.getManagementNumber());
 
             if (shelterInformationStaging.isPresent()) {
                 ShelterInformationStaging shelterInformationStagingEntity = shelterInformationStaging.get();
