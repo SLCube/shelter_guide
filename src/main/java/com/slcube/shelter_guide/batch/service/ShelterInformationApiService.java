@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -63,6 +64,10 @@ public class ShelterInformationApiService {
         if (shelterInformations == null) {
             throw new IllegalArgumentException("shelterInformations can not null");
         }
+    }
+
+    public Optional<ShelterInformationStaging> findByManagementNumber(String managementNumber) {
+        return shelterInformationStagingRepository.findByManagementNumber(managementNumber);
     }
 }
 
