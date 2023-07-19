@@ -32,8 +32,8 @@ public class ShelterInformationItemProcessor implements ItemProcessor<List<Seoul
                 if (!ShelterInformationStagingComparator.areEqual(seoulShelterInformationResultDataDto, shelterInformationStagingEntity)) {
                     shelterInformationStagingEntity.update(seoulShelterInformationResultDataDto);
                 }
+                iterator.remove();
             }
-            iterator.remove();
         }
 
         return item;
