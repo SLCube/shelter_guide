@@ -4,16 +4,15 @@ import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationDto;
 import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultCodeDto;
 import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultDto;
-import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +21,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ShelterInformationApiServiceUnitTest {
 
     @Mock
@@ -34,8 +33,8 @@ public class ShelterInformationApiServiceUnitTest {
     private final int EXPECTED_LIST_SIZE = 3;
 
     @Test
-    @DisplayName("서울시 공공api에서 대피소 정보를 갖고 오는 메소드 단위 테스트")
-    public void fetchShelterInformationTest() {
+    @DisplayName("서울시 공공api에서 대피소 정보를 갖고 오는 메소드 positive case 단위 테스트")
+    void fetchShelterInformationPositiveCaseTest() {
         SeoulShelterInformationDto seoulShelterInformationDto = createShelterInformationDto();
 
         when(restTemplate.getForObject(anyString(), Mockito.<Class<SeoulShelterInformationDto>>any()))
@@ -76,7 +75,7 @@ public class ShelterInformationApiServiceUnitTest {
             SeoulShelterInformationResultDataDto shelterInformationResultDataDto = new SeoulShelterInformationResultDataDto();
             setField(shelterInformationResultDataDto, "municipalityCode", "3120000");
             setField(shelterInformationResultDataDto, "managementNumber", "3120000-S202300001");
-            setField(shelterInformationResultDataDto, "licenseDate", LocalDate.of(2008, 12, 2));
+            setField(shelterInformationResultDataDto, "licenseDate", "2008-12-02");
             setField(shelterInformationResultDataDto, "businessStatusCode", "01");
             setField(shelterInformationResultDataDto, "businessStatusName", "영업/정상");
             setField(shelterInformationResultDataDto, "detailedBusinessStatusCode", "18");
