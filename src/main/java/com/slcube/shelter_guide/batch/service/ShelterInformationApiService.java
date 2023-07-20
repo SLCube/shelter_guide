@@ -50,8 +50,6 @@ public class ShelterInformationApiService {
     @Transactional
     public void storeShelterInformation(List<SeoulShelterInformationResultDataDto> shelterInformations) {
 
-        validationShelterInformations(shelterInformations);
-
         List<ShelterInformationStaging> shelterInformationStagings = shelterInformations
                 .stream()
                 .map(ShelterInformationMapper::toEntity)
@@ -60,11 +58,7 @@ public class ShelterInformationApiService {
         shelterInformationStagingRepository.saveAll(shelterInformationStagings);
     }
 
-    private void validationShelterInformations(List<SeoulShelterInformationResultDataDto> shelterInformations) {
-        if (shelterInformations == null) {
-            throw new IllegalArgumentException("shelterInformations can not null");
-        }
-    }
+
 
     public Optional<ShelterInformationStaging> findByManagementNumber(String managementNumber) {
         return shelterInformationStagingRepository.findByManagementNumber(managementNumber);

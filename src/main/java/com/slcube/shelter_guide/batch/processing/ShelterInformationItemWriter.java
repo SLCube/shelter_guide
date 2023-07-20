@@ -14,6 +14,13 @@ public class ShelterInformationItemWriter implements ItemWriter<List<SeoulShelte
 
     @Override
     public void write(List<? extends List<SeoulShelterInformationResultDataDto>> items) throws Exception {
+        validationShelterInformation(items);
         items.forEach(shelterInformationApiService::storeShelterInformation);
+    }
+
+    private void validationShelterInformation(List<? extends List<SeoulShelterInformationResultDataDto>>  shelterInformation) {
+        if (shelterInformation == null) {
+            throw new IllegalArgumentException("Shelter Information can not null");
+        }
     }
 }
