@@ -4,7 +4,6 @@ import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationDto;
 import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultCodeDto;
 import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultDto;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -33,8 +32,7 @@ public class ShelterInformationApiServiceUnitTest {
     private final int EXPECTED_LIST_SIZE = 3;
 
     @Test
-    @DisplayName("서울시 공공api에서 대피소 정보를 갖고 오는 메소드 positive case 단위 테스트")
-    void fetchShelterInformationPositiveCaseTest() {
+    void 서울시_공공_api에서_대피소_정보를_갖고오는_메소드_테스트() {
         SeoulShelterInformationDto seoulShelterInformationDto = createShelterInformationDto();
 
         when(restTemplate.getForObject(anyString(), Mockito.<Class<SeoulShelterInformationDto>>any()))
