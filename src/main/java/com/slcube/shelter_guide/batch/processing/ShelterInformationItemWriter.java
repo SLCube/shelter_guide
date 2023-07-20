@@ -23,6 +23,4 @@ public class ShelterInformationItemWriter implements ItemWriter<List<SeoulShelte
             throw new IllegalArgumentException("Items can not be null");
         }
     }
-
-
 }
