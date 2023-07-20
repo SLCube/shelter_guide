@@ -37,8 +37,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-quartz'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-batch'
 	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
 	implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
+	implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3"
+	implementation "org.apache.httpcomponents:httpclient"
 
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -50,12 +53,14 @@ dependencies {
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+	testImplementation 'org.springframework.batch:spring-batch-test'
 	testRuntimeOnly 'com.h2database:h2'
 }
 
 tasks.named('test') {
 	finalizedBy jacocoTestReport
 	useJUnitPlatform()
+	systemProperty "jasypt.encryptor.password", System.getProperties().get("jasypt.encryptor.password")
 }
 
 //tasks.named('asciidoctor') {
