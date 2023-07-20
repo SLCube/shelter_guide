@@ -36,7 +36,6 @@ class ShelterInformationJobIntegrateTest {
 
     @Test
     void jobTest() throws Exception {
-        // given
         LocalDateTime thursday = LocalDateTime.of(
                 2023,
                 7,
