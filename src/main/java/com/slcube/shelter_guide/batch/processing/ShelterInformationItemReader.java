@@ -8,6 +8,7 @@ import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
 
+import java.util.Collections;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -25,13 +26,13 @@ public class ShelterInformationItemReader implements ItemReader<List<SeoulShelte
             List<SeoulShelterInformationResultDataDto> seoulShelterInformationResultDataDtos = shelterInformationApiService.fetchShelterInformation(startIndex, endIndex);
             if (seoulShelterInformationResultDataDtos.isEmpty()) {
                 hasMoreData = false;
-                return null;
+                return Collections.emptyList();
             }
 
             startIndex += PAGE_SIZE;
             endIndex += PAGE_SIZE;
             return seoulShelterInformationResultDataDtos;
         }
-        return null;
+        return Collections.emptyList();
     }
 }
