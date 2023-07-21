@@ -1,12 +1,14 @@
 package com.slcube.shelter_guide.common.config.batch;
 
 import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.listener.ShelterInformationJobListener;
 import com.slcube.shelter_guide.batch.processing.ShelterInformationItemReader;
 import com.slcube.shelter_guide.batch.processing.ShelterInformationItemWriter;
 import com.slcube.shelter_guide.batch.service.ShelterInformationApiService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.JobScope;
@@ -43,6 +45,7 @@ public class ShelterInformationJobConfiguration {
     public Step shelterInformationStep() {
         return stepBuilderFactory.get("shelterInformationStep")
                 .<List<SeoulShelterInformationResultDataDto>, List<SeoulShelterInformationResultDataDto>>chunk(CHUNK_SIZE)
+                .listener(shelterInformationJobListener())
                 .reader(shelterInformationItemReader())
                 .writer(shelterInformationItemWriter())
                 .build();
@@ -58,5 +61,10 @@ public class ShelterInformationJobConfiguration {
     @StepScope
     public ItemWriter<List<SeoulShelterInformationResultDataDto>> shelterInformationItemWriter() {
         return new ShelterInformationItemWriter(shelterInformationApiService);
+    }
+
+    @Bean
+    public JobExecutionListener shelterInformationJobListener() {
+        return new ShelterInformationJobListener();
     }
 }
