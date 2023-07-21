@@ -4,7 +4,7 @@ import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationDto;
 import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultDto;
 import com.slcube.shelter_guide.batch.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.mapper.ShelterInformationMapper;
+import com.slcube.shelter_guide.batch.mapper.ShelterInformationStagingMapper;
 import com.slcube.shelter_guide.batch.repository.ShelterInformationStagingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,7 +52,7 @@ public class ShelterInformationApiService {
         validationShelterInformation(shelterInformation);
         List<ShelterInformationStaging> shelterInformationStagings = shelterInformation
                 .stream()
-                .map(ShelterInformationMapper::toEntity)
+                .map(ShelterInformationStagingMapper::toEntity)
                 .collect(Collectors.toList());
 
         shelterInformationStagingRepository.saveAll(shelterInformationStagings);
