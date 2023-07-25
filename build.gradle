@@ -78,10 +78,24 @@ jacoco {
 
 jacocoTestReport {
 	reports {
-		xml.required =  false
-		csv.required =  false
-		html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+		html.enabled true
+		xml.enabled false
+		csv.enabled false
 	}
+
+	def Qdomains = []
+	for(qPattern in "**/QA" .. "**/QZ") {
+		Qdomains.add(qPattern + "*")
+	}
+
+	afterEvaluate {
+
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it,
+					exclude: [] + Qdomains)
+		}))
+	}
+
 	dependsOn test
 	finalizedBy 'jacocoTestCoverageVerification'
 }
@@ -89,17 +103,18 @@ jacocoTestReport {
 jacocoTestCoverageVerification {
 
 	def Qdomains = []
-
-	for(qPattern in "*.QA".."*.QZ") {
-		Qdomains.add(qPattern + "*")
+	// 패키지 + 클래스명
+	for (qPattern in '*.QA'..'*.QZ') { // qPattern = '*.QA', '*.QB', ... '*.QZ'
+		Qdomains.add(qPattern + '*')
 	}
 
 	violationRules {
 		rule {
+			enabled = true
 			element = 'CLASS'
 
 			limit {
-				counter = 'METHOD'
+				counter = 'LINE'
 				value = 'COVEREDRATIO'
 				minimum = 0.5
 			}
