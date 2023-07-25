@@ -29,12 +29,17 @@ public class ShelterInformationStaging {
     private Double positionX;
     private Double positionY;
     private Double locationArea;
+    private String locationPostalCode;
+    private String landNumberAddress;
+    private String roadNameAddress;
+    private String roadNamePostalCode;
     private String lastModifiedDate;
 
     @Builder
     private ShelterInformationStaging(String managementNumber, String licenseDate, String businessStatusCode,
                                       String businessStatusName, String detailedBusinessStatusCode, String detailedBusinessStatusName,
-                                      String closingDate, Double positionX, Double positionY, Double locationArea, String lastModifiedDate) {
+                                      String closingDate, Double positionX, Double positionY, Double locationArea, String locationPostalCode,
+                                      String landNumberAddress, String roadNameAddress, String roadNamePostalCode, String lastModifiedDate) {
         this.managementNumber = managementNumber;
         this.licenseDate = licenseDate;
         this.businessStatusCode = businessStatusCode;
@@ -45,6 +50,10 @@ public class ShelterInformationStaging {
         this.positionX = positionX;
         this.positionY = positionY;
         this.locationArea = locationArea;
+        this.locationPostalCode = locationPostalCode;
+        this.landNumberAddress = landNumberAddress;
+        this.roadNameAddress = roadNameAddress;
+        this.roadNamePostalCode = roadNamePostalCode;
         this.lastModifiedDate = lastModifiedDate;
     }
 
