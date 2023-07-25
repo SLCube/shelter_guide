@@ -21,7 +21,7 @@ public class SeoulShelterInformationScheduler implements ShelterInformationSched
 
     @Override
     @Scheduled(cron = "0 0 0 1 * ?")
-    public void scheduleShelterInformation() {
+    public void run() {
         try {
             log.info("Seoul Shelter Information Job Start");
             jobLauncher.run(
