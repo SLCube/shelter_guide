@@ -1,6 +1,6 @@
-package com.slcube.shelter_guide.batch.entity;
+package com.slcube.shelter_guide.batch.external_api.entity;
 
-import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

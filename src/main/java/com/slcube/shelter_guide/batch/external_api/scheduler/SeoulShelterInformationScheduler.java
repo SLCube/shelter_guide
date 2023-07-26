@@ -1,4 +1,4 @@
-package com.slcube.shelter_guide.batch.scheduler;
+package com.slcube.shelter_guide.batch.external_api.scheduler;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,6 @@
-package com.slcube.shelter_guide.batch.repository;
+package com.slcube.shelter_guide.batch.external_api.repository;
 
-import com.slcube.shelter_guide.batch.entity.ShelterInformationStaging;
+import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
