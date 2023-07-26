@@ -33,17 +33,17 @@ public class ShelterInformationExternalApiJobConfiguration {
     private static final int CHUNK_SIZE = 100;
 
     @Bean
-    public Job shelterInformationJob() {
-        return jobBuilderFactory.get("shelterInformationJob")
-                .start(shelterInformationStep())
+    public Job shelterInformationExternalApiJob() {
+        return jobBuilderFactory.get("shelterInformationExternalApiJob")
+                .start(shelterInformationExternalApiStep())
                 .build();
 
     }
 
     @Bean
     @JobScope
-    public Step shelterInformationStep() {
-        return stepBuilderFactory.get("shelterInformationStep")
+    public Step shelterInformationExternalApiStep() {
+        return stepBuilderFactory.get("shelterInformationExternalApiStep")
                 .<List<SeoulShelterInformationResultDataDto>, List<SeoulShelterInformationResultDataDto>>chunk(CHUNK_SIZE)
                 .listener(shelterInformationJobListener())
                 .reader(shelterInformationItemReader())
