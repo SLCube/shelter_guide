@@ -1,10 +1,10 @@
 package com.slcube.shelter_guide.common.config.batch;
 
-import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.listener.ShelterInformationJobListener;
-import com.slcube.shelter_guide.batch.processing.ShelterInformationItemReader;
-import com.slcube.shelter_guide.batch.processing.ShelterInformationItemWriter;
-import com.slcube.shelter_guide.batch.service.ShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemReader;
+import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemWriter;
+import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -24,7 +24,7 @@ import java.util.List;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class ShelterInformationJobConfiguration {
+public class ShelterInformationExternalApiJobConfiguration {
 
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
