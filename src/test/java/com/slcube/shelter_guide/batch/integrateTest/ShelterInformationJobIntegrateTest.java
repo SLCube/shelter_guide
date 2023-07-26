@@ -1,7 +1,7 @@
 package com.slcube.shelter_guide.batch.integrateTest;
 
-import com.slcube.shelter_guide.batch.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.repository.ShelterInformationStagingRepository;
+import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
+import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.*;
@@ -35,7 +35,7 @@ class ShelterInformationJobIntegrateTest {
     }
 
     @Test
-    void jobTest() throws Exception {
+    void 서울시_대피소_api호출_batch_통합테스트() throws Exception {
         LocalDateTime thursday = LocalDateTime.of(
                 2023,
                 7,

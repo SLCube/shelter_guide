@@ -1,7 +1,8 @@
 package com.slcube.shelter_guide.batch.processing;
 
-import com.slcube.shelter_guide.batch.dto.SeoulShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.service.ShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemReader;
+import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
