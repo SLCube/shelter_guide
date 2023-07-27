@@ -19,6 +19,10 @@ public class ShelterInformationStagingComparator {
                 && dto.getPositionX().equals(shelterInformationStaging.getPositionX())
                 && dto.getPositionY().equals(shelterInformationStaging.getPositionY())
                 && dto.getLocationArea().equals(shelterInformationStaging.getLocationArea())
+                && dto.getLocationPostalCode().equals(shelterInformationStaging.getLocationPostalCode())
+                && dto.getLandNumberAddress().equals(shelterInformationStaging.getLandNumberAddress())
+                && dto.getRoadNameAddress().equals(shelterInformationStaging.getRoadNameAddress())
+                && dto.getRoadNamePostalCode().equals(shelterInformationStaging.getRoadNamePostalCode())
                 && dto.getLastModifiedDate().equals(shelterInformationStaging.getLastModifiedDate());
     }
 }

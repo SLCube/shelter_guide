@@ -6,7 +6,6 @@ import com.slcube.shelter_guide.batch.transfer_data.mapper.ShelterInformationMap
 import com.slcube.shelter_guide.business.entity.ShelterInformation;
 import com.slcube.shelter_guide.business.repository.ShelterInformationRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,8 +32,7 @@ public class ShelterInformationDataTransferService {
 
     public List<ShelterInformationStaging> findShelterInformationStagings(int pageNumber) {
         PageRequest pageRequest = PageRequest.of(pageNumber, PAGE_SIZE);
-        Page<ShelterInformationStaging> shelterInformationStagings = shelterInformationStagingRepository.findAll(pageRequest);
-        return shelterInformationStagings.getContent();
+        return shelterInformationStagingRepository.findAllWithPaging(pageRequest);
     }
 
     public Optional<ShelterInformation> findByManagementNumber(String managementNumber) {

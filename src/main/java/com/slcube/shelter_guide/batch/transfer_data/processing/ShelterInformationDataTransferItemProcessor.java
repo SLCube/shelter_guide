@@ -22,14 +22,13 @@ public class ShelterInformationDataTransferItemProcessor implements ItemProcesso
     public List<ShelterInformationStaging> process(List<ShelterInformationStaging> item) throws Exception {
         Iterator<ShelterInformationStaging> iterator = item.iterator();
         while (iterator.hasNext()) {
-            log.info("### execution event item reader!!!");
             ShelterInformationStaging shelterInformationStaging = iterator.next();
             Optional<ShelterInformation> shelterInformation = shelterInformationDataTransferService.findByManagementNumber(shelterInformationStaging.getManagementNumber());
 
             if (shelterInformation.isPresent()) {
                 ShelterInformation shelterInformationEntity = shelterInformation.get();
                 if (!ShelterInformationComparator.areEqual(shelterInformationStaging, shelterInformationEntity)) {
-
+                    shelterInformationEntity.update(shelterInformationStaging);
                 }
 
                 iterator.remove();
