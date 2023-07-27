@@ -23,16 +23,17 @@ public class SeoulShelterInformationScheduler implements ShelterInformationSched
     @Scheduled(cron = "0 0 0 1 * ?")
     public void run() {
         try {
-            log.info("Seoul Shelter Information Job Start");
+            log.info(">>> Seoul Shelter Information Job Start");
+
             jobLauncher.run(
                     job,
                     new JobParametersBuilder()
                             .addString("datetime", LocalDateTime.now().toString())
                             .toJobParameters()
             );
-            log.info("Successfully complete Seoul Shelter Information Job");
+            log.info(">>> Successfully complete Seoul Shelter Information Job");
         } catch (JobExecutionException e) {
-            log.error("JobExecutionException : ", e);
+            log.error("Seoul Shelter Information JobExecutionException : ", e);
         }
     }
 }
