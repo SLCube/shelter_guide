@@ -1,6 +1,5 @@
-package com.slcube.shelter_guide.batch.processing;
+package com.slcube.shelter_guide.batch.external_api.processing;
 
-import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemWriter;
 import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

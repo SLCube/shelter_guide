@@ -1,10 +1,9 @@
-package com.slcube.shelter_guide.batch.service;
+package com.slcube.shelter_guide.batch.external_api.service;
 
 import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultCodeDto;
 import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDto;
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
