@@ -24,10 +24,19 @@ public class ShelterInformationDataTransferService {
     private static final int PAGE_SIZE = 100;
 
     public void storeShelterInformation(List<ShelterInformationStaging> shelterInformationStagings) {
+
+        validationShelterInformationStagings(shelterInformationStagings);
+
         List<ShelterInformation> shelterInformation = shelterInformationStagings.stream()
                 .map(ShelterInformationMapper::toEntity).collect(Collectors.toList());
 
         shelterInformationRepository.saveAll(shelterInformation);
+    }
+
+    private void validationShelterInformationStagings(List<ShelterInformationStaging> shelterInformationStagings) {
+        if (shelterInformationStagings == null) {
+            throw new IllegalArgumentException("Shelter Information Stagings can not be null");
+        }
     }
 
     public List<ShelterInformationStaging> findShelterInformationStagings(int pageNumber) {
