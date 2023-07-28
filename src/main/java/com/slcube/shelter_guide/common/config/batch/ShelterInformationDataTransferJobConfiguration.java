@@ -4,7 +4,6 @@ import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStag
 import com.slcube.shelter_guide.batch.transfer_data.processing.ShelterInformationDataTransferItemReader;
 import com.slcube.shelter_guide.batch.transfer_data.processing.ShelterInformationDataTransferItemWriter;
 import com.slcube.shelter_guide.batch.transfer_data.service.ShelterInformationDataTransferService;
-import com.slcube.shelter_guide.business.entity.ShelterInformation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -44,7 +43,7 @@ public class ShelterInformationDataTransferJobConfiguration {
     @JobScope
     public Step shelterInformationDataTransferStep() {
         return stepBuilderFactory.get("shelterInformationDataTransferStep")
-                .<List<ShelterInformationStaging>, ShelterInformation>chunk(CHUNK_SIZE)
+                .<List<ShelterInformationStaging>, List<ShelterInformationStaging>>chunk(CHUNK_SIZE)
                 .reader(shelterInformationDataTransferItemReader())
                 .writer(shelterInformationDataTransferItemWriter())
                 .build();
@@ -58,7 +57,7 @@ public class ShelterInformationDataTransferJobConfiguration {
 
     @Bean
     @JobScope
-    public ItemWriter<ShelterInformation> shelterInformationDataTransferItemWriter() {
+    public ItemWriter<List<ShelterInformationStaging>> shelterInformationDataTransferItemWriter() {
         return new ShelterInformationDataTransferItemWriter(shelterInformationDataTransferService);
     }
 }
