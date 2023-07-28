@@ -1,4 +1,4 @@
-package com.slcube.shelter_guide.batch.integrateTest;
+package com.slcube.shelter_guide.batch.integrate_test;
 
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
 import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
