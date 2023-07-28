@@ -16,7 +16,7 @@ import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class ShelterInformationDataTransferItemReaderTest {
+class ShelterInformationDataTransferItemReaderUnitTest {
 
     @Mock
     private ShelterInformationDataTransferService shelterInformationDataTransferService;
