@@ -14,6 +14,13 @@ public class ShelterInformationDataTransferItemWriter implements ItemWriter<List
 
     @Override
     public void write(List<? extends List<ShelterInformationStaging>> items) throws Exception {
+        validationItems(items);
         items.forEach(shelterInformationDataTransferService::storeShelterInformation);
+    }
+
+    private void validationItems(List<? extends List<ShelterInformationStaging>> items) {
+        if (items == null) {
+            throw new IllegalArgumentException("Items can not be null");
+        }
     }
 }
