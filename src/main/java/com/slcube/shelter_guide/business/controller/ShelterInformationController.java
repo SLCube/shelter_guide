@@ -24,7 +24,8 @@ public class ShelterInformationController {
     @ApiResponses({})
     @Parameters({})
     @GetMapping
-    public List<ShelterInformationListResponseDto> findShelterInformationList(@RequestParam @NotBlank String address) {
+    public List<ShelterInformationListResponseDto> findShelterInformationList(
+            @RequestParam @NotBlank(message = "주소 정보는 필수 입력 항목 입니다.") String address) {
         return shelterInformationService.findShelterInformation(address);
     }
 
@@ -33,7 +34,8 @@ public class ShelterInformationController {
     @ApiResponses({})
     @Parameters({})
     @GetMapping("/{id}")
-    public ShelterInformationResponseDto findShelterInformation(@PathVariable @Min(1) Long id) {
+    public ShelterInformationResponseDto findShelterInformation(
+            @PathVariable @Min(value = 1, message = "id값은 최소 1이상의 값을 입력해주세요.") Long id) {
         return shelterInformationService.findById(id);
     }
 }
