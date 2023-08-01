@@ -19,8 +19,8 @@ public class ShelterInformationService {
 
     private final ShelterInformationRepository shelterInformationRepository;
 
-    public List<ShelterInformationListResponseDto> findShelterInformation(String address) {
-        return shelterInformationRepository.findByAddress(address)
+    public List<ShelterInformationListResponseDto> findShelterInformation(String district) {
+        return shelterInformationRepository.findByDistrict(district)
                 .stream().map(ShelterInformationListResponseDto::new)
                 .collect(Collectors.toList());
     }

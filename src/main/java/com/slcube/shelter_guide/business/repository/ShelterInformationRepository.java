@@ -10,6 +10,6 @@ import java.util.Optional;
 public interface ShelterInformationRepository extends JpaRepository<ShelterInformation, Long> {
     Optional<ShelterInformation> findByManagementNumber(String managementNumber);
 
-    @Query("select s from ShelterInformation s where s.landNumberAddress like :address")
-    List<ShelterInformation> findByAddress(String address);
+    @Query("select s from ShelterInformation s where s.landNumberAddress like :district")
+    List<ShelterInformation> findByDistrict(String district);
 }
