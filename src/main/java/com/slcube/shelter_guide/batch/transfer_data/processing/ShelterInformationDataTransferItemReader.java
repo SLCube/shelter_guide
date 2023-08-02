@@ -15,7 +15,7 @@ public class ShelterInformationDataTransferItemReader implements ItemReader<List
 
     private final ShelterInformationDataTransferService shelterInformationDataTransferService;
 
-    private int pageNumber = 1;
+    private int pageNumber = 0;
     private boolean hasMoreData = true;
     @Override
 
