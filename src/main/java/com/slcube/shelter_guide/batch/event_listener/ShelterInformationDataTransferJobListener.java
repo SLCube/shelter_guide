@@ -24,7 +24,6 @@ public class ShelterInformationDataTransferJobListener implements ApplicationLis
     private final ShelterInformationDataTransferJobConfiguration jobConfiguration;
 
     @Override
-    @EventListener
     public void onApplicationEvent(ShelterInformationFetchApiCompleteEvent event) {
         try {
             log.info(">>> Shelter Information Data Transfer Job Start");
