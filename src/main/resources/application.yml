@@ -21,4 +21,4 @@ spring:
 
   batch:
     job:
-      names: "shelterInformationExternalApiJob"
+      names: ${job.name:NONE}
