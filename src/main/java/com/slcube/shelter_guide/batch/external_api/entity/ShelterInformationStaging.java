@@ -6,10 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -19,20 +16,47 @@ public class ShelterInformationStaging {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String managementNumber;
+
+    @Column(nullable = false)
     private String licenseDate;
+
+    @Column(nullable = false)
     private String businessStatusCode;
+
+    @Column(nullable = false)
     private String businessStatusName;
+
+    @Column(nullable = false)
     private String detailedBusinessStatusCode;
+
+    @Column(nullable = false)
     private String detailedBusinessStatusName;
+
+    @Column(nullable = false)
     private String closingDate;
-    private Double positionX;
-    private Double positionY;
-    private Double locationArea;
+
+    private double positionX;
+
+    private double positionY;
+
+    private double locationArea;
+
+    @Column(nullable = false)
     private String locationPostalCode;
+
+    @Column(nullable = false)
     private String landNumberAddress;
+
+    @Column(nullable = false)
     private String roadNameAddress;
+
+    @Column(nullable = false)
     private String roadNamePostalCode;
+
+    @Column(nullable = false)
     private String lastModifiedDate;
 
     @Builder
@@ -40,21 +64,21 @@ public class ShelterInformationStaging {
                                       String businessStatusName, String detailedBusinessStatusCode, String detailedBusinessStatusName,
                                       String closingDate, Double positionX, Double positionY, Double locationArea, String locationPostalCode,
                                       String landNumberAddress, String roadNameAddress, String roadNamePostalCode, String lastModifiedDate) {
-        this.managementNumber = managementNumber;
-        this.licenseDate = licenseDate;
-        this.businessStatusCode = businessStatusCode;
-        this.businessStatusName = businessStatusName;
-        this.detailedBusinessStatusCode = detailedBusinessStatusCode;
-        this.detailedBusinessStatusName = detailedBusinessStatusName;
-        this.closingDate = closingDate;
+        this.managementNumber = managementNumber != null ? managementNumber : "";
+        this.licenseDate = licenseDate != null ? licenseDate : "";
+        this.businessStatusCode = businessStatusCode != null ? businessStatusCode : "";
+        this.businessStatusName = businessStatusName != null ? businessStatusName : "";
+        this.detailedBusinessStatusCode = detailedBusinessStatusCode != null ? detailedBusinessStatusCode : "";
+        this.detailedBusinessStatusName = detailedBusinessStatusName != null ? detailedBusinessStatusName : "";
+        this.closingDate = closingDate != null ? closingDate : "";
         this.positionX = positionX;
         this.positionY = positionY;
         this.locationArea = locationArea;
-        this.locationPostalCode = locationPostalCode;
-        this.landNumberAddress = landNumberAddress;
-        this.roadNameAddress = roadNameAddress;
-        this.roadNamePostalCode = roadNamePostalCode;
-        this.lastModifiedDate = lastModifiedDate;
+        this.locationPostalCode = locationPostalCode != null ? locationPostalCode : "";
+        this.landNumberAddress = landNumberAddress != null ? landNumberAddress : "";
+        this.roadNameAddress = roadNameAddress != null ? roadNameAddress : "";
+        this.roadNamePostalCode = roadNamePostalCode != null ? roadNamePostalCode : "";
+        this.lastModifiedDate = lastModifiedDate != null ? lastModifiedDate : "";
     }
 
     public void update(SeoulShelterInformationResultDataDto dto) {

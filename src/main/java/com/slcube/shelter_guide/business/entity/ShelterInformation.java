@@ -26,9 +26,9 @@ public class ShelterInformation {
     private String detailedBusinessStatusCode;
     private String detailedBusinessStatusName;
     private String closingDate;
-    private Double positionX;
-    private Double positionY;
-    private Double locationArea;
+    private double positionX;
+    private double positionY;
+    private double locationArea;
     private String locationPostalCode;
     private String landNumberAddress;
     private String roadNameAddress;

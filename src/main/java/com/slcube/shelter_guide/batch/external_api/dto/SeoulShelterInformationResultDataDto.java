@@ -46,7 +46,7 @@ public class SeoulShelterInformationResultDataDto {
     private String phoneNumber;
 
     @JsonProperty("SITEAREA")
-    private Double locationArea;
+    private double locationArea;
 
     @JsonProperty("SITEPOSTNO")
     private String locationPostalCode;
@@ -73,10 +73,10 @@ public class SeoulShelterInformationResultDataDto {
     private String  dataUpdateDate;
 
     @JsonProperty("X")
-    private Double positionX;
+    private double positionX;
 
     @JsonProperty("Y")
-    private Double positionY;
+    private double positionY;
 
     @JsonProperty("EMERFACILLOC")
     private String emergencyFalicityLocation;
