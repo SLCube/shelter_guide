@@ -11,9 +11,7 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
-import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.ItemWriter;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -32,7 +30,6 @@ public class ShelterInformationDataTransferJobConfiguration {
     private static final int CHUNK_SIZE = 100;
 
     @Bean
-    @Qualifier(value = "shelterInformationDataTransferJob")
     public Job shelterInformationDataTransferJob() {
         return jobBuilderFactory.get("shelterInformationDataTransferJob")
                 .start(shelterInformationDataTransferStep())
@@ -50,14 +47,14 @@ public class ShelterInformationDataTransferJobConfiguration {
     }
 
     @Bean
-    @JobScope
-    public ItemReader<List<ShelterInformationStaging>> shelterInformationDataTransferItemReader() {
+    @StepScope
+    public ShelterInformationDataTransferItemReader shelterInformationDataTransferItemReader() {
         return new ShelterInformationDataTransferItemReader(shelterInformationDataTransferService);
     }
 
     @Bean
-    @JobScope
-    public ItemWriter<List<ShelterInformationStaging>> shelterInformationDataTransferItemWriter() {
+    @StepScope
+    public ShelterInformationDataTransferItemWriter shelterInformationDataTransferItemWriter() {
         return new ShelterInformationDataTransferItemWriter(shelterInformationDataTransferService);
     }
 }
