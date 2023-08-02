@@ -1,6 +1,7 @@
 package com.slcube.shelter_guide.common.config.batch;
 
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
+import com.slcube.shelter_guide.batch.transfer_data.processing.ShelterInformationDataTransferItemProcessor;
 import com.slcube.shelter_guide.batch.transfer_data.processing.ShelterInformationDataTransferItemReader;
 import com.slcube.shelter_guide.batch.transfer_data.processing.ShelterInformationDataTransferItemWriter;
 import com.slcube.shelter_guide.batch.transfer_data.service.ShelterInformationDataTransferService;
@@ -43,6 +44,7 @@ public class ShelterInformationDataTransferJobConfiguration {
                 .<List<ShelterInformationStaging>, List<ShelterInformationStaging>>chunk(CHUNK_SIZE)
                 .reader(shelterInformationDataTransferItemReader())
                 .writer(shelterInformationDataTransferItemWriter())
+                .processor(shelterInformationDataTransferItemProcessor())
                 .build();
     }
 
@@ -56,5 +58,11 @@ public class ShelterInformationDataTransferJobConfiguration {
     @StepScope
     public ShelterInformationDataTransferItemWriter shelterInformationDataTransferItemWriter() {
         return new ShelterInformationDataTransferItemWriter(shelterInformationDataTransferService);
+    }
+
+    @Bean
+    @StepScope
+    public ShelterInformationDataTransferItemProcessor shelterInformationDataTransferItemProcessor() {
+        return new ShelterInformationDataTransferItemProcessor(shelterInformationDataTransferService);
     }
 }

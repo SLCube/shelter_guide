@@ -2,6 +2,7 @@ package com.slcube.shelter_guide.common.config.batch;
 
 import com.slcube.shelter_guide.batch.event_listener.ShelterInformationFetchApiExecutionListener;
 import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemProcessor;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemReader;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemWriter;
 import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
@@ -48,6 +49,7 @@ public class ShelterInformationExternalApiJobConfiguration {
                 .<List<SeoulShelterInformationResultDataDto>, List<SeoulShelterInformationResultDataDto>>chunk(CHUNK_SIZE)
                 .reader(shelterInformationItemReader())
                 .writer(shelterInformationItemWriter())
+                .processor(shelterInformationItemProcessor())
                 .build();
     }
 
@@ -61,5 +63,11 @@ public class ShelterInformationExternalApiJobConfiguration {
     @StepScope
     public ShelterInformationItemWriter shelterInformationItemWriter() {
         return new ShelterInformationItemWriter(shelterInformationApiService);
+    }
+
+    @Bean
+    @StepScope
+    public ShelterInformationItemProcessor shelterInformationItemProcessor() {
+        return new ShelterInformationItemProcessor(shelterInformationApiService);
     }
 }
