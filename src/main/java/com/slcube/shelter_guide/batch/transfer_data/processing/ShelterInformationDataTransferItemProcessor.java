@@ -5,14 +5,12 @@ import com.slcube.shelter_guide.batch.transfer_data.comparator.ShelterInformatio
 import com.slcube.shelter_guide.batch.transfer_data.service.ShelterInformationDataTransferService;
 import com.slcube.shelter_guide.business.entity.ShelterInformation;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemProcessor;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
-@Slf4j
 @RequiredArgsConstructor
 public class ShelterInformationDataTransferItemProcessor implements ItemProcessor<List<ShelterInformationStaging>, List<ShelterInformationStaging>> {
 
