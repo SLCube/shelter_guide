@@ -14,9 +14,9 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class ShelterInformationExternalApiJobConfiguration {
     private static final int CHUNK_SIZE = 100;
 
     @Bean
-    @Primary
+    @Qualifier("shelterInformationExternalApiJob")
     public Job shelterInformationExternalApiJob() {
         return jobBuilderFactory.get("shelterInformationExternalApiJob")
                 .start(shelterInformationExternalApiStep())

@@ -6,16 +6,18 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecutionException;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 @Slf4j
-@Component
 @RequiredArgsConstructor
+@Component
 public class SeoulShelterInformationScheduler implements ShelterInformationScheduler {
 
+    @Qualifier("shelterInformationExternalApiJob")
     private final Job job;
     private final JobLauncher jobLauncher;
 
