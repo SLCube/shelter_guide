@@ -45,7 +45,7 @@ class ShelterInformationJobIntegrateTest {
         );
 
         JobParameters jobParameters = new JobParametersBuilder()
-                .addString("createTime", thursday.toString())
+                .addString("datetime", thursday.toString())
                 .toJobParameters();
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
