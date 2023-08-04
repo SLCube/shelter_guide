@@ -38,7 +38,7 @@ public class ShelterInformation {
     @Builder
     private ShelterInformation(String managementNumber, String licenseDate, String businessStatusCode, String businessStatusName,
                                String detailedBusinessStatusCode, String detailedBusinessStatusName, String closingDate,
-                               Double positionX, Double positionY, Double locationArea, String locationPostalCode,
+                               double positionX, double positionY, double locationArea, String locationPostalCode,
                                String landNumberAddress, String roadNameAddress, String roadNamePostalCode, String lastModifiedDate) {
         this.managementNumber = managementNumber;
         this.licenseDate = licenseDate;
