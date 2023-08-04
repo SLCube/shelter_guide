@@ -62,7 +62,7 @@ public class ShelterInformationStaging {
     @Builder
     private ShelterInformationStaging(String managementNumber, String licenseDate, String businessStatusCode,
                                       String businessStatusName, String detailedBusinessStatusCode, String detailedBusinessStatusName,
-                                      String closingDate, Double positionX, Double positionY, Double locationArea, String locationPostalCode,
+                                      String closingDate, double positionX, double positionY, double locationArea, String locationPostalCode,
                                       String landNumberAddress, String roadNameAddress, String roadNamePostalCode, String lastModifiedDate) {
         this.managementNumber = managementNumber != null ? managementNumber : "";
         this.licenseDate = licenseDate != null ? licenseDate : "";
