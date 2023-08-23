@@ -2,11 +2,13 @@ package com.slcube.shelter_guide.business.dto;
 
 import com.slcube.shelter_guide.business.entity.ShelterInformation;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
+@EqualsAndHashCode
 public class ShelterInformationResponseDto {
 
     @Schema(description = "아이디")
@@ -34,13 +36,13 @@ public class ShelterInformationResponseDto {
     private String closingDate;
 
     @Schema(description = "좌표정보(X)")
-    private Double positionX;
+    private double positionX;
 
     @Schema(description = "좌표정보(Y)")
-    private Double positionY;
+    private double positionY;
 
     @Schema(description = "소재지면적")
-    private Double locationArea;
+    private double locationArea;
 
     @Schema(description = "소재지 우편번호")
     private String locationPostalCode;

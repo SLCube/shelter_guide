@@ -29,11 +29,6 @@ spring:
   output:
     ansi:
       enabled: always
-logging:
-  level:
-    org.hibernate.sql: debug
-    org.hibernate.type: trace
-
 
 external-service:
   shelter-information:

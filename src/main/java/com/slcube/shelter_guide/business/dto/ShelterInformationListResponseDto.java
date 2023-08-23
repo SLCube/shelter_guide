@@ -2,11 +2,13 @@ package com.slcube.shelter_guide.business.dto;
 
 import com.slcube.shelter_guide.business.entity.ShelterInformation;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
+@EqualsAndHashCode
 public class ShelterInformationListResponseDto {
 
     @Schema(description = "아이디")
@@ -14,9 +16,6 @@ public class ShelterInformationListResponseDto {
 
     @Schema(description = "관리번호")
     private String managementNumber;
-
-    @Schema(description = "인허가일자")
-    private String licenseDate;
 
     @Schema(description = "영업상태코드")
     private String businessStatusCode;
@@ -33,15 +32,6 @@ public class ShelterInformationListResponseDto {
     @Schema(description = "폐업일자")
     private String closingDate;
 
-    @Schema(description = "좌표정보(X)")
-    private Double positionX;
-
-    @Schema(description = "좌표정보(Y)")
-    private Double positionY;
-
-    @Schema(description = "소재지면적")
-    private Double locationArea;
-
     @Schema(description = "소재지 우편번호")
     private String locationPostalCode;
 
@@ -51,21 +41,17 @@ public class ShelterInformationListResponseDto {
     @Schema(description = "도로명주소")
     private String roadNameAddress;
 
-    @Schema(description = "도로명우편번호")
+    @Schema(description = "도로명 우편번호")
     private String roadNamePostalCode;
 
     public ShelterInformationListResponseDto(ShelterInformation shelterInformation) {
         this.shelterInformationId = shelterInformation.getId();
         this.managementNumber = shelterInformation.getManagementNumber();
-        this.licenseDate = shelterInformation.getLicenseDate();
         this.businessStatusCode = shelterInformation.getBusinessStatusCode();
         this.businessStatusName = shelterInformation.getBusinessStatusName();
         this.detailedBusinessStatusCode = shelterInformation.getDetailedBusinessStatusCode();
         this.detailedBusinessStatusName = shelterInformation.getDetailedBusinessStatusName();
         this.closingDate = shelterInformation.getClosingDate();
-        this.positionX = shelterInformation.getPositionX();
-        this.positionY = shelterInformation.getPositionY();
-        this.locationArea = shelterInformation.getLocationArea();
         this.locationPostalCode = shelterInformation.getLocationPostalCode();
         this.landNumberAddress = shelterInformation.getLandNumberAddress();
         this.roadNameAddress = shelterInformation.getRoadNameAddress();

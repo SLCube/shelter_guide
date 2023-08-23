@@ -83,7 +83,8 @@ jacocoTestReport {
 
 		classDirectories.setFrom(files(classDirectories.files.collect {
 			fileTree(dir: it,
-					exclude: [] + Qdomains)
+					exclude: ["com/slcube/**/*Dto.*",
+							  "com/slcube/shelter_guide/ShelterGuideApplication.class"] + Qdomains)
 		}))
 	}
 
@@ -107,7 +108,7 @@ jacocoTestCoverageVerification {
 			limit {
 				counter = 'LINE'
 				value = 'COVEREDRATIO'
-				minimum = 0.0
+				minimum = 0.75
 			}
 
 			excludes = [] + Qdomains
