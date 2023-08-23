@@ -9,7 +9,6 @@ plugins {
 	id 'org.springframework.boot' version '2.7.13-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
-	id 'org.asciidoctor.jvm.convert' version '3.3.2'
 	id "jacoco"
 }
 
@@ -29,10 +28,6 @@ repositories {
 	maven { url 'https://repo.spring.io/snapshot' }
 }
 
-ext {
-	set('snippetsDir', file("build/generated-snippets"))
-}
-
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-quartz'
@@ -43,16 +38,19 @@ dependencies {
 	implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3"
 	implementation "org.apache.httpcomponents:httpclient"
 
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
+
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-	runtimeOnly 'com.mysql:mysql-connector-j'
+	implementation 'com.h2database:h2'
+	runtimeOnly 'com.h2database:h2'
+//	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 	testImplementation 'org.springframework.batch:spring-batch-test'
 	testRuntimeOnly 'com.h2database:h2'
 }
@@ -63,16 +61,9 @@ tasks.named('test') {
 	systemProperty "jasypt.encryptor.password", System.getProperties().get("jasypt.encryptor.password")
 }
 
-//tasks.named('asciidoctor') {
-//	inputs.dir snippetsDir
-//	dependsOn test
-//}
-
 jacoco {
 	toolVersion= "0.8.8"
 
-	// 테스트결과 리포트를 저장할 경로 변경
-	// default $buildDir/reports/jacoco
 	reportsDirectory = layout.buildDirectory.dir('customJacocoReportDir')
 }
 
@@ -92,7 +83,8 @@ jacocoTestReport {
 
 		classDirectories.setFrom(files(classDirectories.files.collect {
 			fileTree(dir: it,
-					exclude: [] + Qdomains)
+					exclude: ["com/slcube/**/*Dto.*",
+							  "com/slcube/shelter_guide/ShelterGuideApplication.class"] + Qdomains)
 		}))
 	}
 
@@ -116,7 +108,7 @@ jacocoTestCoverageVerification {
 			limit {
 				counter = 'LINE'
 				value = 'COVEREDRATIO'
-				minimum = 0.5
+				minimum = 0.75
 			}
 
 			excludes = [] + Qdomains

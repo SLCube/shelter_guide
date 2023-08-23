@@ -62,7 +62,18 @@ public class ShelterInformationItemProcessorUnitTest {
                 = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             SeoulShelterInformationResultDataDto shelterInformationDataDto = new SeoulShelterInformationResultDataDto();
-            setField(shelterInformationDataDto, "managementNumber", i + "");
+            setField(shelterInformationDataDto, "managementNumber", String.valueOf(i));
+            setField(shelterInformationDataDto, "licenseDate", "2023-07-13");
+            setField(shelterInformationDataDto, "businessStatusCode", "01");
+            setField(shelterInformationDataDto, "businessStatusName", "영업/정상");
+            setField(shelterInformationDataDto, "detailedBusinessStatusCode", "18");
+            setField(shelterInformationDataDto, "detailedBusinessStatusName", "사용중");
+            setField(shelterInformationDataDto, "positionX", 187473.221837261);
+            setField(shelterInformationDataDto, "positionY", 444729.961384482);
+            setField(shelterInformationDataDto, "locationArea", 15666);
+            setField(shelterInformationDataDto, "landNumberAddress", "서울특별시 구로구 고척동 342 벽산베스트블루밍아파트");
+            setField(shelterInformationDataDto, "roadNameAddress", "서울특별시 구로구 고척로60길 30, 지하1~2층 (고척동, 벽산베스트블루밍아파트)");
+            setField(shelterInformationDataDto, "roadNamePostalCode", "08228");
             shelterInformationResultDataDtoList.add(shelterInformationDataDto);
         }
 

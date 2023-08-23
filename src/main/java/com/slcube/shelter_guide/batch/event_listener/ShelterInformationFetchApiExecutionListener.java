@@ -13,7 +13,7 @@ public class ShelterInformationFetchApiExecutionListener implements JobExecution
 
     @Override
     public void beforeJob(JobExecution jobExecution) {
-
+        // batch 실행 전 추가적으로 필요한 작업이 없기 때문에 해당 메소드의 내용은 없음.
     }
 
     @Override

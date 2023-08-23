@@ -2,6 +2,7 @@ package com.slcube.shelter_guide.common.config.batch;
 
 import com.slcube.shelter_guide.batch.event_listener.ShelterInformationFetchApiExecutionListener;
 import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemProcessor;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemReader;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemWriter;
 import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
@@ -13,8 +14,7 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
-import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.ItemWriter;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -35,6 +35,7 @@ public class ShelterInformationExternalApiJobConfiguration {
 
     @Bean
     @Primary
+    @Qualifier("shelterInformationExternalApiJob")
     public Job shelterInformationExternalApiJob() {
         return jobBuilderFactory.get("shelterInformationExternalApiJob")
                 .start(shelterInformationExternalApiStep())
@@ -50,18 +51,25 @@ public class ShelterInformationExternalApiJobConfiguration {
                 .<List<SeoulShelterInformationResultDataDto>, List<SeoulShelterInformationResultDataDto>>chunk(CHUNK_SIZE)
                 .reader(shelterInformationItemReader())
                 .writer(shelterInformationItemWriter())
+                .processor(shelterInformationItemProcessor())
                 .build();
     }
 
     @Bean
     @StepScope
-    public ItemReader<List<SeoulShelterInformationResultDataDto>> shelterInformationItemReader() {
+    public ShelterInformationItemReader shelterInformationItemReader() {
         return new ShelterInformationItemReader(shelterInformationApiService);
     }
 
     @Bean
     @StepScope
-    public ItemWriter<List<SeoulShelterInformationResultDataDto>> shelterInformationItemWriter() {
+    public ShelterInformationItemWriter shelterInformationItemWriter() {
         return new ShelterInformationItemWriter(shelterInformationApiService);
+    }
+
+    @Bean
+    @StepScope
+    public ShelterInformationItemProcessor shelterInformationItemProcessor() {
+        return new ShelterInformationItemProcessor(shelterInformationApiService);
     }
 }

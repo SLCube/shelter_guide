@@ -22,14 +22,13 @@ spring:
         show_sql: true
         format_sql: true
 
+  batch:
+    job:
+      names: ${job.name:NONE}
+
   output:
     ansi:
       enabled: always
-logging:
-  level:
-    org.hibernate.sql: debug
-    org.hibernate.type: trace
-
 
 external-service:
   shelter-information:

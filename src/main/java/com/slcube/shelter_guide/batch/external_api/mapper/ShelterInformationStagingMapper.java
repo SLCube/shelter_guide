@@ -8,9 +8,10 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ShelterInformationStagingMapper {
+
     public static ShelterInformationStaging toEntity(SeoulShelterInformationResultDataDto shelterInformationDto) {
         return ShelterInformationStaging.builder()
-                .managementNumber(shelterInformationDto.getLandNumberAddress())
+                .managementNumber(shelterInformationDto.getManagementNumber())
                 .licenseDate(shelterInformationDto.getLicenseDate())
                 .businessStatusCode(shelterInformationDto.getBusinessStatusCode())
                 .businessStatusName(shelterInformationDto.getBusinessStatusName())
@@ -19,6 +20,10 @@ public class ShelterInformationStagingMapper {
                 .closingDate(shelterInformationDto.getClosingDate())
                 .positionX(shelterInformationDto.getPositionX())
                 .positionY(shelterInformationDto.getPositionY())
+                .locationArea(shelterInformationDto.getLocationArea())
+                .landNumberAddress(shelterInformationDto.getLandNumberAddress())
+                .roadNameAddress(shelterInformationDto.getRoadNameAddress())
+                .roadNamePostalCode(shelterInformationDto.getRoadNamePostalCode())
                 .lastModifiedDate(shelterInformationDto.getLastModifiedDate())
                 .build();
     }

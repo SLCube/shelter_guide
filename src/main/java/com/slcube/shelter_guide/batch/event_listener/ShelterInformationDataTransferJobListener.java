@@ -1,12 +1,12 @@
 package com.slcube.shelter_guide.batch.event_listener;
 
-import com.slcube.shelter_guide.common.config.batch.ShelterInformationDataTransferJobConfiguration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -18,19 +18,16 @@ public class ShelterInformationDataTransferJobListener implements ApplicationLis
 
     private final JobLauncher jobLauncher;
 
-//    @Qualifier(value = "shelterInformationDataTransferJob")
-//    private final Job shelterInformationDataTransferJob;
-
-    private final ShelterInformationDataTransferJobConfiguration jobConfiguration;
+    @Qualifier("shelterInformationDataTransferJob")
+    private final Job shelterInformationDataTransferJob;
 
     @Override
-    @EventListener
     public void onApplicationEvent(ShelterInformationFetchApiCompleteEvent event) {
         try {
             log.info(">>> Shelter Information Data Transfer Job Start");
 
             jobLauncher.run(
-                    jobConfiguration.shelterInformationDataTransferJob(),
+                    shelterInformationDataTransferJob,
                     new JobParametersBuilder()
                             .addString("datetime", LocalDateTime.now().toString())
                             .toJobParameters()

@@ -7,3 +7,18 @@ external-service:
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+  batch:
+    job:
+      names: ${job.name:NONE}
