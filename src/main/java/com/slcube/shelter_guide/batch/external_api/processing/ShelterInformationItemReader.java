@@ -1,7 +1,8 @@
 package com.slcube.shelter_guide.batch.external_api.processing;
 
 import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.service.SeoulShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.util.ShelterInformationApiServiceMap;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
@@ -13,7 +14,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ShelterInformationItemReader implements ItemReader<List<SeoulShelterInformationResultDataDto>> {
 
-    private final SeoulShelterInformationApiService seoulShelterInformationApiService;
+    private final String region;
+
+    private final ShelterInformationApiServiceMap apiServiceMap;
+
     private static final int PAGE_SIZE = 100;
     private int startIndex = 1;
     private int endIndex = PAGE_SIZE;
@@ -21,8 +25,10 @@ public class ShelterInformationItemReader implements ItemReader<List<SeoulShelte
 
     @Override
     public List<SeoulShelterInformationResultDataDto> read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
+        ShelterInformationApiService apiService = apiServiceMap.getApiService(region);
+
         if (hasMoreData) {
-            List<SeoulShelterInformationResultDataDto> seoulShelterInformationResultDataDtos = seoulShelterInformationApiService.fetchShelterInformation(startIndex, endIndex);
+            List<SeoulShelterInformationResultDataDto> seoulShelterInformationResultDataDtos = apiService.fetchShelterInformation(startIndex, endIndex);
             if (seoulShelterInformationResultDataDtos.isEmpty()) {
                 hasMoreData = false;
                 return null;
