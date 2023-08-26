@@ -19,6 +19,7 @@ public class SeoulShelterInformationScheduler implements ShelterInformationSched
 
     @Qualifier("shelterInformationExternalApiJob")
     private final Job job;
+
     private final JobLauncher jobLauncher;
 
     @Override
