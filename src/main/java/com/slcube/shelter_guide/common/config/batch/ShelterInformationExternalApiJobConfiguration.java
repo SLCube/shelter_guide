@@ -1,7 +1,7 @@
 package com.slcube.shelter_guide.common.config.batch;
 
 import com.slcube.shelter_guide.batch.event_listener.ShelterInformationFetchApiExecutionListener;
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemProcessor;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemReader;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemWriter;
@@ -51,7 +51,7 @@ public class ShelterInformationExternalApiJobConfiguration {
     @JobScope
     public Step shelterInformationExternalApiStep() {
         return stepBuilderFactory.get("shelterInformationExternalApiStep")
-                .<List<SeoulShelterInformationResultDataDto>, List<SeoulShelterInformationResultDataDto>>chunk(CHUNK_SIZE)
+                .<List<ShelterInformationDto>, List<ShelterInformationDto>>chunk(CHUNK_SIZE)
                 .reader(shelterInformationItemReader(null))
                 .writer(shelterInformationItemWriter())
                 .processor(shelterInformationItemProcessor())
@@ -60,7 +60,7 @@ public class ShelterInformationExternalApiJobConfiguration {
 
     @Bean
     @StepScope
-    public ShelterInformationItemReader shelterInformationItemReader(@Value("#{jobParameters['region']}") String region) {
+    public ShelterInformationItemReader shelterInformationItemReader(@Value("#{jobParameters[region]}") String region) {
         return new ShelterInformationItemReader(region, apiServiceMap);
     }
 

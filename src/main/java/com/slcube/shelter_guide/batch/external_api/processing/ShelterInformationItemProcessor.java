@@ -1,9 +1,9 @@
 package com.slcube.shelter_guide.batch.external_api.processing;
 
-import com.slcube.shelter_guide.batch.external_api.comparator.ShelterInformationStagingComparator;
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
 import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationStagingService;
+import com.slcube.shelter_guide.batch.external_api.util.ShelterInformationStagingComparator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemProcessor;
 
@@ -12,25 +12,25 @@ import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
-public class ShelterInformationItemProcessor implements ItemProcessor<List<SeoulShelterInformationResultDataDto>, List<SeoulShelterInformationResultDataDto>> {
+public class ShelterInformationItemProcessor implements ItemProcessor<List<ShelterInformationDto>, List<ShelterInformationDto>> {
 
     private final ShelterInformationStagingService shelterInformationStagingService;
 
     @Override
-    public List<SeoulShelterInformationResultDataDto> process(List<SeoulShelterInformationResultDataDto> item) throws Exception {
+    public List<ShelterInformationDto> process(List<ShelterInformationDto> item) throws Exception {
 
-        Iterator<SeoulShelterInformationResultDataDto> iterator = item.iterator();
+        Iterator<ShelterInformationDto> iterator = item.iterator();
 
         while (iterator.hasNext()) {
-            SeoulShelterInformationResultDataDto seoulShelterInformationResultDataDto = iterator.next();
+            ShelterInformationDto shelterInformationDto = iterator.next();
             Optional<ShelterInformationStaging> shelterInformationStaging =
-                    shelterInformationStagingService.findByManagementNumber(seoulShelterInformationResultDataDto.getManagementNumber());
+                    shelterInformationStagingService.findByManagementNumber(shelterInformationDto.getManagementNumber());
 
             if (shelterInformationStaging.isPresent()) {
                 ShelterInformationStaging shelterInformationStagingEntity = shelterInformationStaging.get();
 
-                if (!ShelterInformationStagingComparator.areEqual(seoulShelterInformationResultDataDto, shelterInformationStagingEntity)) {
-                    shelterInformationStagingEntity.update(seoulShelterInformationResultDataDto);
+                if (!ShelterInformationStagingComparator.areEqual(shelterInformationDto, shelterInformationStagingEntity)) {
+                    shelterInformationStagingEntity.update(shelterInformationDto);
                 }
                 iterator.remove();
             }

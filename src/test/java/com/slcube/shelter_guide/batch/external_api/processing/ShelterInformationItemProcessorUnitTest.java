@@ -1,6 +1,6 @@
 package com.slcube.shelter_guide.batch.external_api.processing;
 
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
 import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationStagingService;
 import org.junit.jupiter.api.Test;
@@ -33,8 +33,8 @@ public class ShelterInformationItemProcessorUnitTest {
         when(shelterInformationStagingService.findByManagementNumber(any()))
                 .thenReturn(Optional.empty());
 
-        List<SeoulShelterInformationResultDataDto> shelterInformationList = createShelterInformationList();
-        List<SeoulShelterInformationResultDataDto> originalShelterInformationList = new ArrayList<>(shelterInformationList);
+        List<ShelterInformationDto> shelterInformationList = createShelterInformationList();
+        List<ShelterInformationDto> originalShelterInformationList = new ArrayList<>(shelterInformationList);
 
         shelterInformationItemProcessor.process(shelterInformationList);
 
@@ -48,7 +48,7 @@ public class ShelterInformationItemProcessorUnitTest {
         when(shelterInformationStagingService.findByManagementNumber(managementNumber))
                 .thenReturn(Optional.of(ShelterInformationStaging.builder().build()));
 
-        List<SeoulShelterInformationResultDataDto> shelterInformationList = createShelterInformationList();
+        List<ShelterInformationDto> shelterInformationList = createShelterInformationList();
 
         shelterInformationItemProcessor.process(shelterInformationList);
 
@@ -57,11 +57,11 @@ public class ShelterInformationItemProcessorUnitTest {
         assertThat(shelterInformationList).hasSize(expectedListSize);
     }
 
-    private List<SeoulShelterInformationResultDataDto> createShelterInformationList() {
-        List<SeoulShelterInformationResultDataDto> shelterInformationResultDataDtoList
+    private List<ShelterInformationDto> createShelterInformationList() {
+        List<ShelterInformationDto> shelterInformationResultDataDtoList
                 = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            SeoulShelterInformationResultDataDto shelterInformationDataDto = new SeoulShelterInformationResultDataDto();
+            ShelterInformationDto shelterInformationDataDto = new ShelterInformationDto();
             setField(shelterInformationDataDto, "managementNumber", String.valueOf(i));
             setField(shelterInformationDataDto, "licenseDate", "2023-07-13");
             setField(shelterInformationDataDto, "businessStatusCode", "01");

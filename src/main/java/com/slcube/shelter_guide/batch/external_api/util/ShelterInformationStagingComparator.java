@@ -1,6 +1,6 @@
-package com.slcube.shelter_guide.batch.external_api.comparator;
+package com.slcube.shelter_guide.batch.external_api.util;
 
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ShelterInformationStagingComparator {
 
-    public static boolean areEqual(SeoulShelterInformationResultDataDto dto, ShelterInformationStaging shelterInformationStaging) {
+    public static boolean areEqual(ShelterInformationDto dto, ShelterInformationStaging shelterInformationStaging) {
         return dto.getManagementNumber().equals(shelterInformationStaging.getManagementNumber())
                 && dto.getLicenseDate().equals(shelterInformationStaging.getLicenseDate())
                 && dto.getBusinessStatusCode().equals(shelterInformationStaging.getBusinessStatusCode())

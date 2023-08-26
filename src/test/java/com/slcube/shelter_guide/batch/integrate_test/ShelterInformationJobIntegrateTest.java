@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.SEOUL;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBatchTest
@@ -45,6 +46,7 @@ class ShelterInformationJobIntegrateTest {
         );
 
         JobParameters jobParameters = new JobParametersBuilder()
+                .addString("region", SEOUL)
                 .addString("datetime", thursday.toString())
                 .toJobParameters();
 

@@ -1,9 +1,6 @@
 package com.slcube.shelter_guide.batch.external_api.service;
 
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultCodeDto;
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDto;
+import com.slcube.shelter_guide.batch.external_api.dto.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -41,7 +38,7 @@ public class ShelterInformationApiServiceUnitTest {
         int startIndex = 1;
         int endIndex = 100;
 
-        List<SeoulShelterInformationResultDataDto> resultDataDtoList = seoulShelterInformationApiService.fetchShelterInformation(startIndex, endIndex);
+        List<ShelterInformationDto> resultDataDtoList = seoulShelterInformationApiService.fetchShelterInformation(startIndex, endIndex);
         assertThat(resultDataDtoList).hasSize(EXPECTED_LIST_SIZE);
     }
 

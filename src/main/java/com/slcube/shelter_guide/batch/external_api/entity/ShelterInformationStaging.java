@@ -1,6 +1,6 @@
 package com.slcube.shelter_guide.batch.external_api.entity;
 
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -81,7 +81,7 @@ public class ShelterInformationStaging {
         this.lastModifiedDate = lastModifiedDate != null ? lastModifiedDate : "";
     }
 
-    public void update(SeoulShelterInformationResultDataDto dto) {
+    public void update(ShelterInformationDto dto) {
         this.managementNumber = dto.getManagementNumber();
         this.licenseDate = dto.getLicenseDate();
         this.businessStatusCode = dto.getBusinessStatusCode();

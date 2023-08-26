@@ -35,6 +35,9 @@ external-service:
     seoul:
       url: http://openapi.seoul.go.kr:8088/{apiKey}/json/LOCALDATA_114602
       api-key: ENC(jB8U4hlf2lE9t94u6SEwpW2nVsmZSxn1PJCoAfL6oDpAv3TBCW8GrQ==)
+    gyeong-gi:
+      url: https://openapi.gg.go.kr/CivilDefenseEvacuation?type=json&key={apiKey}?pIndex={pageIndex}&pSize={pSize}
+      api-key: ENC(R8ZSvLIZwmyyLbPsyqBlarZ+pwaS2x/11zd9w0TBmw1BTTkci/fFJIjWKhCYGOjF)
 
 jasypt:
   encryptor:

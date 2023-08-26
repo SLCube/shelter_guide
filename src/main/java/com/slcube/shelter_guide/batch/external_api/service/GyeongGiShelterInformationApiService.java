@@ -1,6 +1,6 @@
 package com.slcube.shelter_guide.batch.external_api.service;
 
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +23,7 @@ public class GyeongGiShelterInformationApiService implements ShelterInformationA
     private String apiKey;
 
     @Override
-    public List<SeoulShelterInformationResultDataDto> fetchShelterInformation(int startIndex, int endIndex) {
+    public List<ShelterInformationDto> fetchShelterInformation(int startIndex, int endIndex) {
         return null;
     }
 }
