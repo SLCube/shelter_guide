@@ -2,32 +2,54 @@ package com.slcube.shelter_guide.batch.external_api.processing;
 
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.service.SeoulShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.util.RegionConstant;
+import com.slcube.shelter_guide.batch.external_api.util.ShelterInformationApiServiceMap;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ShelterInformationItemReaderUnitTest {
 
     @Mock
     private SeoulShelterInformationApiService seoulShelterInformationApiService;
 
-    @InjectMocks
+    @Mock
+    private ShelterInformationApiServiceMap apiServiceMap;
     private ShelterInformationItemReader itemReader;
 
+    AutoCloseable autoCloseable;
+
+    @Before
+    public void setUp() {
+
+        autoCloseable = MockitoAnnotations.openMocks(this);
+
+        when(apiServiceMap.getApiService(anyString()))
+                .thenReturn(seoulShelterInformationApiService);
+
+        this.itemReader = new ShelterInformationItemReader(RegionConstant.SEOUL, apiServiceMap);
+    }
+
+    @After
+    public void cleanUp() throws Exception {
+        autoCloseable.close();
+    }
+
     @Test
-    @DisplayName("서울시 대피소에 대한 Item Reader 단위테스트")
-    public void seoulShelterInformationItemReaderUnitTest() throws Exception {
+    public void 서울시_대피소에_대한_Item_Reader_단위테스트() throws Exception {
         List<ShelterInformationDto> resultDataDtoList = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
