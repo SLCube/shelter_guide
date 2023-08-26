@@ -3,7 +3,7 @@ package com.slcube.shelter_guide.batch.external_api.processing;
 import com.slcube.shelter_guide.batch.external_api.comparator.ShelterInformationStagingComparator;
 import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationStagingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemProcessor;
 
@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ShelterInformationItemProcessor implements ItemProcessor<List<SeoulShelterInformationResultDataDto>, List<SeoulShelterInformationResultDataDto>> {
 
-    private final ShelterInformationApiService shelterInformationApiService;
+    private final ShelterInformationStagingService shelterInformationStagingService;
 
     @Override
     public List<SeoulShelterInformationResultDataDto> process(List<SeoulShelterInformationResultDataDto> item) throws Exception {
@@ -24,7 +24,7 @@ public class ShelterInformationItemProcessor implements ItemProcessor<List<Seoul
         while (iterator.hasNext()) {
             SeoulShelterInformationResultDataDto seoulShelterInformationResultDataDto = iterator.next();
             Optional<ShelterInformationStaging> shelterInformationStaging =
-                    shelterInformationApiService.findByManagementNumber(seoulShelterInformationResultDataDto.getManagementNumber());
+                    shelterInformationStagingService.findByManagementNumber(seoulShelterInformationResultDataDto.getManagementNumber());
 
             if (shelterInformationStaging.isPresent()) {
                 ShelterInformationStaging shelterInformationStagingEntity = shelterInformationStaging.get();

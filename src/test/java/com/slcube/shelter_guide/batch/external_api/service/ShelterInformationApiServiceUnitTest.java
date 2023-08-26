@@ -27,7 +27,7 @@ public class ShelterInformationApiServiceUnitTest {
     private RestTemplate restTemplate;
 
     @InjectMocks
-    private ShelterInformationApiService shelterInformationApiService;
+    private SeoulShelterInformationApiService seoulShelterInformationApiService;
 
     private final int EXPECTED_LIST_SIZE = 3;
 
@@ -41,7 +41,7 @@ public class ShelterInformationApiServiceUnitTest {
         int startIndex = 1;
         int endIndex = 100;
 
-        List<SeoulShelterInformationResultDataDto> resultDataDtoList = shelterInformationApiService.fetchShelterInformation(startIndex, endIndex);
+        List<SeoulShelterInformationResultDataDto> resultDataDtoList = seoulShelterInformationApiService.fetchShelterInformation(startIndex, endIndex);
         assertThat(resultDataDtoList).hasSize(EXPECTED_LIST_SIZE);
     }
 

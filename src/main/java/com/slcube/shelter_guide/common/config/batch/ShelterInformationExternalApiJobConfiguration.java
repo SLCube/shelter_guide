@@ -5,7 +5,8 @@ import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationRe
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemProcessor;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemReader;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemWriter;
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.service.SeoulShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationStagingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -29,7 +30,8 @@ public class ShelterInformationExternalApiJobConfiguration {
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
 
-    private final ShelterInformationApiService shelterInformationApiService;
+    private final SeoulShelterInformationApiService seoulShelterInformationApiService;
+    private final ShelterInformationStagingService shelterInformationStagingService;
     private final ShelterInformationFetchApiExecutionListener listener;
     private static final int CHUNK_SIZE = 100;
 
@@ -58,18 +60,18 @@ public class ShelterInformationExternalApiJobConfiguration {
     @Bean
     @StepScope
     public ShelterInformationItemReader shelterInformationItemReader() {
-        return new ShelterInformationItemReader(shelterInformationApiService);
+        return new ShelterInformationItemReader(seoulShelterInformationApiService);
     }
 
     @Bean
     @StepScope
     public ShelterInformationItemWriter shelterInformationItemWriter() {
-        return new ShelterInformationItemWriter(shelterInformationApiService);
+        return new ShelterInformationItemWriter(shelterInformationStagingService);
     }
 
     @Bean
     @StepScope
     public ShelterInformationItemProcessor shelterInformationItemProcessor() {
-        return new ShelterInformationItemProcessor(shelterInformationApiService);
+        return new ShelterInformationItemProcessor(shelterInformationStagingService);
     }
 }

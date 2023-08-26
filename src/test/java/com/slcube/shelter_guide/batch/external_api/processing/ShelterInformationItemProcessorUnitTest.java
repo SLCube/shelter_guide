@@ -2,7 +2,7 @@ package com.slcube.shelter_guide.batch.external_api.processing;
 
 import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationStagingService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -22,7 +22,7 @@ import static org.springframework.test.util.ReflectionTestUtils.setField;
 public class ShelterInformationItemProcessorUnitTest {
 
     @Mock
-    private ShelterInformationApiService shelterInformationApiService;
+    private ShelterInformationStagingService shelterInformationStagingService;
 
     @InjectMocks
     private ShelterInformationItemProcessor shelterInformationItemProcessor;
@@ -30,7 +30,7 @@ public class ShelterInformationItemProcessorUnitTest {
     @Test
     void 테이블에_데이터가_없을_때의_프로세스_테스트() throws Exception {
 
-        when(shelterInformationApiService.findByManagementNumber(any()))
+        when(shelterInformationStagingService.findByManagementNumber(any()))
                 .thenReturn(Optional.empty());
 
         List<SeoulShelterInformationResultDataDto> shelterInformationList = createShelterInformationList();
@@ -45,7 +45,7 @@ public class ShelterInformationItemProcessorUnitTest {
     void 테이블에_수정해야될_데이터가_존재할_때의_프로세스_테스트() throws Exception {
         String managementNumber = "0";
 
-        when(shelterInformationApiService.findByManagementNumber(managementNumber))
+        when(shelterInformationStagingService.findByManagementNumber(managementNumber))
                 .thenReturn(Optional.of(ShelterInformationStaging.builder().build()));
 
         List<SeoulShelterInformationResultDataDto> shelterInformationList = createShelterInformationList();

@@ -1,7 +1,7 @@
 package com.slcube.shelter_guide.batch.external_api.processing;
 
 import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.service.SeoulShelterInformationApiService;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 public class ShelterInformationItemReaderUnitTest {
 
     @Mock
-    private ShelterInformationApiService shelterInformationApiService;
+    private SeoulShelterInformationApiService seoulShelterInformationApiService;
 
     @InjectMocks
     private ShelterInformationItemReader itemReader;
@@ -35,7 +35,7 @@ public class ShelterInformationItemReaderUnitTest {
             resultDataDtoList.add(seoulShelterInformationResultDataDto);
         }
 
-        when(shelterInformationApiService.fetchShelterInformation(anyInt(), anyInt()))
+        when(seoulShelterInformationApiService.fetchShelterInformation(anyInt(), anyInt()))
                 .thenReturn(resultDataDtoList);
 
         assertThat(itemReader.read()).isEqualTo(resultDataDtoList);
@@ -44,7 +44,7 @@ public class ShelterInformationItemReaderUnitTest {
     @Test
     public void 서울시_대피소_정보_리스트가_비어있을_때의_테스트() throws Exception {
         List<SeoulShelterInformationResultDataDto> resultDataDtoList = new ArrayList<>();
-        when(shelterInformationApiService.fetchShelterInformation(anyInt(), anyInt()))
+        when(seoulShelterInformationApiService.fetchShelterInformation(anyInt(), anyInt()))
                 .thenReturn(resultDataDtoList);
 
         assertThat(itemReader.read()).isNull();

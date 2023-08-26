@@ -1,6 +1,6 @@
 package com.slcube.shelter_guide.batch.external_api.processing;
 
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.service.SeoulShelterInformationApiService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class ShelterInformationItemWriterUnitTest {
 
     @Mock
-    private ShelterInformationApiService shelterInformationApiService;
+    private SeoulShelterInformationApiService seoulShelterInformationApiService;
 
     @InjectMocks
     private ShelterInformationItemWriter shelterInformationItemWriter;
