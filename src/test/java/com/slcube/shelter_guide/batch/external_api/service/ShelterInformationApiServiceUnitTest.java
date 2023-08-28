@@ -1,6 +1,11 @@
 package com.slcube.shelter_guide.batch.external_api.service;
 
-import com.slcube.shelter_guide.batch.external_api.dto.*;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
+import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationDto;
+import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultCodeDto;
+import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDto;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,8 +33,15 @@ public class ShelterInformationApiServiceUnitTest {
 
     private final int EXPECTED_LIST_SIZE = 3;
 
+    @BeforeEach
+    public void setUp() {
+        setField(seoulShelterInformationApiService, "externalUrl", "http://openapi.seoul.go.kr:8088/{apiKey}/json/LOCALDATA_114602");
+        setField(seoulShelterInformationApiService, "apiKey", "unit-test-api-key");
+    }
+
     @Test
     void 서울시_공공_api에서_대피소_정보를_갖고오는_메소드_테스트() {
+
         SeoulShelterInformationDto seoulShelterInformationDto = createShelterInformationDto();
 
         when(restTemplate.getForObject(anyString(), Mockito.<Class<SeoulShelterInformationDto>>any()))

@@ -1,8 +1,8 @@
 package com.slcube.shelter_guide.batch.external_api.service;
 
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDto;
+import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationDto;
+import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDto;
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.mapper.ShelterInformationDtoMapper;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,8 @@ public class SeoulShelterInformationApiService implements ShelterInformationApiS
     private String apiKey;
 
     public List<ShelterInformationDto> fetchShelterInformation(int startIndex, int endIndex) {
-        String url = "/" + startIndex + "/" + endIndex;
+
+        String url = externalUrl.replace("{apiKey}", apiKey) + "/" + startIndex + "/" + endIndex;
 
         try {
             SeoulShelterInformationDto seoulShelterInformationDto = restTemplate.getForObject(url, SeoulShelterInformationDto.class);
