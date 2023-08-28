@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -40,7 +41,7 @@ public class ShelterInformationItemReaderUnitTest {
         when(apiServiceMap.getApiService(anyString()))
                 .thenReturn(seoulShelterInformationApiService);
 
-        this.itemReader = new ShelterInformationItemReader(RegionConstant.SEOUL, apiServiceMap);
+        this.itemReader = new ShelterInformationItemReader(SEOUL.getRegion(), apiServiceMap);
     }
 
     @After

@@ -24,6 +24,14 @@ public class GyeongGiShelterInformationApiService implements ShelterInformationA
 
     @Override
     public List<ShelterInformationDto> fetchShelterInformation(int startIndex, int endIndex) {
+        String url = externalUrl.replace("{apiKey}", apiKey);
+
+        try {
+            Object object = restTemplate.getForObject(url, Object.class);
+
+        } catch (Exception e) {
+            log.error("Error while calling GYEONG-GI REST API : ", e);
+        }
         return null;
     }
 }

@@ -42,3 +42,7 @@ external-service:
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor
+
+logging:
+  level:
+    root: debug

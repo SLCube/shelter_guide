@@ -45,7 +45,7 @@ public class SeoulShelterInformationApiService implements ShelterInformationApiS
                 }
             }
         } catch (Exception e) {
-            log.error("Error while calling REST API : ", e);
+            log.error("Error while calling SEOUL REST API : ", e);
         }
 
 

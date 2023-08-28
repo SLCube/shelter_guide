@@ -1,5 +1,6 @@
 package com.slcube.shelter_guide.batch.external_api.mapper;
 
+import com.slcube.shelter_guide.batch.external_api.dto.gyeong_gi.GyeongGiShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import lombok.AccessLevel;
@@ -38,5 +39,9 @@ public class ShelterInformationDtoMapper {
                 .facilityBuildingName(seoulShelterInformationResultDataDto.getFacilityBuildingName())
                 .releaseDate(seoulShelterInformationResultDataDto.getReleaseDate())
                 .build();
+    }
+
+    public static ShelterInformationDto toDto(GyeongGiShelterInformationResultDataDto gyeongGiShelterInformationResultDataDto) {
+        return null;
     }
 }
