@@ -1,6 +1,5 @@
 package com.slcube.shelter_guide.batch.external_api.scheduler;
 
-import com.slcube.shelter_guide.batch.external_api.util.RegionConstant;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -12,6 +11,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+
+import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.SEOUL;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -33,7 +34,7 @@ public class SeoulShelterInformationScheduler implements ShelterInformationSched
                     job,
                     new JobParametersBuilder()
                             .addString("datetime", LocalDateTime.now().toString())
-                            .addString("region", RegionConstant.SEOUL)
+                            .addString("region", SEOUL.getRegion())
                             .toJobParameters()
             );
             log.info(">>> Successfully complete Seoul Shelter Information Job");

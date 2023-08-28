@@ -13,12 +13,12 @@ import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.SE
 
 @Component
 public class ShelterInformationApiServiceMap {
-    private final Map<String, ShelterInformationApiService> serviceMap = new HashMap<>();
+    private final Map<String , ShelterInformationApiService> serviceMap = new HashMap<>();
 
     public ShelterInformationApiServiceMap(SeoulShelterInformationApiService seoulShelterInformationApiService,
                                            GyeongGiShelterInformationApiService gyeongGiShelterInformationApiService) {
-        serviceMap.put(SEOUL, seoulShelterInformationApiService);
-        serviceMap.put(GYEONG_GI, gyeongGiShelterInformationApiService);
+        serviceMap.put(SEOUL.getRegion(), seoulShelterInformationApiService);
+        serviceMap.put(GYEONG_GI.getRegion(), gyeongGiShelterInformationApiService);
     }
 
     public ShelterInformationApiService getApiService(String region) {
