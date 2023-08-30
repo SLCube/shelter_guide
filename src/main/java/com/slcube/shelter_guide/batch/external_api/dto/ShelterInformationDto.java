@@ -59,7 +59,7 @@ public class ShelterInformationDto {
 
     private double positionY;
 
-    private String emergencyFalicityLocation;
+    private String emergencyFacilityLocation;
 
     private String facilitiesDefinitionName;
 

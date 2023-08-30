@@ -5,7 +5,7 @@ import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemProcessor;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemReader;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemWriter;
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationStagingService;
+import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
 import com.slcube.shelter_guide.batch.external_api.util.ShelterInformationApiServiceMap;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +32,7 @@ public class ShelterInformationExternalApiJobConfiguration {
     private final StepBuilderFactory stepBuilderFactory;
 
     private final ShelterInformationApiServiceMap apiServiceMap;
-    private final ShelterInformationStagingService shelterInformationStagingService;
+    private final ShelterInformationStagingRepository shelterInformationRepository;
     private final ShelterInformationFetchApiExecutionListener listener;
     private static final int CHUNK_SIZE = 100;
 
@@ -67,12 +67,12 @@ public class ShelterInformationExternalApiJobConfiguration {
     @Bean
     @StepScope
     public ShelterInformationItemWriter shelterInformationItemWriter() {
-        return new ShelterInformationItemWriter(shelterInformationStagingService);
+        return new ShelterInformationItemWriter(shelterInformationRepository);
     }
 
     @Bean
     @StepScope
     public ShelterInformationItemProcessor shelterInformationItemProcessor() {
-        return new ShelterInformationItemProcessor(shelterInformationStagingService);
+        return new ShelterInformationItemProcessor(shelterInformationRepository);
     }
 }

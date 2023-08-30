@@ -2,7 +2,7 @@ package com.slcube.shelter_guide.batch.external_api.processing;
 
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationStagingService;
+import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
 
@@ -22,7 +22,7 @@ import static org.springframework.test.util.ReflectionTestUtils.setField;
 public class ShelterInformationItemProcessorUnitTest {
 
     @Mock
-    private ShelterInformationStagingService shelterInformationStagingService;
+    private ShelterInformationStagingRepository shelterInformationStagingRepository;
 
     @InjectMocks
     private ShelterInformationItemProcessor shelterInformationItemProcessor;
@@ -30,7 +30,7 @@ public class ShelterInformationItemProcessorUnitTest {
     @Test
     void 테이블에_데이터가_없을_때의_프로세스_테스트() throws Exception {
 
-        when(shelterInformationStagingService.findByManagementNumber(any()))
+        when(shelterInformationStagingRepository.findByManagementNumber(anyString()))
                 .thenReturn(Optional.empty());
 
         List<ShelterInformationDto> shelterInformationList = createShelterInformationList();
@@ -45,10 +45,10 @@ public class ShelterInformationItemProcessorUnitTest {
     void 테이블에_수정해야될_데이터가_존재할_때의_프로세스_테스트() throws Exception {
         String managementNumber = "0";
 
-        when(shelterInformationStagingService.findByManagementNumber(managementNumber))
-                .thenReturn(Optional.of(ShelterInformationStaging.builder().build()));
-
         List<ShelterInformationDto> shelterInformationList = createShelterInformationList();
+
+        when(shelterInformationStagingRepository.findByManagementNumber(managementNumber))
+                .thenReturn(Optional.of(ShelterInformationStaging.builder().build()));
 
         shelterInformationItemProcessor.process(shelterInformationList);
 

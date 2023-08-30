@@ -2,8 +2,7 @@ package com.slcube.shelter_guide.batch.external_api.processing;
 
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationStagingService;
-import com.slcube.shelter_guide.batch.external_api.util.ShelterInformationStagingComparator;
+import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemProcessor;
 
@@ -14,7 +13,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ShelterInformationItemProcessor implements ItemProcessor<List<ShelterInformationDto>, List<ShelterInformationDto>> {
 
-    private final ShelterInformationStagingService shelterInformationStagingService;
+    private final ShelterInformationStagingRepository shelterInformationStagingRepository;
 
     @Override
     public List<ShelterInformationDto> process(List<ShelterInformationDto> item) throws Exception {
@@ -23,14 +22,13 @@ public class ShelterInformationItemProcessor implements ItemProcessor<List<Shelt
 
         while (iterator.hasNext()) {
             ShelterInformationDto shelterInformationDto = iterator.next();
-            Optional<ShelterInformationStaging> shelterInformationStaging =
-                    shelterInformationStagingService.findByManagementNumber(shelterInformationDto.getManagementNumber());
+            Optional<ShelterInformationStaging> foundShelterInformationStaging = shelterInformationStagingRepository.findByManagementNumber(shelterInformationDto.getManagementNumber());
 
-            if (shelterInformationStaging.isPresent()) {
-                ShelterInformationStaging shelterInformationStagingEntity = shelterInformationStaging.get();
+            if (foundShelterInformationStaging.isPresent()) {
+                ShelterInformationStaging shelterInformationStaging = foundShelterInformationStaging.get();
 
-                if (!ShelterInformationStagingComparator.areEqual(shelterInformationDto, shelterInformationStagingEntity)) {
-                    shelterInformationStagingEntity.update(shelterInformationDto);
+                if (!ShelterInformationStaging.areEqual(shelterInformationDto, shelterInformationStaging)) {
+                    shelterInformationStaging.update(shelterInformationDto);
                 }
                 iterator.remove();
             }
@@ -39,3 +37,4 @@ public class ShelterInformationItemProcessor implements ItemProcessor<List<Shelt
         return item;
     }
 }
+

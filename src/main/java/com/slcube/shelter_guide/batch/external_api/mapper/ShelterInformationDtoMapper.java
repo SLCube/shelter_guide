@@ -34,7 +34,7 @@ public class ShelterInformationDtoMapper {
                 .dataUpdateDate(seoulShelterInformationResultDataDto.getDataUpdateDate())
                 .positionX(seoulShelterInformationResultDataDto.getPositionX())
                 .positionY(seoulShelterInformationResultDataDto.getPositionY())
-                .emergencyFalicityLocation(seoulShelterInformationResultDataDto.getEmergencyFalicityLocation())
+                .emergencyFacilityLocation(seoulShelterInformationResultDataDto.getEmergencyFalicityLocation())
                 .facilitiesDefinitionName(seoulShelterInformationResultDataDto.getFacilitiesDefinitionName())
                 .facilityBuildingName(seoulShelterInformationResultDataDto.getFacilityBuildingName())
                 .releaseDate(seoulShelterInformationResultDataDto.getReleaseDate())
