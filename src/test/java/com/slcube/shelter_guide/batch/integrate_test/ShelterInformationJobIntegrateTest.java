@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.GYEONG_GI;
 import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.SEOUL;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -47,6 +48,30 @@ class ShelterInformationJobIntegrateTest {
 
         JobParameters jobParameters = new JobParametersBuilder()
                 .addString("region", SEOUL.getRegion())
+                .addString("datetime", thursday.toString())
+                .toJobParameters();
+
+        JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
+
+        List<ShelterInformationStaging> shelterInformationStagingList = shelterInformationStagingRepository.findAll();
+
+        assertThat(jobExecution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
+        assertThat(jobExecution.getExitStatus()).isEqualTo(ExitStatus.COMPLETED);
+        assertThat(shelterInformationStagingList).isNotEmpty();
+    }
+
+    @Test
+    void 경기도_대피소_api호출_batch_통합테스트() throws Exception {
+        LocalDateTime thursday = LocalDateTime.of(
+                2023,
+                7,
+                20,
+                15,
+                13
+        );
+
+        JobParameters jobParameters = new JobParametersBuilder()
+                .addString("region", GYEONG_GI.getRegion())
                 .addString("datetime", thursday.toString())
                 .toJobParameters();
 

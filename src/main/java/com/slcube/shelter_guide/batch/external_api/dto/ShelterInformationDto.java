@@ -49,7 +49,7 @@ public class ShelterInformationDto {
 
     private String businessEstablishmentName;
 
-    private String  lastModifiedDate;
+    private String lastModifiedDate;
 
     private String dataUpdateCode;
 

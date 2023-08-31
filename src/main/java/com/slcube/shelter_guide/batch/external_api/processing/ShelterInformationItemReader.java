@@ -18,9 +18,8 @@ public class ShelterInformationItemReader implements ItemReader<List<ShelterInfo
 
     private final ShelterInformationApiServiceMap apiServiceMap;
 
-    private static final int PAGE_SIZE = 100;
-    private int startIndex = 1;
-    private int endIndex = PAGE_SIZE;
+    private static final int PAGE_SIZE = 1000;
+    private int pageNo = 1;
     private boolean hasMoreData = true;
 
     @Override
@@ -28,14 +27,13 @@ public class ShelterInformationItemReader implements ItemReader<List<ShelterInfo
         ShelterInformationApiService apiService = apiServiceMap.getApiService(region);
 
         if (hasMoreData) {
-            List<ShelterInformationDto> seoulShelterInformationResultDataDtos = apiService.fetchShelterInformation(startIndex, endIndex);
+            List<ShelterInformationDto> seoulShelterInformationResultDataDtos = apiService.fetchShelterInformation(pageNo, PAGE_SIZE);
             if (seoulShelterInformationResultDataDtos.isEmpty()) {
                 hasMoreData = false;
                 return null;
             }
 
-            startIndex += PAGE_SIZE;
-            endIndex += PAGE_SIZE;
+            pageNo++;
             return seoulShelterInformationResultDataDtos;
         }
         return null;

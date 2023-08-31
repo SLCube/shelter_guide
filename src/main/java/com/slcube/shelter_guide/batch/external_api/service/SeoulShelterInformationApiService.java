@@ -28,9 +28,14 @@ public class SeoulShelterInformationApiService implements ShelterInformationApiS
     @Value("${external-service.shelter-information.seoul.api-key}")
     private String apiKey;
 
-    public List<ShelterInformationDto> fetchShelterInformation(int startIndex, int endIndex) {
+    public List<ShelterInformationDto> fetchShelterInformation(int pageNo, int pageSize) {
 
-        String url = externalUrl.replace("{apiKey}", apiKey) + "/" + startIndex + "/" + endIndex;
+        int startIndex = pageSize * (pageNo - 1) + 1;
+        int endIndex = pageSize * pageNo;
+
+        String url = externalUrl.replace("{apiKey}", apiKey)
+                .replace("{startIndex}", String.valueOf(startIndex))
+                .replace("{endIndex}", String.valueOf(endIndex));
 
         try {
             SeoulShelterInformationDto seoulShelterInformationDto = restTemplate.getForObject(url, SeoulShelterInformationDto.class);
