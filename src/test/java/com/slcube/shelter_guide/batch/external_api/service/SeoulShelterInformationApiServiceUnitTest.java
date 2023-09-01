@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
 
 @ExtendWith(MockitoExtension.class)
-public class ShelterInformationApiServiceUnitTest {
+public class SeoulShelterInformationApiServiceUnitTest {
 
     @Mock
     private RestTemplate restTemplate;

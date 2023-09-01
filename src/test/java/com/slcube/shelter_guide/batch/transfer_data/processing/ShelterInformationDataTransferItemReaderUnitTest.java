@@ -1,7 +1,7 @@
 package com.slcube.shelter_guide.batch.transfer_data.processing;
 
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.transfer_data.service.ShelterInformationDataTransferService;
+import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,14 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.anyInt;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ShelterInformationDataTransferItemReaderUnitTest {
 
     @Mock
-    private ShelterInformationDataTransferService shelterInformationDataTransferService;
+    private ShelterInformationStagingRepository shelterInformationStagingRepository;
 
     @InjectMocks
     private ShelterInformationDataTransferItemReader shelterInformationDataTransferItemReader;
@@ -28,7 +28,7 @@ class ShelterInformationDataTransferItemReaderUnitTest {
     void 저장용_테이블에_더이상_갖고올_데이터가_없을때_reader_테스트() throws Exception {
         List<ShelterInformationStaging> shelterInformationStagings = new ArrayList<>();
 
-        when(shelterInformationDataTransferService.findShelterInformationStagings(anyInt()))
+        when(shelterInformationStagingRepository.findAllWithPaging(any()))
                 .thenReturn(shelterInformationStagings);
 
         assertThat(shelterInformationDataTransferItemReader.read()).isNull();
@@ -39,7 +39,7 @@ class ShelterInformationDataTransferItemReaderUnitTest {
 
         List<ShelterInformationStaging> shelterInformationStagings = createShelterInformationStagings();
 
-        when(shelterInformationDataTransferService.findShelterInformationStagings(anyInt()))
+        when(shelterInformationStagingRepository.findAllWithPaging(any()))
                 .thenReturn(shelterInformationStagings);
 
         assertThat(shelterInformationDataTransferItemReader.read()).isEqualTo(shelterInformationStagings);

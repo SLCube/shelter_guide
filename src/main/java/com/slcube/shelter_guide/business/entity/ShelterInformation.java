@@ -74,4 +74,22 @@ public class ShelterInformation {
         this.roadNamePostalCode = shelterInformationStaging.getRoadNamePostalCode();
         this.lastModifiedDate = shelterInformationStaging.getLastModifiedDate();
     }
+
+    public boolean areEqual(ShelterInformationStaging shelterInformationStaging, ShelterInformation shelterInformation) {
+        return shelterInformationStaging.getManagementNumber().equals(shelterInformation.getManagementNumber())
+                && shelterInformationStaging.getLicenseDate().equals(shelterInformation.getLicenseDate())
+                && shelterInformationStaging.getBusinessStatusCode().equals(shelterInformation.getBusinessStatusCode())
+                && shelterInformationStaging.getBusinessStatusName().equals(shelterInformation.getBusinessStatusName())
+                && shelterInformationStaging.getDetailedBusinessStatusCode().equals(shelterInformation.getDetailedBusinessStatusCode())
+                && shelterInformationStaging.getDetailedBusinessStatusName().equals(shelterInformation.getDetailedBusinessStatusName())
+                && shelterInformationStaging.getClosingDate().equals(shelterInformation.getClosingDate())
+                && shelterInformationStaging.getPositionX() == shelterInformation.getPositionX()
+                && shelterInformationStaging.getPositionY() == shelterInformation.getPositionY()
+                && shelterInformationStaging.getLocationArea() == shelterInformation.getLocationArea()
+                && shelterInformationStaging.getLocationPostalCode().equals(shelterInformation.getLocationPostalCode())
+                && shelterInformationStaging.getLandNumberAddress().equals(shelterInformation.getLandNumberAddress())
+                && shelterInformationStaging.getRoadNameAddress().equals(shelterInformation.getRoadNameAddress())
+                && shelterInformationStaging.getRoadNamePostalCode().equals(shelterInformation.getRoadNamePostalCode())
+                && shelterInformationStaging.getLastModifiedDate().equals(shelterInformation.getLastModifiedDate());
+    }
 }

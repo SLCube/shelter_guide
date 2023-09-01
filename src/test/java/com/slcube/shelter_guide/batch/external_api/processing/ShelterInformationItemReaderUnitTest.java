@@ -2,7 +2,6 @@ package com.slcube.shelter_guide.batch.external_api.processing;
 
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.service.SeoulShelterInformationApiService;
-import com.slcube.shelter_guide.batch.external_api.util.RegionConstant;
 import com.slcube.shelter_guide.batch.external_api.util.ShelterInformationApiServiceMap;
 import org.junit.After;
 import org.junit.Before;
@@ -15,7 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.*;
+import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.SEOUL;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;

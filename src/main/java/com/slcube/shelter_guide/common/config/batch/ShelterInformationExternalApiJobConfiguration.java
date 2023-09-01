@@ -34,7 +34,7 @@ public class ShelterInformationExternalApiJobConfiguration {
     private final ShelterInformationApiServiceMap apiServiceMap;
     private final ShelterInformationStagingRepository shelterInformationRepository;
     private final ShelterInformationFetchApiExecutionListener listener;
-    private static final int CHUNK_SIZE = 100;
+    private static final int CHUNK_SIZE = 1000;
 
     @Bean
     @Primary

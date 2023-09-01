@@ -1,8 +1,8 @@
 package com.slcube.shelter_guide.batch.transfer_data.processing;
 
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.transfer_data.service.ShelterInformationDataTransferService;
 import com.slcube.shelter_guide.business.entity.ShelterInformation;
+import com.slcube.shelter_guide.business.repository.ShelterInformationRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,21 +15,20 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ShelterInformationDataTransferItemProcessorUnitTest {
 
     @Mock
-    private ShelterInformationDataTransferService shelterInformationDataTransferService;
+    private ShelterInformationRepository shelterInformationRepository;
 
     @InjectMocks
     private ShelterInformationDataTransferItemProcessor shelterInformationDataTransferItemProcessor;
 
     @Test
     void 기존_데이터가_없을때_processor_테스트() throws Exception {
-        when(shelterInformationDataTransferService.findByManagementNumber(anyString()))
+        when(shelterInformationRepository.findByManagementNumber(anyString()))
                 .thenReturn(Optional.empty());
 
         List<ShelterInformationStaging> shelterInformationStagings = createShelterInformationStagings();
@@ -43,9 +42,9 @@ class ShelterInformationDataTransferItemProcessorUnitTest {
     @Test
     void 수정이_필요한_데이터가_있을때_테스트() throws Exception {
         String managementNumber = "0";
-        when(shelterInformationDataTransferService.findByManagementNumber(managementNumber))
-                .thenReturn(Optional.of(createShelterInformation()));
 
+        when(shelterInformationRepository.findByManagementNumber(managementNumber))
+                .thenReturn(Optional.of(createShelterInformation()));
         List<ShelterInformationStaging> shelterInformationStagings = createShelterInformationStagings();
         shelterInformationDataTransferItemProcessor.process(shelterInformationStagings);
 
