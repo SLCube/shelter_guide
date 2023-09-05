@@ -14,11 +14,14 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
 
@@ -40,11 +43,11 @@ public class SeoulShelterInformationApiServiceUnitTest {
     }
 
     @Test
-    void 서울시_공공_api에서_대피소_정보를_갖고오는_메소드_테스트() {
+    void 서울시_공공_api에서_대피소_정보를_갖고오는_메소드_테스트() throws MalformedURLException, URISyntaxException {
 
         SeoulShelterInformationDto seoulShelterInformationDto = createShelterInformationDto();
 
-        when(restTemplate.getForObject(anyString(), Mockito.<Class<SeoulShelterInformationDto>>any()))
+        when(restTemplate.getForObject(any(URI.class), Mockito.<Class<SeoulShelterInformationDto>>any()))
                 .thenReturn(seoulShelterInformationDto);
 
         int startIndex = 1;

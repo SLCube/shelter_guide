@@ -11,6 +11,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,17 +32,17 @@ public class SeoulShelterInformationApiService implements ShelterInformationApiS
     @Value("${external-service.shelter-information.seoul.api-key}")
     private String apiKey;
 
-    public List<ShelterInformationDto> fetchShelterInformation(int pageNo, int pageSize) {
+    public List<ShelterInformationDto> fetchShelterInformation(int pageNo, int pageSize) throws MalformedURLException, URISyntaxException {
 
         int startIndex = pageSize * (pageNo - 1) + 1;
         int endIndex = pageSize * pageNo;
 
-        String url = externalUrl.replace("{apiKey}", apiKey)
+        URI uri = new URL(externalUrl.replace("{apiKey}", apiKey)
                 .replace("{startIndex}", String.valueOf(startIndex))
-                .replace("{endIndex}", String.valueOf(endIndex));
-
+                .replace("{endIndex}", String.valueOf(endIndex)))
+                .toURI();
         try {
-            SeoulShelterInformationDto seoulShelterInformationDto = restTemplate.getForObject(url, SeoulShelterInformationDto.class);
+            SeoulShelterInformationDto seoulShelterInformationDto = restTemplate.getForObject(uri, SeoulShelterInformationDto.class);
 
             if (seoulShelterInformationDto != null) {
                 SeoulShelterInformationResultDto result = seoulShelterInformationDto.getResult();
@@ -49,10 +53,10 @@ public class SeoulShelterInformationApiService implements ShelterInformationApiS
                             .collect(Collectors.toList());
                 }
             }
+
         } catch (Exception e) {
             log.error("Error while calling SEOUL REST API : ", e);
         }
-
 
         return Collections.emptyList();
     }
