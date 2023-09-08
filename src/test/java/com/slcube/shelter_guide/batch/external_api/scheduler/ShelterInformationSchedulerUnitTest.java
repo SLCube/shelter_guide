@@ -34,7 +34,7 @@ public class ShelterInformationSchedulerUnitTest {
 
     @Test
     void 한달에_한번_대피소_정보를_갖고오는_스케줄러_테스트() throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
-        shelterInformationScheduler.run();
+        shelterInformationScheduler.executeFetchingShelterInformationJob();
         Mockito.verify(jobLauncher).run(any(Job.class), any(JobParameters.class));
     }
 }
