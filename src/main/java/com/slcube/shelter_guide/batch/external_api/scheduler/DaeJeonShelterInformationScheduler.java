@@ -1,7 +1,6 @@
 package com.slcube.shelter_guide.batch.external_api.scheduler;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.JobParametersInvalidException;
@@ -16,7 +15,6 @@ import java.time.LocalDateTime;
 
 import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.DAE_JEON;
 
-@Slf4j
 @RequiredArgsConstructor
 @Component
 public class DaeJeonShelterInformationScheduler implements ShelterInformationScheduler {
