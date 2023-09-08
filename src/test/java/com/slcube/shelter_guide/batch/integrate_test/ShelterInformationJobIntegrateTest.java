@@ -2,6 +2,7 @@ package com.slcube.shelter_guide.batch.integrate_test;
 
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
 import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
+import com.slcube.shelter_guide.batch.external_api.util.RegionConstant;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.*;
@@ -37,78 +38,30 @@ class ShelterInformationJobIntegrateTest {
 
     @Test
     void 서울시_대피소_api호출_batch_통합테스트() throws Exception {
-        LocalDateTime thursday = LocalDateTime.of(
-                2023,
-                7,
-                20,
-                15,
-                13
-        );
-
-        JobParameters jobParameters = new JobParametersBuilder()
-                .addString("region", SEOUL.getRegion())
-                .addString("datetime", thursday.toString())
-                .toJobParameters();
-
-        JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
-
-        List<ShelterInformationStaging> shelterInformationStagingList = shelterInformationStagingRepository.findAll();
-
-        assertThat(jobExecution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
-        assertThat(jobExecution.getExitStatus()).isEqualTo(ExitStatus.COMPLETED);
-        assertThat(shelterInformationStagingList).isNotEmpty();
+        fetchShelterInformationFromExternalApiTest(SEOUL);
     }
 
     @Test
     void 경기도_대피소_api호출_batch_통합테스트() throws Exception {
-        LocalDateTime thursday = LocalDateTime.of(
-                2023,
-                7,
-                20,
-                15,
-                13
-        );
-
-        JobParameters jobParameters = new JobParametersBuilder()
-                .addString("region", GYEONG_GI.getRegion())
-                .addString("datetime", thursday.toString())
-                .toJobParameters();
-
-        JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
-
-        List<ShelterInformationStaging> shelterInformationStagingList = shelterInformationStagingRepository.findAll();
-
-        assertThat(jobExecution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
-        assertThat(jobExecution.getExitStatus()).isEqualTo(ExitStatus.COMPLETED);
-        assertThat(shelterInformationStagingList).isNotEmpty();
+        fetchShelterInformationFromExternalApiTest(GYEONG_GI);
     }
 
     @Test
     void 전라북도_대피소_api호출_batch_통합테스트() throws Exception {
-        LocalDateTime thursday = LocalDateTime.of(
-                2023,
-                7,
-                20,
-                15,
-                13
-        );
-
-        JobParameters jobParameters = new JobParametersBuilder()
-                .addString("region", JEOLLA_BUK_DO.getRegion())
-                .addString("datetime", thursday.toString())
-                .toJobParameters();
-
-        JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
-
-        List<ShelterInformationStaging> shelterInformationStagingList = shelterInformationStagingRepository.findAll();
-
-        assertThat(jobExecution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
-        assertThat(jobExecution.getExitStatus()).isEqualTo(ExitStatus.COMPLETED);
-        assertThat(shelterInformationStagingList).isNotEmpty();
+        fetchShelterInformationFromExternalApiTest(JEOLLA_BUK_DO);
     }
 
     @Test
     void 경상남도_대피소_api호출_batch_통합테스트() throws Exception {
+        fetchShelterInformationFromExternalApiTest(GYEONG_SANG_BUK_DO);
+    }
+
+    @Test
+    void 대전광역시_대피소_api호출_batch_통합테스트() throws Exception {
+        fetchShelterInformationFromExternalApiTest(DAE_JEON);
+    }
+
+    private void fetchShelterInformationFromExternalApiTest(RegionConstant region) throws Exception {
         LocalDateTime thursday = LocalDateTime.of(
                 2023,
                 7,
@@ -118,7 +71,7 @@ class ShelterInformationJobIntegrateTest {
         );
 
         JobParameters jobParameters = new JobParametersBuilder()
-                .addString("region", GYEONG_SANG_BUK_DO.getRegion())
+                .addString("region", region.getRegion())
                 .addString("datetime", thursday.toString())
                 .toJobParameters();
 

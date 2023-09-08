@@ -7,6 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum RegionConstant {
     SEOUL("seoul"),
+    DAE_JEON("daeJeon"),
     GYEONG_GI("gyeongGi"),
     JEOLLA_BUK_DO("jeollaBukDo"),
     GYEONG_SANG_BUK_DO("gyeongSangBukDo");
