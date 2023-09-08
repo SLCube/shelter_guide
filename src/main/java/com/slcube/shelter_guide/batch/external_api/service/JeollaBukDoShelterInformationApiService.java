@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class JeollaBukDoShelterInformationApiService implements ShelterInformationApiService{
+public class JeollaBukDoShelterInformationApiService implements ShelterInformationApiService {
 
     @Value("${external-service.shelter-information.jeolla-buk-do.url}")
     private String externalUrl;
@@ -38,18 +38,13 @@ public class JeollaBukDoShelterInformationApiService implements ShelterInformati
                 .replace("{pageSize}", String.valueOf(pageSize)))
                 .toURI();
 
-        try {
-            JeollaBukDoShelterInformationDto shelterInformationDto = restTemplate.getForObject(uri, JeollaBukDoShelterInformationDto.class);
+        JeollaBukDoShelterInformationDto shelterInformationDto = restTemplate.getForObject(uri, JeollaBukDoShelterInformationDto.class);
 
-            if (shelterInformationDto != null) {
-                return shelterInformationDto.getResultDtoList()
-                        .stream()
-                        .map(ShelterInformationDtoMapper::toDto)
-                        .collect(Collectors.toList());
-            }
-
-        } catch (Exception e) {
-            log.error("Error while calling JEOLLA-BUK-DO REST API : ", e);
+        if (shelterInformationDto != null) {
+            return shelterInformationDto.getResultDtoList()
+                    .stream()
+                    .map(ShelterInformationDtoMapper::toDto)
+                    .collect(Collectors.toList());
         }
 
         return Collections.emptyList();

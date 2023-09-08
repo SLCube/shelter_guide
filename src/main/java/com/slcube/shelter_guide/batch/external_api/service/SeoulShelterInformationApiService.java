@@ -41,21 +41,17 @@ public class SeoulShelterInformationApiService implements ShelterInformationApiS
                 .replace("{startIndex}", String.valueOf(startIndex))
                 .replace("{endIndex}", String.valueOf(endIndex)))
                 .toURI();
-        try {
-            SeoulShelterInformationDto seoulShelterInformationDto = restTemplate.getForObject(uri, SeoulShelterInformationDto.class);
+        
+        SeoulShelterInformationDto seoulShelterInformationDto = restTemplate.getForObject(uri, SeoulShelterInformationDto.class);
 
-            if (seoulShelterInformationDto != null) {
-                SeoulShelterInformationResultDto result = seoulShelterInformationDto.getResult();
-                if (result != null) {
-                    List<SeoulShelterInformationResultDataDto> seoulShelterInformationList = result.getResultDataDtoList();
-                    return seoulShelterInformationList.stream()
-                            .map(ShelterInformationDtoMapper::toDto)
-                            .collect(Collectors.toList());
-                }
+        if (seoulShelterInformationDto != null) {
+            SeoulShelterInformationResultDto result = seoulShelterInformationDto.getResult();
+            if (result != null) {
+                List<SeoulShelterInformationResultDataDto> seoulShelterInformationList = result.getResultDataDtoList();
+                return seoulShelterInformationList.stream()
+                        .map(ShelterInformationDtoMapper::toDto)
+                        .collect(Collectors.toList());
             }
-
-        } catch (Exception e) {
-            log.error("Error while calling SEOUL REST API : ", e);
         }
 
         return Collections.emptyList();

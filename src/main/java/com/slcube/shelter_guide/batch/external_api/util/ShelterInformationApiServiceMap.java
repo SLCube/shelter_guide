@@ -1,9 +1,6 @@
 package com.slcube.shelter_guide.batch.external_api.util;
 
-import com.slcube.shelter_guide.batch.external_api.service.GyeongGiShelterInformationApiService;
-import com.slcube.shelter_guide.batch.external_api.service.JeollaBukDoShelterInformationApiService;
-import com.slcube.shelter_guide.batch.external_api.service.SeoulShelterInformationApiService;
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.service.*;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -17,10 +14,12 @@ public class ShelterInformationApiServiceMap {
 
     public ShelterInformationApiServiceMap(SeoulShelterInformationApiService seoulShelterInformationApiService,
                                            GyeongGiShelterInformationApiService gyeongGiShelterInformationApiService,
-                                           JeollaBukDoShelterInformationApiService jeollaBukDoShelterInformationApiService) {
+                                           JeollaBukDoShelterInformationApiService jeollaBukDoShelterInformationApiService,
+                                           GyeongSangNamDoShelterInformationApiService gyeongSangNamDoShelterInformationApiService) {
         serviceMap.put(SEOUL.getRegion(), seoulShelterInformationApiService);
         serviceMap.put(GYEONG_GI.getRegion(), gyeongGiShelterInformationApiService);
         serviceMap.put(JEOLLA_BUK_DO.getRegion(), jeollaBukDoShelterInformationApiService);
+        serviceMap.put(GYEONG_SANG_NAM_DO.getRegion(), gyeongSangNamDoShelterInformationApiService);
     }
 
     public ShelterInformationApiService getApiService(String region) {

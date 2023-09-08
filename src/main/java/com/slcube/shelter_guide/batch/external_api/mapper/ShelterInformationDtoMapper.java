@@ -82,4 +82,8 @@ public class ShelterInformationDtoMapper {
                 .landNumberAddress(dto.getLandNumberAddress())
                 .build();
     }
+
+    public static ShelterInformationDto toDto() {
+        return null;
+    }
 }

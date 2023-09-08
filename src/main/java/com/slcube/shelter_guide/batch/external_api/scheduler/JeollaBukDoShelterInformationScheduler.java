@@ -7,6 +7,7 @@ import org.springframework.batch.core.JobExecutionException;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -24,9 +25,10 @@ public class JeollaBukDoShelterInformationScheduler implements ShelterInformatio
     private final JobLauncher jobLauncher;
 
     @Override
+    @Scheduled(cron = "10 0 0 1 * ?")
     public void run() {
         try {
-            log.info(">>> JEOLLA BUK DO Shelter Information Job Start");
+            log.info(">>> JEOLLA_BUK_DO Shelter Information Job Start");
 
             jobLauncher.run(
                     job,
@@ -35,9 +37,9 @@ public class JeollaBukDoShelterInformationScheduler implements ShelterInformatio
                             .addString("region", JEOLLA_BUK_DO.getRegion())
                             .toJobParameters()
             );
-            log.info(">>> Successfully complete JEOLLA BUK DO Shelter Information Job");
+            log.info(">>> Successfully complete JEOLLA_BUK_DO Shelter Information Job");
         } catch (JobExecutionException e) {
-            log.error("GJEOLLA BUK DO Shelter Information JobExecutionException : ", e);
+            log.error("JEOLLA_BUK_DO Shelter Information JobExecutionException : ", e);
         }
     }
 }

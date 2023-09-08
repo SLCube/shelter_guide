@@ -9,6 +9,9 @@ external-service:
     jeolla-buk-do:
       url: https://api.odcloud.kr/api/15055712/v1/uddi:2047b907-2c87-4177-8411-fb0e71043d2f_201708171411?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
       api-key: ENC(Gs0f7dJh9s7d9VX7C2HPC41sUTHnISBGcLElxp3ymCKc1byWL1NYg9RzB4p4u6mE3DymtmzmqsINQWqtkYZlZTQipciEn6vladwdn7fLZqNXxXF0spDyGLUZyzJmX10mFtxw/SoqH29W4aSqHsn3GQ==)
+    gyeong-sang-nam-do:
+      url: https://api.odcloud.kr/api/3083902/v1/uddi:466f096f-f495-4917-b541-93f1037b82c1_201808191154?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
+      api-key: ENC(vle6sUQe+0+rZ4gEbICPTEapA24sNp/AdAvZHOr/kGkOEgGWU9+zQInYXae9aGfvpbLSSl5XIFRQ//+JpjzR67QQ2Ol69iACzlulCkDrqhIIkGjMgHk45Dsbc+LTsR0LRpa9B4l+vkKNGDs+EEnJ5g==)
 
 jasypt:
   encryptor:
