@@ -26,7 +26,7 @@ public class GyeongGiShelterInformationScheduler implements ShelterInformationSc
 
 
     @Override
-    @Scheduled(cron = "0 0 0 1 * ?")
+    @Scheduled(cron = "5 0 0 1 * ?")
     public void run() {
         try {
             log.info(">>> GYEONG_GI Shelter Information Job Start");
