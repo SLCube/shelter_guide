@@ -118,7 +118,7 @@ class ShelterInformationJobIntegrateTest {
         );
 
         JobParameters jobParameters = new JobParametersBuilder()
-                .addString("region", GYEONG_SANG_NAM_DO.getRegion())
+                .addString("region", GYEONG_SANG_BUK_DO.getRegion())
                 .addString("datetime", thursday.toString())
                 .toJobParameters();
 

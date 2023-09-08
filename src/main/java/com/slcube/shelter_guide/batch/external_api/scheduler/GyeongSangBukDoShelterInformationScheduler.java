@@ -15,12 +15,12 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.GYEONG_SANG_NAM_DO;
+import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.GYEONG_SANG_BUK_DO;
 
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class GyeongSangNamDoShelterInformationScheduler implements ShelterInformationScheduler {
+public class GyeongSangBukDoShelterInformationScheduler implements ShelterInformationScheduler {
 
     @Qualifier("shelterInformationExternalApiJob")
     private final Job job;
@@ -33,7 +33,7 @@ public class GyeongSangNamDoShelterInformationScheduler implements ShelterInform
                 job,
                 new JobParametersBuilder()
                         .addString("datetime", LocalDateTime.now().toString())
-                        .addString("region", GYEONG_SANG_NAM_DO.getRegion())
+                        .addString("region", GYEONG_SANG_BUK_DO.getRegion())
                         .toJobParameters()
         );
     }

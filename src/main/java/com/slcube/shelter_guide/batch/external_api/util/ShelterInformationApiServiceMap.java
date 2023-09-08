@@ -15,11 +15,11 @@ public class ShelterInformationApiServiceMap {
     public ShelterInformationApiServiceMap(SeoulShelterInformationApiService seoulShelterInformationApiService,
                                            GyeongGiShelterInformationApiService gyeongGiShelterInformationApiService,
                                            JeollaBukDoShelterInformationApiService jeollaBukDoShelterInformationApiService,
-                                           GyeongSangNamDoShelterInformationApiService gyeongSangNamDoShelterInformationApiService) {
+                                           GyeongSangBukDoShelterInformationApiService gyeongSangNamDoShelterInformationApiService) {
         serviceMap.put(SEOUL.getRegion(), seoulShelterInformationApiService);
         serviceMap.put(GYEONG_GI.getRegion(), gyeongGiShelterInformationApiService);
         serviceMap.put(JEOLLA_BUK_DO.getRegion(), jeollaBukDoShelterInformationApiService);
-        serviceMap.put(GYEONG_SANG_NAM_DO.getRegion(), gyeongSangNamDoShelterInformationApiService);
+        serviceMap.put(GYEONG_SANG_BUK_DO.getRegion(), gyeongSangNamDoShelterInformationApiService);
     }
 
     public ShelterInformationApiService getApiService(String region) {

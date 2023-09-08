@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class GyeongSangNamDoShelterInformationApiService implements ShelterInformationApiService {
+public class GyeongSangBukDoShelterInformationApiService implements ShelterInformationApiService {
 
     private final RestTemplate restTemplate;
 
