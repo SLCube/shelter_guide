@@ -1,6 +1,8 @@
 package com.slcube.shelter_guide.batch.external_api.service;
 
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
+import com.slcube.shelter_guide.batch.external_api.dto.gyeong_sang_nam_do.GyeongSangNamDoShelterInformationDto;
+import com.slcube.shelter_guide.batch.external_api.mapper.ShelterInformationDtoMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +13,9 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -34,8 +38,15 @@ public class GyeongSangNamDoShelterInformationApiService implements ShelterInfor
                 .replace("{apiKey}", apiKey))
                 .toURI();
 
-        restTemplate.getForObject(uri, Object.class);
+        GyeongSangNamDoShelterInformationDto shelterInformationDto = restTemplate.getForObject(uri, GyeongSangNamDoShelterInformationDto.class);
 
-        return null;
+        if (shelterInformationDto != null) {
+            return shelterInformationDto.getResultDtoList()
+                    .stream()
+                    .map(ShelterInformationDtoMapper::toDto)
+                    .collect(Collectors.toList());
+        }
+
+        return Collections.emptyList();
     }
 }

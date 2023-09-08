@@ -1,6 +1,7 @@
 package com.slcube.shelter_guide.batch.external_api.mapper;
 
 import com.slcube.shelter_guide.batch.external_api.dto.gyeong_gi.GyeongGiShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.gyeong_sang_nam_do.GyeongSangNamDoShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.jeolla_buk_do.JeollaBukDoShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
@@ -83,7 +84,12 @@ public class ShelterInformationDtoMapper {
                 .build();
     }
 
-    public static ShelterInformationDto toDto() {
-        return null;
+    public static ShelterInformationDto toDto(GyeongSangNamDoShelterInformationResultDataDto dto) {
+        return ShelterInformationDto.builder()
+                .businessEstablishmentName(dto.getBusinessEstablishmentName())
+                .locationArea(dto.getLocationArea())
+                .roadNameAddress(dto.getRoadNameAddress())
+                .landNumberAddress(dto.getLandNumberAddress())
+                .build();
     }
 }
