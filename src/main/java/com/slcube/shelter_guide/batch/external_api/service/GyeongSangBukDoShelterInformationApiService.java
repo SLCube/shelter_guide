@@ -1,7 +1,7 @@
 package com.slcube.shelter_guide.batch.external_api.service;
 
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.dto.gyeong_sang_nam_do.GyeongSangNamDoShelterInformationDto;
+import com.slcube.shelter_guide.batch.external_api.dto.gyeong_sang_buk_do.GyeongSangBukDoShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.mapper.ShelterInformationDtoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,7 +36,7 @@ public class GyeongSangBukDoShelterInformationApiService implements ShelterInfor
                 .replace("{apiKey}", apiKey))
                 .toURI();
 
-        GyeongSangNamDoShelterInformationDto shelterInformationDto = restTemplate.getForObject(uri, GyeongSangNamDoShelterInformationDto.class);
+        GyeongSangBukDoShelterInformationDto shelterInformationDto = restTemplate.getForObject(uri, GyeongSangBukDoShelterInformationDto.class);
 
         if (shelterInformationDto != null) {
             return shelterInformationDto.getResultDtoList()

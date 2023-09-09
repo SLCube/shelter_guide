@@ -1,10 +1,10 @@
-package com.slcube.shelter_guide.batch.external_api.dto.gyeong_sang_nam_do;
+package com.slcube.shelter_guide.batch.external_api.dto.gyeong_sang_buk_do;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 @Getter
-public class GyeongSangNamDoShelterInformationResultDataDto {
+public class GyeongSangBukDoShelterInformationResultDataDto {
 
     @JsonProperty("민방위대피시설명칭")
     private String businessEstablishmentName;
