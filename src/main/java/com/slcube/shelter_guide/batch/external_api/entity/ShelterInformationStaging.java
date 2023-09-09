@@ -57,13 +57,17 @@ public class ShelterInformationStaging {
     private String roadNamePostalCode;
 
     @Column(nullable = false)
+    private String businessEstablishmentName;
+
+    @Column(nullable = false)
     private String lastModifiedDate;
 
     @Builder
     private ShelterInformationStaging(String managementNumber, String licenseDate, String businessStatusCode,
                                       String businessStatusName, String detailedBusinessStatusCode, String detailedBusinessStatusName,
                                       String closingDate, double positionX, double positionY, double locationArea, String locationPostalCode,
-                                      String landNumberAddress, String roadNameAddress, String roadNamePostalCode, String lastModifiedDate) {
+                                      String landNumberAddress, String roadNameAddress, String roadNamePostalCode, String lastModifiedDate,
+                                      String businessEstablishmentName) {
         this.managementNumber = managementNumber != null ? managementNumber : "";
         this.licenseDate = licenseDate != null ? licenseDate : "";
         this.businessStatusCode = businessStatusCode != null ? businessStatusCode : "";
@@ -78,6 +82,7 @@ public class ShelterInformationStaging {
         this.landNumberAddress = landNumberAddress != null ? landNumberAddress : "";
         this.roadNameAddress = roadNameAddress != null ? roadNameAddress : "";
         this.roadNamePostalCode = roadNamePostalCode != null ? roadNamePostalCode : "";
+        this.businessEstablishmentName = businessEstablishmentName != null ? businessEstablishmentName : "";
         this.lastModifiedDate = lastModifiedDate != null ? lastModifiedDate : "";
     }
 

@@ -22,7 +22,7 @@ public class ShelterInformationItemProcessor implements ItemProcessor<List<Shelt
 
         while (iterator.hasNext()) {
             ShelterInformationDto shelterInformationDto = iterator.next();
-            Optional<ShelterInformationStaging> foundShelterInformationStaging = shelterInformationStagingRepository.findByManagementNumber(shelterInformationDto.getManagementNumber());
+            Optional<ShelterInformationStaging> foundShelterInformationStaging = shelterInformationStagingRepository.findByBusinessEstablishmentName(shelterInformationDto.getBusinessEstablishmentName());
 
             if (foundShelterInformationStaging.isPresent()) {
                 ShelterInformationStaging shelterInformationStaging = foundShelterInformationStaging.get();

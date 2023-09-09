@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ShelterInformationRepository extends JpaRepository<ShelterInformation, Long> {
-    Optional<ShelterInformation> findByManagementNumber(String managementNumber);
+    Optional<ShelterInformation> findByBusinessEstablishmentName(String businessEstablishmentName);
 
     @Query("select s from ShelterInformation s where s.landNumberAddress like %:district%")
     List<ShelterInformation> findByDistrict(@Param("district") String district);

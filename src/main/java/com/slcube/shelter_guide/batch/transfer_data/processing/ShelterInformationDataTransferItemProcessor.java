@@ -20,7 +20,7 @@ public class ShelterInformationDataTransferItemProcessor implements ItemProcesso
         Iterator<ShelterInformationStaging> iterator = item.iterator();
         while (iterator.hasNext()) {
             ShelterInformationStaging shelterInformationStaging = iterator.next();
-            Optional<ShelterInformation> shelterInformation = shelterInformationRepository.findByManagementNumber(shelterInformationStaging.getManagementNumber());
+            Optional<ShelterInformation> shelterInformation = shelterInformationRepository.findByBusinessEstablishmentName(shelterInformationStaging.getBusinessEstablishmentName());
 
             if (shelterInformation.isPresent()) {
                 ShelterInformation shelterInformationEntity = shelterInformation.get();

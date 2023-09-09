@@ -28,7 +28,7 @@ class ShelterInformationDataTransferItemProcessorUnitTest {
 
     @Test
     void 기존_데이터가_없을때_processor_테스트() throws Exception {
-        when(shelterInformationRepository.findByManagementNumber(anyString()))
+        when(shelterInformationRepository.findByBusinessEstablishmentName(anyString()))
                 .thenReturn(Optional.empty());
 
         List<ShelterInformationStaging> shelterInformationStagings = createShelterInformationStagings();
@@ -43,7 +43,7 @@ class ShelterInformationDataTransferItemProcessorUnitTest {
     void 수정이_필요한_데이터가_있을때_테스트() throws Exception {
         String managementNumber = "0";
 
-        when(shelterInformationRepository.findByManagementNumber(managementNumber))
+        when(shelterInformationRepository.findByBusinessEstablishmentName(managementNumber))
                 .thenReturn(Optional.of(createShelterInformation()));
         List<ShelterInformationStaging> shelterInformationStagings = createShelterInformationStagings();
         shelterInformationDataTransferItemProcessor.process(shelterInformationStagings);

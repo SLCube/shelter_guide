@@ -30,7 +30,7 @@ public class ShelterInformationItemProcessorUnitTest {
     @Test
     void 테이블에_데이터가_없을_때의_프로세스_테스트() throws Exception {
 
-        when(shelterInformationStagingRepository.findByManagementNumber(anyString()))
+        when(shelterInformationStagingRepository.findByBusinessEstablishmentName(anyString()))
                 .thenReturn(Optional.empty());
 
         List<ShelterInformationDto> shelterInformationList = createShelterInformationList();
@@ -47,7 +47,7 @@ public class ShelterInformationItemProcessorUnitTest {
 
         List<ShelterInformationDto> shelterInformationList = createShelterInformationList();
 
-        when(shelterInformationStagingRepository.findByManagementNumber(managementNumber))
+        when(shelterInformationStagingRepository.findByBusinessEstablishmentName(managementNumber))
                 .thenReturn(Optional.of(ShelterInformationStaging.builder().build()));
 
         shelterInformationItemProcessor.process(shelterInformationList);
