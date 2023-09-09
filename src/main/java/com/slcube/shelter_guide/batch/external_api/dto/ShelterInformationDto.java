@@ -53,7 +53,7 @@ public class ShelterInformationDto {
 
     private String dataUpdateCode;
 
-    private String  dataUpdateDate;
+    private String dataUpdateDate;
 
     private double positionX;
 

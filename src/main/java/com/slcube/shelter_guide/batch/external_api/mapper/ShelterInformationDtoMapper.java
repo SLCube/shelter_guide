@@ -4,6 +4,7 @@ import com.slcube.shelter_guide.batch.external_api.dto.daejeon.DaeJeonShelterInf
 import com.slcube.shelter_guide.batch.external_api.dto.gyeong_gi.GyeongGiShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.gyeong_sang_nam_do.GyeongSangNamDoShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.jeolla_buk_do.JeollaBukDoShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.jeolla_nam_do.JeollaNamDoShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import lombok.AccessLevel;
@@ -99,6 +100,14 @@ public class ShelterInformationDtoMapper {
                 .locationArea(dto.getLocationArea())
                 .roadNameAddress(dto.getRoadNameAddress())
                 .businessEstablishmentName(dto.getBusinessEstablishmentName())
+                .build();
+    }
+
+    public static ShelterInformationDto toDto(JeollaNamDoShelterInformationResultDataDto dto) {
+        return ShelterInformationDto.builder()
+                .businessEstablishmentName(dto.getBusinessEstablishmentName())
+                .roadNameAddress(dto.getRoadNameAddress())
+                .locationArea(dto.getLocationArea())
                 .build();
     }
 }

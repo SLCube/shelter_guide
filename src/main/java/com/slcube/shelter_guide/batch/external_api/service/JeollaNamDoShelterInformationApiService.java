@@ -1,7 +1,8 @@
 package com.slcube.shelter_guide.batch.external_api.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.dto.jeolla_buk_do.JeollaBukDoShelterInformationDto;
+import com.slcube.shelter_guide.batch.external_api.dto.jeolla_nam_do.JeollaNamDoShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.mapper.ShelterInformationDtoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,28 +19,28 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
-public class JeollaBukDoShelterInformationApiService implements ShelterInformationApiService {
+public class JeollaNamDoShelterInformationApiService implements ShelterInformationApiService {
 
     private final RestTemplate restTemplate;
 
-    @Value("${external-service.shelter-information.jeolla-buk-do.url}")
+    @Value("${external-service.shelter-information.jeolla-nam-do.url}")
     private String externalUrl;
 
-    @Value("${external-service.shelter-information.jeolla-buk-do.api-key}")
+    @Value("${external-service.shelter-information.jeolla-nam-do.api-key}")
     private String apiKey;
 
     @Override
-    public List<ShelterInformationDto> fetchShelterInformation(int pageNo, int pageSize) throws MalformedURLException, URISyntaxException {
+    public List<ShelterInformationDto> fetchShelterInformation(int pageNo, int pageSize) throws MalformedURLException, URISyntaxException, JsonProcessingException {
 
         URI uri = new URL(externalUrl.replace("{apiKey}", apiKey)
                 .replace("{pageIndex}", String.valueOf(pageNo))
                 .replace("{pageSize}", String.valueOf(pageSize)))
                 .toURI();
 
-        JeollaBukDoShelterInformationDto shelterInformationDto = restTemplate.getForObject(uri, JeollaBukDoShelterInformationDto.class);
+        JeollaNamDoShelterInformationDto shelterInformationDto = restTemplate.getForObject(uri, JeollaNamDoShelterInformationDto.class);
 
         if (shelterInformationDto != null) {
-            return shelterInformationDto.getResultDtoList()
+            return shelterInformationDto.getResultDataDtoList()
                     .stream()
                     .map(ShelterInformationDtoMapper::toDto)
                     .collect(Collectors.toList());

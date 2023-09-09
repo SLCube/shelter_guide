@@ -52,6 +52,11 @@ class ShelterInformationJobIntegrateTest {
     }
 
     @Test
+    void 전라남도_대피소_api호출_batch_통합테스트() throws Exception {
+        fetchShelterInformationFromExternalApiTest(JEOLLA_NAM_DO);
+    }
+
+    @Test
     void 경상남도_대피소_api호출_batch_통합테스트() throws Exception {
         fetchShelterInformationFromExternalApiTest(GYEONG_SANG_BUK_DO);
     }

@@ -10,6 +10,7 @@ public enum RegionConstant {
     DAE_JEON("daeJeon"),
     GYEONG_GI("gyeongGi"),
     JEOLLA_BUK_DO("jeollaBukDo"),
+    JEOLLA_NAM_DO("jeollaNamDo"),
     GYEONG_SANG_BUK_DO("gyeongSangBukDo");
 
     private final String region;
