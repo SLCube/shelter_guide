@@ -14,6 +14,7 @@ public class ShelterInformationApiServiceMap {
 
     public ShelterInformationApiServiceMap(SeoulShelterInformationApiService seoulShelterInformationApiService,
                                            InCheonShelterInformationApiService inCheonShelterInformationApiService,
+                                           GwangJuShelterInformationApiService gwangJuShelterInformationApiService,
                                            GyeongGiShelterInformationApiService gyeongGiShelterInformationApiService,
                                            JeollaBukDoShelterInformationApiService jeollaBukDoShelterInformationApiService,
                                            JeollaNamDoShelterInformationApiService jeollaNamDoShelterInformationApiService,
@@ -22,6 +23,7 @@ public class ShelterInformationApiServiceMap {
 
         serviceMap.put(SEOUL.getRegion(), seoulShelterInformationApiService);
         serviceMap.put(INCHEON.getRegion(), inCheonShelterInformationApiService);
+        serviceMap.put(GWANG_JU.getRegion(), gwangJuShelterInformationApiService);
         serviceMap.put(GYEONG_GI.getRegion(), gyeongGiShelterInformationApiService);
         serviceMap.put(JEOLLA_BUK_DO.getRegion(), jeollaBukDoShelterInformationApiService);
         serviceMap.put(JEOLLA_NAM_DO.getRegion(), jeollaNamDoShelterInformationApiService);

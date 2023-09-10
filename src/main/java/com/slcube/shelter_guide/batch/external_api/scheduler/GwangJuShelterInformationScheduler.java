@@ -14,11 +14,11 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.JEOLLA_BUK_DO;
+import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.GWANG_JU;
 
 @RequiredArgsConstructor
 @Component
-public class JeollaBukDoShelterInformationScheduler implements ShelterInformationScheduler {
+public class GwangJuShelterInformationScheduler implements ShelterInformationScheduler {
 
     @Qualifier("shelterInformationExternalApiJob")
     private final Job job;
@@ -26,14 +26,13 @@ public class JeollaBukDoShelterInformationScheduler implements ShelterInformatio
     private final JobLauncher jobLauncher;
 
     @Override
-    @Scheduled(cron = "10 0 0 1 * ?")
+    @Scheduled(cron = "30 0 0 1 * ?")
     public void executeFetchingShelterInformationJob() throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
-        jobLauncher.run(
-                job,
+        jobLauncher.run(job,
                 new JobParametersBuilder()
                         .addString("datetime", LocalDateTime.now().toString())
-                        .addString("region", JEOLLA_BUK_DO.getRegion())
-                        .toJobParameters()
-        );
+                        .addString("region", GWANG_JU.getRegion())
+                        .toJobParameters());
+
     }
 }

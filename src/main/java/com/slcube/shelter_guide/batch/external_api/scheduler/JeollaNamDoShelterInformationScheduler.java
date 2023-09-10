@@ -9,6 +9,7 @@ import org.springframework.batch.core.repository.JobExecutionAlreadyRunningExcep
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -25,6 +26,7 @@ public class JeollaNamDoShelterInformationScheduler implements ShelterInformatio
     private final JobLauncher jobLauncher;
 
     @Override
+    @Scheduled(cron = "5 0 0 1 * ?")
     public void executeFetchingShelterInformationJob() throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
         jobLauncher.run(job,
                 new JobParametersBuilder()

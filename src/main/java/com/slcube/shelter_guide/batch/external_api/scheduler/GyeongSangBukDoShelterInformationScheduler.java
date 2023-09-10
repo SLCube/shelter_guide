@@ -25,7 +25,8 @@ public class GyeongSangBukDoShelterInformationScheduler implements ShelterInform
 
     private final JobLauncher jobLauncher;
 
-    @Scheduled(cron = "15 0 0 1 * ?")
+    @Override
+    @Scheduled(cron = "20 0 0 1 * ?")
     public void executeFetchingShelterInformationJob() throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
         jobLauncher.run(
                 job,

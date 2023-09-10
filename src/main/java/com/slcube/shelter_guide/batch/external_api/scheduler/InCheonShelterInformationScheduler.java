@@ -26,7 +26,7 @@ public class InCheonShelterInformationScheduler implements ShelterInformationSch
     private final JobLauncher jobLauncher;
 
     @Override
-    @Scheduled(cron = "25 0 0 1 * ?")
+    @Scheduled(cron = "15 0 0 1 * ?")
     public void executeFetchingShelterInformationJob() throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
         jobLauncher.run(job,
                 new JobParametersBuilder()
