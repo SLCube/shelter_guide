@@ -16,6 +16,7 @@ public class ShelterInformationApiServiceMap {
                                            InCheonShelterInformationApiService inCheonShelterInformationApiService,
                                            GwangJuShelterInformationApiService gwangJuShelterInformationApiService,
                                            GyeongGiShelterInformationApiService gyeongGiShelterInformationApiService,
+                                           ChungCheongNamDoShelterInformationApiService chungCheongNamDoShelterInformationApiService,
                                            JeollaBukDoShelterInformationApiService jeollaBukDoShelterInformationApiService,
                                            JeollaNamDoShelterInformationApiService jeollaNamDoShelterInformationApiService,
                                            GyeongSangBukDoShelterInformationApiService gyeongSangNamDoShelterInformationApiService,
@@ -25,6 +26,7 @@ public class ShelterInformationApiServiceMap {
         serviceMap.put(INCHEON.getRegion(), inCheonShelterInformationApiService);
         serviceMap.put(GWANG_JU.getRegion(), gwangJuShelterInformationApiService);
         serviceMap.put(GYEONG_GI.getRegion(), gyeongGiShelterInformationApiService);
+        serviceMap.put(CHUNG_CHEONG_NAM_DO.getRegion(), chungCheongNamDoShelterInformationApiService);
         serviceMap.put(JEOLLA_BUK_DO.getRegion(), jeollaBukDoShelterInformationApiService);
         serviceMap.put(JEOLLA_NAM_DO.getRegion(), jeollaNamDoShelterInformationApiService);
         serviceMap.put(GYEONG_SANG_BUK_DO.getRegion(), gyeongSangNamDoShelterInformationApiService);
@@ -37,6 +39,12 @@ public class ShelterInformationApiServiceMap {
             throw new IllegalArgumentException("Region can not be null");
         }
 
-        return serviceMap.get(region);
+        ShelterInformationApiService shelterInformationApiService = serviceMap.get(region);
+
+        if (shelterInformationApiService == null) {
+            throw new IllegalArgumentException("ShelterInformation Api Service can not be null");
+        }
+
+        return shelterInformationApiService;
     }
 }
