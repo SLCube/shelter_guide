@@ -1,12 +1,13 @@
 package com.slcube.shelter_guide.batch.external_api.mapper;
 
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.dto.daejeon.DaeJeonShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.gyeong_gi.GyeongGiShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.gyeong_sang_buk_do.GyeongSangBukDoShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.in_cheon.InCheonShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.jeolla_buk_do.JeollaBukDoShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.jeolla_nam_do.JeollaNamDoShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -108,6 +109,15 @@ public class ShelterInformationDtoMapper {
                 .businessEstablishmentName(dto.getBusinessEstablishmentName())
                 .roadNameAddress(dto.getRoadNameAddress())
                 .locationArea(dto.getLocationArea())
+                .build();
+    }
+
+    public static ShelterInformationDto toDto(InCheonShelterInformationResultDataDto dto) {
+        return ShelterInformationDto.builder()
+                .businessEstablishmentName(dto.getBusinessEstablishmentName())
+                .locationArea(dto.getLocationArea())
+                .landNumberAddress(dto.getLandNumberAddress())
+                .roadNameAddress(dto.getRoadNameAddress())
                 .build();
     }
 }

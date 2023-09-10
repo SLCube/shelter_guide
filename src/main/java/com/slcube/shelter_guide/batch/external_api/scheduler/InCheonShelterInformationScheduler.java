@@ -14,11 +14,11 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.DAE_JEON;
+import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.INCHEON;
 
 @RequiredArgsConstructor
 @Component
-public class DaeJeonShelterInformationScheduler implements ShelterInformationScheduler {
+public class InCheonShelterInformationScheduler implements ShelterInformationScheduler {
 
     @Qualifier("shelterInformationExternalApiJob")
     private final Job job;
@@ -26,14 +26,12 @@ public class DaeJeonShelterInformationScheduler implements ShelterInformationSch
     private final JobLauncher jobLauncher;
 
     @Override
-    @Scheduled(cron = "20 0 0 1 * ?")
+    @Scheduled(cron = "25 0 0 1 * ?")
     public void executeFetchingShelterInformationJob() throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
-        jobLauncher.run(
-                job,
+        jobLauncher.run(job,
                 new JobParametersBuilder()
                         .addString("datetime", LocalDateTime.now().toString())
-                        .addString("region", DAE_JEON.getRegion())
-                        .toJobParameters()
-        );
+                        .addString("region", INCHEON.getRegion())
+                        .toJobParameters());
     }
 }

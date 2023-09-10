@@ -13,6 +13,7 @@ public class ShelterInformationApiServiceMap {
     private final Map<String , ShelterInformationApiService> serviceMap = new HashMap<>();
 
     public ShelterInformationApiServiceMap(SeoulShelterInformationApiService seoulShelterInformationApiService,
+                                           InCheonShelterInformationApiService inCheonShelterInformationApiService,
                                            GyeongGiShelterInformationApiService gyeongGiShelterInformationApiService,
                                            JeollaBukDoShelterInformationApiService jeollaBukDoShelterInformationApiService,
                                            JeollaNamDoShelterInformationApiService jeollaNamDoShelterInformationApiService,
@@ -20,6 +21,7 @@ public class ShelterInformationApiServiceMap {
                                            DaeJeonShelterInformationApiService daeJeonShelterInformationApiService) {
 
         serviceMap.put(SEOUL.getRegion(), seoulShelterInformationApiService);
+        serviceMap.put(INCHEON.getRegion(), inCheonShelterInformationApiService);
         serviceMap.put(GYEONG_GI.getRegion(), gyeongGiShelterInformationApiService);
         serviceMap.put(JEOLLA_BUK_DO.getRegion(), jeollaBukDoShelterInformationApiService);
         serviceMap.put(JEOLLA_NAM_DO.getRegion(), jeollaNamDoShelterInformationApiService);
