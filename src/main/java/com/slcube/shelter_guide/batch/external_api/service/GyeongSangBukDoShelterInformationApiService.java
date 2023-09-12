@@ -22,10 +22,10 @@ public class GyeongSangBukDoShelterInformationApiService implements ShelterInfor
 
     private final RestTemplate restTemplate;
 
-    @Value("${external-service.shelter-information.gyeong-sang-nam-do.url}")
+    @Value("${external-service.shelter-information.gyeong-sang-buk-do.url}")
     private String externalUrl;
 
-    @Value("${external-service.shelter-information.gyeong-sang-nam-do.api-key}")
+    @Value("${external-service.shelter-information.gyeong-sang-buk-do.api-key}")
     private String apiKey;
 
     @Override

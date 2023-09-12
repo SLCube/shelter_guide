@@ -53,9 +53,12 @@ external-service:
     jeolla-nam-do:
       url: https://api.odcloud.kr/api/15105960/v1/uddi:4f444fb5-f5e1-46c8-82c9-f752e0af1208?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
       api-key: ENC(a173HZy7nUBj7WLKF8hDktRT/D39k9NHM/tA4hD9+4mBQsUQx6doobgH6vd8FbLNdiSqe9zW93VOiW7GRWsgPyYM3tnMFqwvGb6p3xlaHIewHvoPXLUliGh98JtgMcHYfsz1BSMSMbxeB8BlVgLJ+Q==)
-    gyeong-sang-nam-do:
+    gyeong-sang-buk-do:
       url: https://api.odcloud.kr/api/3083902/v1/uddi:466f096f-f495-4917-b541-93f1037b82c1_201808191154?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
       api-key: ENC(vle6sUQe+0+rZ4gEbICPTEapA24sNp/AdAvZHOr/kGkOEgGWU9+zQInYXae9aGfvpbLSSl5XIFRQ//+JpjzR67QQ2Ol69iACzlulCkDrqhIIkGjMgHk45Dsbc+LTsR0LRpa9B4l+vkKNGDs+EEnJ5g==)
+    gyeong-sang-nam-do:
+      url: https://apis.data.go.kr/6480000/gyeongnamdisasterfacility/gyeongnamdisasterfacilitylist?pageNo={pageIndex}&numOfRows={pageSize}&resultType=json&serviceKey={apiKey}
+      api-key: ENC(e+kjYJ4jVaCALng/W+DFDPLRhM3F6bihtkop14aU6fipcTVIKJidxWK0qyWITpovkyNv82w+HDvzO60GX7oJWkipEK64/67eS2Lxbm3gK5ngQ/UD5/U3Qk8l6FEb3kWPzC5pCd4cXHDOJqCDsqggDg==)
     daejeon:
       url: https://api.odcloud.kr/api/15065249/v1/uddi:0ea884c0-0e90-4c1c-be4c-e04ded0966f3?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
       api-key: ENC(WwX5r08TiU2jnbHb5GeHRPvmtKrZKY7KSHmiOb5yqJJcaWsQVLSuYD85QI9kLPhz9BDI0nj/JuV01kxusGpy98w+yNyECg1Pn5wPP1BobEq7IlbyhaE9OlxllzI/J6n53mKHdT4g/HGWxQfDCPWdEA==)
