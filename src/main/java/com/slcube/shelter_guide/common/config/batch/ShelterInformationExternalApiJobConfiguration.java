@@ -6,7 +6,7 @@ import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformation
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemReader;
 import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemWriter;
 import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
-import com.slcube.shelter_guide.batch.external_api.util.ShelterInformationApiServiceMap;
+import com.slcube.shelter_guide.batch.external_api.util.ShelterInformationApiServiceStrategy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -31,7 +31,7 @@ public class ShelterInformationExternalApiJobConfiguration {
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
 
-    private final ShelterInformationApiServiceMap apiServiceMap;
+    private final ShelterInformationApiServiceStrategy apiServiceMap;
     private final ShelterInformationStagingRepository shelterInformationRepository;
     private final ShelterInformationFetchApiExecutionListener listener;
     private static final int CHUNK_SIZE = 1000;

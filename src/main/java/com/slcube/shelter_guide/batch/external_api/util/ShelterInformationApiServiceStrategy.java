@@ -9,25 +9,27 @@ import java.util.Map;
 import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.*;
 
 @Component
-public class ShelterInformationApiServiceMap {
+public class ShelterInformationApiServiceStrategy {
     private final Map<String , ShelterInformationApiService> serviceMap = new HashMap<>();
 
-    public ShelterInformationApiServiceMap(SeoulShelterInformationApiService seoulShelterInformationApiService,
-                                           InCheonShelterInformationApiService inCheonShelterInformationApiService,
-                                           DaeJeonShelterInformationApiService daeJeonShelterInformationApiService,
-                                           GwangJuShelterInformationApiService gwangJuShelterInformationApiService,
-                                           GyeongGiShelterInformationApiService gyeongGiShelterInformationApiService,
-                                           ChungCheongNamDoShelterInformationApiService chungCheongNamDoShelterInformationApiService,
-                                           JeollaBukDoShelterInformationApiService jeollaBukDoShelterInformationApiService,
-                                           JeollaNamDoShelterInformationApiService jeollaNamDoShelterInformationApiService,
-                                           GyeongSangBukDoShelterInformationApiService gyeongSangBukDoShelterInformationApiService,
-                                           GyeongSangNamDoShelterInformationApiService gyeongSangNamDoShelterInformationApiService) {
+    public ShelterInformationApiServiceStrategy(SeoulShelterInformationApiService seoulShelterInformationApiService,
+                                                InCheonShelterInformationApiService inCheonShelterInformationApiService,
+                                                DaeJeonShelterInformationApiService daeJeonShelterInformationApiService,
+                                                GwangJuShelterInformationApiService gwangJuShelterInformationApiService,
+                                                GyeongGiShelterInformationApiService gyeongGiShelterInformationApiService,
+                                                ChungCheongBukDoShelterInformationApiService chungCheongBukDoShelterInformationApiService,
+                                                ChungCheongNamDoShelterInformationApiService chungCheongNamDoShelterInformationApiService,
+                                                JeollaBukDoShelterInformationApiService jeollaBukDoShelterInformationApiService,
+                                                JeollaNamDoShelterInformationApiService jeollaNamDoShelterInformationApiService,
+                                                GyeongSangBukDoShelterInformationApiService gyeongSangBukDoShelterInformationApiService,
+                                                GyeongSangNamDoShelterInformationApiService gyeongSangNamDoShelterInformationApiService) {
 
         serviceMap.put(SEOUL.getRegion(), seoulShelterInformationApiService);
         serviceMap.put(INCHEON.getRegion(), inCheonShelterInformationApiService);
         serviceMap.put(DAE_JEON.getRegion(), daeJeonShelterInformationApiService);
         serviceMap.put(GWANG_JU.getRegion(), gwangJuShelterInformationApiService);
         serviceMap.put(GYEONG_GI.getRegion(), gyeongGiShelterInformationApiService);
+        serviceMap.put(CHUNG_CHEONG_BUK_DO.getRegion(), chungCheongBukDoShelterInformationApiService);
         serviceMap.put(CHUNG_CHEONG_NAM_DO.getRegion(), chungCheongNamDoShelterInformationApiService);
         serviceMap.put(JEOLLA_BUK_DO.getRegion(), jeollaBukDoShelterInformationApiService);
         serviceMap.put(JEOLLA_NAM_DO.getRegion(), jeollaNamDoShelterInformationApiService);

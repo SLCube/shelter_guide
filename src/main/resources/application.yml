@@ -12,6 +12,9 @@ external-service:
     gyeong-gi:
       url: https://openapi.gg.go.kr/CivilDefenseEvacuation?type=json&key={apiKey}?pIndex={pageIndex}&pSize={pSize}
       api-key: ENC(R8ZSvLIZwmyyLbPsyqBlarZ+pwaS2x/11zd9w0TBmw1BTTkci/fFJIjWKhCYGOjF)
+    chung-cheong-buk-do:
+      url: http://apis.data.go.kr/6430000/emdAreaAcctoMsfrtncntrmsrzoneDataService/getemdAreaAcctoMsfrtncntrmsrzoneData?currentPage={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
+      api-key: ENC(4HTUrBFMeqpM/Dcb12ou5v1gI6JW8+QjSgIzORv7pCQtj0XpKVIyoOZMdA+DQSD0/8kRTuFiLbBtLayQ3Jpjl+gc5L0nIz12XH1Q+3VYVcaIwPaR3aolUdBKlsxtwDCrc7KH+Ee9EUPSXSzXCg6eIQ==)
     chung-cheong-nam-do:
       url: https://api.odcloud.kr/api/15118680/v1/uddi:fa8e1afd-182e-452f-b07f-a217dacc7225?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
       api-key: ENC(pn/fqtyG1Xtbfi6rSmqTvkRREdegaI4LWzBLSO07ZFtAuA+NvBM31guBudxGFQvXaMrQ8kPvnIoohNGACK77IwTAgvHcXAdxvgGXgBAQWT2MXKQi1ogVZRjaxVfLOLcW7IMW2EvwmIvkzX3xWfrxqg==)

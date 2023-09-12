@@ -1,6 +1,7 @@
 package com.slcube.shelter_guide.batch.external_api.mapper;
 
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
+import com.slcube.shelter_guide.batch.external_api.dto.chung_cheong_buk_do.ChungCheongBukDoShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.chung_cheong_nam_do.ChungCheongNamDoShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.daejeon.DaeJeonShelterInformationResultDataDto;
 import com.slcube.shelter_guide.batch.external_api.dto.gwang_ju.GwangJuShelterInformationResultDataDto;
@@ -49,6 +50,32 @@ public class ShelterInformationDtoMapper {
                 .build();
     }
 
+    public static ShelterInformationDto toDto(DaeJeonShelterInformationResultDataDto dto) {
+        return ShelterInformationDto.builder()
+                .locationArea(dto.getLocationArea())
+                .roadNameAddress(dto.getRoadNameAddress())
+                .businessEstablishmentName(dto.getBusinessEstablishmentName())
+                .build();
+    }
+
+    public static ShelterInformationDto toDto(InCheonShelterInformationResultDataDto dto) {
+        return ShelterInformationDto.builder()
+                .businessEstablishmentName(dto.getBusinessEstablishmentName())
+                .locationArea(dto.getLocationArea())
+                .landNumberAddress(dto.getLandNumberAddress())
+                .roadNameAddress(dto.getRoadNameAddress())
+                .build();
+    }
+
+    public static ShelterInformationDto toDto(GwangJuShelterInformationResultDataDto dto) {
+        return ShelterInformationDto.builder()
+                .businessEstablishmentName(dto.getBusinessEstablishmentName())
+                .locationArea(dto.getLocationArea())
+                .landNumberAddress(dto.getLandNumberAddress())
+                .roadNameAddress(dto.getRoadNameAddress())
+                .build();
+    }
+
     public static ShelterInformationDto toDto(GyeongGiShelterInformationResultDataDto dto) {
         return ShelterInformationDto.builder()
                 .managementNumber(dto.getManagementNumber())
@@ -80,6 +107,23 @@ public class ShelterInformationDtoMapper {
                 .build();
     }
 
+    public static ShelterInformationDto toDto(ChungCheongBukDoShelterInformationResultDataDto dto) {
+        return ShelterInformationDto.builder()
+                .businessEstablishmentName(dto.getBusinessEstablishmentName())
+                .roadNameAddress(dto.getRoadNameAddress())
+                .locationArea(dto.getLocationArea())
+                .build();
+    }
+
+    public static ShelterInformationDto toDto(ChungCheongNamDoShelterInformationResultDataDto dto) {
+        return ShelterInformationDto.builder()
+                .businessEstablishmentName(dto.getBusinessEstablishmentName())
+                .landNumberAddress(dto.getLandNumberAddress())
+                .roadNameAddress(dto.getRoadNameAddress())
+                .locationArea(dto.getLocationArea())
+                .build();
+    }
+
     public static ShelterInformationDto toDto(JeollaBukDoShelterInformationResultDataDto dto) {
         return ShelterInformationDto.builder()
                 .licenseDate(dto.getLicenseDate())
@@ -87,23 +131,6 @@ public class ShelterInformationDtoMapper {
                 .locationArea(dto.getLocationArea())
                 .roadNameAddress(dto.getRoadNameAddress())
                 .landNumberAddress(dto.getLandNumberAddress())
-                .build();
-    }
-
-    public static ShelterInformationDto toDto(GyeongSangBukDoShelterInformationResultDataDto dto) {
-        return ShelterInformationDto.builder()
-                .businessEstablishmentName(dto.getBusinessEstablishmentName())
-                .locationArea(dto.getLocationArea())
-                .roadNameAddress(dto.getRoadNameAddress())
-                .landNumberAddress(dto.getLandNumberAddress())
-                .build();
-    }
-
-    public static ShelterInformationDto toDto(DaeJeonShelterInformationResultDataDto dto) {
-        return ShelterInformationDto.builder()
-                .locationArea(dto.getLocationArea())
-                .roadNameAddress(dto.getRoadNameAddress())
-                .businessEstablishmentName(dto.getBusinessEstablishmentName())
                 .build();
     }
 
@@ -115,30 +142,12 @@ public class ShelterInformationDtoMapper {
                 .build();
     }
 
-    public static ShelterInformationDto toDto(InCheonShelterInformationResultDataDto dto) {
+    public static ShelterInformationDto toDto(GyeongSangBukDoShelterInformationResultDataDto dto) {
         return ShelterInformationDto.builder()
                 .businessEstablishmentName(dto.getBusinessEstablishmentName())
                 .locationArea(dto.getLocationArea())
-                .landNumberAddress(dto.getLandNumberAddress())
                 .roadNameAddress(dto.getRoadNameAddress())
-                .build();
-    }
-
-    public static ShelterInformationDto toDto(GwangJuShelterInformationResultDataDto dto) {
-        return ShelterInformationDto.builder()
-                .businessEstablishmentName(dto.getBusinessEstablishmentName())
-                .locationArea(dto.getLocationArea())
                 .landNumberAddress(dto.getLandNumberAddress())
-                .roadNameAddress(dto.getRoadNameAddress())
-                .build();
-    }
-
-    public static ShelterInformationDto toDto(ChungCheongNamDoShelterInformationResultDataDto dto) {
-        return ShelterInformationDto.builder()
-                .businessEstablishmentName(dto.getBusinessEstablishmentName())
-                .landNumberAddress(dto.getLandNumberAddress())
-                .roadNameAddress(dto.getRoadNameAddress())
-                .locationArea(dto.getLocationArea())
                 .build();
     }
 

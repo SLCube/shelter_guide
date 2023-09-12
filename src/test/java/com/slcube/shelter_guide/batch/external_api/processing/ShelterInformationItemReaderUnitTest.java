@@ -2,7 +2,7 @@ package com.slcube.shelter_guide.batch.external_api.processing;
 
 import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.service.SeoulShelterInformationApiService;
-import com.slcube.shelter_guide.batch.external_api.util.ShelterInformationApiServiceMap;
+import com.slcube.shelter_guide.batch.external_api.util.ShelterInformationApiServiceStrategy;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +27,7 @@ public class ShelterInformationItemReaderUnitTest {
     private SeoulShelterInformationApiService seoulShelterInformationApiService;
 
     @Mock
-    private ShelterInformationApiServiceMap apiServiceMap;
+    private ShelterInformationApiServiceStrategy apiServiceMap;
     private ShelterInformationItemReader itemReader;
 
     AutoCloseable autoCloseable;
