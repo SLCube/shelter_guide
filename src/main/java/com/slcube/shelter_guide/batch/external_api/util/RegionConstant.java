@@ -10,6 +10,7 @@ public enum RegionConstant {
     INCHEON("inCheon"),
     DAE_JEON("daeJeon"),
     GWANG_JU("gwangJu"),
+    JEJU("jeju"),
     GYEONG_GI("gyeongGi"),
     CHUNG_CHEONG_BUK_DO("chungCheongBukDo"),
     CHUNG_CHEONG_NAM_DO("chungCheongNamDo"),

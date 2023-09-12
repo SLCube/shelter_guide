@@ -9,6 +9,9 @@ external-service:
     in-cheon:
       url: https://api.odcloud.kr/api/15105989/v1/uddi:01f00634-00bc-4943-be02-f59bf84871ea?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
       api-key: ENC(EuQ572OBcMRa+XrktYQR3KeR/JWbLEtvRST1NVn8C6PAdDLqnvrxFXU8vA6709qDjaQ5Liiy88ZoARHfVcDv67lsyJoKSWY6KBQ+g1fFtN26mUO58jqMMzEp87FArlizqaXYunR7gOfSeqYxM9tLvQ==)
+    jeju:
+      url: https://api.odcloud.kr/api/15056026/v1/uddi:1ee934ce-5400-4d70-a05f-8380cbe616fe_201706281055?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
+      api-key: ENC(JOO9xi3A2n8ZSKCn1W5AeYra9vdawrxD6UWqiLlE6JigeDhJ/aJWlaxvSTTx6/bQLRmCqX8+AgDfRURsD6UgEUzRsQdip0wS6k3gO4TaPsJprCo8nYhaPs2YuI5waHMB13dpFo0SYaOmZY4ZeeW70w==)
     gyeong-gi:
       url: https://openapi.gg.go.kr/CivilDefenseEvacuation?type=json&key={apiKey}?pIndex={pageIndex}&pSize={pSize}
       api-key: ENC(R8ZSvLIZwmyyLbPsyqBlarZ+pwaS2x/11zd9w0TBmw1BTTkci/fFJIjWKhCYGOjF)
