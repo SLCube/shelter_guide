@@ -1,41 +1,63 @@
 package com.slcube.shelter_guide.batch.external_api.processing;
 
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
+import com.slcube.shelter_guide.batch.external_api.service.SeoulShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.util.ShelterInformationApiServiceStrategy;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.SEOUL;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ShelterInformationItemReaderUnitTest {
 
     @Mock
-    private ShelterInformationApiService shelterInformationApiService;
+    private SeoulShelterInformationApiService seoulShelterInformationApiService;
 
-    @InjectMocks
+    @Mock
+    private ShelterInformationApiServiceStrategy apiServiceMap;
     private ShelterInformationItemReader itemReader;
 
+    AutoCloseable autoCloseable;
+
+    @Before
+    public void setUp() {
+
+        autoCloseable = MockitoAnnotations.openMocks(this);
+
+        when(apiServiceMap.getApiService(anyString()))
+                .thenReturn(seoulShelterInformationApiService);
+
+        this.itemReader = new ShelterInformationItemReader(SEOUL.getRegion(), apiServiceMap);
+    }
+
+    @After
+    public void cleanUp() throws Exception {
+        autoCloseable.close();
+    }
+
     @Test
-    @DisplayName("서울시 대피소에 대한 Item Reader 단위테스트")
-    public void seoulShelterInformationItemReaderUnitTest() throws Exception {
-        List<SeoulShelterInformationResultDataDto> resultDataDtoList = new ArrayList<>();
+    public void 서울시_대피소에_대한_Item_Reader_단위테스트() throws Exception {
+        List<ShelterInformationDto> resultDataDtoList = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
-            SeoulShelterInformationResultDataDto seoulShelterInformationResultDataDto = new SeoulShelterInformationResultDataDto();
-            resultDataDtoList.add(seoulShelterInformationResultDataDto);
+            ShelterInformationDto shelterInformationResultDataDto = new ShelterInformationDto();
+            resultDataDtoList.add(shelterInformationResultDataDto);
         }
 
-        when(shelterInformationApiService.fetchShelterInformation(anyInt(), anyInt()))
+        when(seoulShelterInformationApiService.fetchShelterInformation(anyInt(), anyInt()))
                 .thenReturn(resultDataDtoList);
 
         assertThat(itemReader.read()).isEqualTo(resultDataDtoList);
@@ -43,8 +65,8 @@ public class ShelterInformationItemReaderUnitTest {
 
     @Test
     public void 서울시_대피소_정보_리스트가_비어있을_때의_테스트() throws Exception {
-        List<SeoulShelterInformationResultDataDto> resultDataDtoList = new ArrayList<>();
-        when(shelterInformationApiService.fetchShelterInformation(anyInt(), anyInt()))
+        List<ShelterInformationDto> resultDataDtoList = new ArrayList<>();
+        when(seoulShelterInformationApiService.fetchShelterInformation(anyInt(), anyInt()))
                 .thenReturn(resultDataDtoList);
 
         assertThat(itemReader.read()).isNull();

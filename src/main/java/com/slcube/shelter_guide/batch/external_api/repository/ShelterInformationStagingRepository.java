@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ShelterInformationStagingRepository extends JpaRepository<ShelterInformationStaging, Long> {
-    Optional<ShelterInformationStaging> findByManagementNumber(String managementNumber);
+
+    Optional<ShelterInformationStaging> findByBusinessEstablishmentName(String businessEstablishmentName);
 
     @Query("select s from ShelterInformationStaging s")
     List<ShelterInformationStaging> findAllWithPaging(Pageable pageable);

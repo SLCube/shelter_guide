@@ -1,9 +1,11 @@
 package com.slcube.shelter_guide.batch.external_api.service;
 
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultCodeDto;
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDto;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
+import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationDto;
+import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultCodeDto;
+import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDto;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,36 +14,46 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
 
 @ExtendWith(MockitoExtension.class)
-public class ShelterInformationApiServiceUnitTest {
+public class SeoulShelterInformationApiServiceUnitTest {
 
     @Mock
     private RestTemplate restTemplate;
 
     @InjectMocks
-    private ShelterInformationApiService shelterInformationApiService;
+    private SeoulShelterInformationApiService seoulShelterInformationApiService;
 
     private final int EXPECTED_LIST_SIZE = 3;
 
+    @BeforeEach
+    public void setUp() {
+        setField(seoulShelterInformationApiService, "externalUrl", "http://openapi.seoul.go.kr:8088/{apiKey}/json/LOCALDATA_114602");
+        setField(seoulShelterInformationApiService, "apiKey", "unit-test-api-key");
+    }
+
     @Test
-    void 서울시_공공_api에서_대피소_정보를_갖고오는_메소드_테스트() {
+    void 서울시_공공_api에서_대피소_정보를_갖고오는_메소드_테스트() throws MalformedURLException, URISyntaxException {
+
         SeoulShelterInformationDto seoulShelterInformationDto = createShelterInformationDto();
 
-        when(restTemplate.getForObject(anyString(), Mockito.<Class<SeoulShelterInformationDto>>any()))
+        when(restTemplate.getForObject(any(URI.class), Mockito.<Class<SeoulShelterInformationDto>>any()))
                 .thenReturn(seoulShelterInformationDto);
 
         int startIndex = 1;
         int endIndex = 100;
 
-        List<SeoulShelterInformationResultDataDto> resultDataDtoList = shelterInformationApiService.fetchShelterInformation(startIndex, endIndex);
+        List<ShelterInformationDto> resultDataDtoList = seoulShelterInformationApiService.fetchShelterInformation(startIndex, endIndex);
         assertThat(resultDataDtoList).hasSize(EXPECTED_LIST_SIZE);
     }
 

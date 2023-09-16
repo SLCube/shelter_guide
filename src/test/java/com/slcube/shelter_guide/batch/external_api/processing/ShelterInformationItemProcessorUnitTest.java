@@ -1,8 +1,8 @@
 package com.slcube.shelter_guide.batch.external_api.processing;
 
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
 
@@ -22,7 +22,7 @@ import static org.springframework.test.util.ReflectionTestUtils.setField;
 public class ShelterInformationItemProcessorUnitTest {
 
     @Mock
-    private ShelterInformationApiService shelterInformationApiService;
+    private ShelterInformationStagingRepository shelterInformationStagingRepository;
 
     @InjectMocks
     private ShelterInformationItemProcessor shelterInformationItemProcessor;
@@ -30,11 +30,11 @@ public class ShelterInformationItemProcessorUnitTest {
     @Test
     void 테이블에_데이터가_없을_때의_프로세스_테스트() throws Exception {
 
-        when(shelterInformationApiService.findByManagementNumber(any()))
+        when(shelterInformationStagingRepository.findByBusinessEstablishmentName(anyString()))
                 .thenReturn(Optional.empty());
 
-        List<SeoulShelterInformationResultDataDto> shelterInformationList = createShelterInformationList();
-        List<SeoulShelterInformationResultDataDto> originalShelterInformationList = new ArrayList<>(shelterInformationList);
+        List<ShelterInformationDto> shelterInformationList = createShelterInformationList();
+        List<ShelterInformationDto> originalShelterInformationList = new ArrayList<>(shelterInformationList);
 
         shelterInformationItemProcessor.process(shelterInformationList);
 
@@ -45,10 +45,10 @@ public class ShelterInformationItemProcessorUnitTest {
     void 테이블에_수정해야될_데이터가_존재할_때의_프로세스_테스트() throws Exception {
         String managementNumber = "0";
 
-        when(shelterInformationApiService.findByManagementNumber(managementNumber))
-                .thenReturn(Optional.of(ShelterInformationStaging.builder().build()));
+        List<ShelterInformationDto> shelterInformationList = createShelterInformationList();
 
-        List<SeoulShelterInformationResultDataDto> shelterInformationList = createShelterInformationList();
+        when(shelterInformationStagingRepository.findByBusinessEstablishmentName(managementNumber))
+                .thenReturn(Optional.of(ShelterInformationStaging.builder().build()));
 
         shelterInformationItemProcessor.process(shelterInformationList);
 
@@ -57,11 +57,11 @@ public class ShelterInformationItemProcessorUnitTest {
         assertThat(shelterInformationList).hasSize(expectedListSize);
     }
 
-    private List<SeoulShelterInformationResultDataDto> createShelterInformationList() {
-        List<SeoulShelterInformationResultDataDto> shelterInformationResultDataDtoList
+    private List<ShelterInformationDto> createShelterInformationList() {
+        List<ShelterInformationDto> shelterInformationResultDataDtoList
                 = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            SeoulShelterInformationResultDataDto shelterInformationDataDto = new SeoulShelterInformationResultDataDto();
+            ShelterInformationDto shelterInformationDataDto = new ShelterInformationDto();
             setField(shelterInformationDataDto, "managementNumber", String.valueOf(i));
             setField(shelterInformationDataDto, "licenseDate", "2023-07-13");
             setField(shelterInformationDataDto, "businessStatusCode", "01");

@@ -33,13 +33,15 @@ public class ShelterInformation {
     private String landNumberAddress;
     private String roadNameAddress;
     private String roadNamePostalCode;
+    private String businessEstablishmentName;
     private String lastModifiedDate;
 
     @Builder
     private ShelterInformation(String managementNumber, String licenseDate, String businessStatusCode, String businessStatusName,
                                String detailedBusinessStatusCode, String detailedBusinessStatusName, String closingDate,
                                double positionX, double positionY, double locationArea, String locationPostalCode,
-                               String landNumberAddress, String roadNameAddress, String roadNamePostalCode, String lastModifiedDate) {
+                               String landNumberAddress, String roadNameAddress, String roadNamePostalCode, String lastModifiedDate,
+                               String businessEstablishmentName) {
         this.managementNumber = managementNumber;
         this.licenseDate = licenseDate;
         this.businessStatusCode = businessStatusCode;
@@ -54,6 +56,7 @@ public class ShelterInformation {
         this.landNumberAddress = landNumberAddress;
         this.roadNameAddress = roadNameAddress;
         this.roadNamePostalCode = roadNamePostalCode;
+        this.businessEstablishmentName = businessEstablishmentName;
         this.lastModifiedDate = lastModifiedDate;
     }
 
@@ -72,6 +75,25 @@ public class ShelterInformation {
         this.landNumberAddress = shelterInformationStaging.getLandNumberAddress();
         this.roadNameAddress = shelterInformationStaging.getRoadNameAddress();
         this.roadNamePostalCode = shelterInformationStaging.getRoadNamePostalCode();
+        this.businessEstablishmentName = shelterInformationStaging.getBusinessEstablishmentName();
         this.lastModifiedDate = shelterInformationStaging.getLastModifiedDate();
+    }
+
+    public boolean areEqual(ShelterInformationStaging shelterInformationStaging, ShelterInformation shelterInformation) {
+        return shelterInformationStaging.getManagementNumber().equals(shelterInformation.getManagementNumber())
+                && shelterInformationStaging.getLicenseDate().equals(shelterInformation.getLicenseDate())
+                && shelterInformationStaging.getBusinessStatusCode().equals(shelterInformation.getBusinessStatusCode())
+                && shelterInformationStaging.getBusinessStatusName().equals(shelterInformation.getBusinessStatusName())
+                && shelterInformationStaging.getDetailedBusinessStatusCode().equals(shelterInformation.getDetailedBusinessStatusCode())
+                && shelterInformationStaging.getDetailedBusinessStatusName().equals(shelterInformation.getDetailedBusinessStatusName())
+                && shelterInformationStaging.getClosingDate().equals(shelterInformation.getClosingDate())
+                && shelterInformationStaging.getPositionX() == shelterInformation.getPositionX()
+                && shelterInformationStaging.getPositionY() == shelterInformation.getPositionY()
+                && shelterInformationStaging.getLocationArea() == shelterInformation.getLocationArea()
+                && shelterInformationStaging.getLocationPostalCode().equals(shelterInformation.getLocationPostalCode())
+                && shelterInformationStaging.getLandNumberAddress().equals(shelterInformation.getLandNumberAddress())
+                && shelterInformationStaging.getRoadNameAddress().equals(shelterInformation.getRoadNameAddress())
+                && shelterInformationStaging.getRoadNamePostalCode().equals(shelterInformation.getRoadNamePostalCode())
+                && shelterInformationStaging.getLastModifiedDate().equals(shelterInformation.getLastModifiedDate());
     }
 }

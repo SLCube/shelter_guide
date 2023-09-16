@@ -1,6 +1,6 @@
 package com.slcube.shelter_guide.batch.external_api.entity;
 
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -57,13 +57,17 @@ public class ShelterInformationStaging {
     private String roadNamePostalCode;
 
     @Column(nullable = false)
+    private String businessEstablishmentName;
+
+    @Column(nullable = false)
     private String lastModifiedDate;
 
     @Builder
     private ShelterInformationStaging(String managementNumber, String licenseDate, String businessStatusCode,
                                       String businessStatusName, String detailedBusinessStatusCode, String detailedBusinessStatusName,
                                       String closingDate, double positionX, double positionY, double locationArea, String locationPostalCode,
-                                      String landNumberAddress, String roadNameAddress, String roadNamePostalCode, String lastModifiedDate) {
+                                      String landNumberAddress, String roadNameAddress, String roadNamePostalCode, String lastModifiedDate,
+                                      String businessEstablishmentName) {
         this.managementNumber = managementNumber != null ? managementNumber : "";
         this.licenseDate = licenseDate != null ? licenseDate : "";
         this.businessStatusCode = businessStatusCode != null ? businessStatusCode : "";
@@ -78,10 +82,11 @@ public class ShelterInformationStaging {
         this.landNumberAddress = landNumberAddress != null ? landNumberAddress : "";
         this.roadNameAddress = roadNameAddress != null ? roadNameAddress : "";
         this.roadNamePostalCode = roadNamePostalCode != null ? roadNamePostalCode : "";
+        this.businessEstablishmentName = businessEstablishmentName != null ? businessEstablishmentName : "";
         this.lastModifiedDate = lastModifiedDate != null ? lastModifiedDate : "";
     }
 
-    public void update(SeoulShelterInformationResultDataDto dto) {
+    public void update(ShelterInformationDto dto) {
         this.managementNumber = dto.getManagementNumber();
         this.licenseDate = dto.getLicenseDate();
         this.businessStatusCode = dto.getBusinessStatusCode();
@@ -93,5 +98,23 @@ public class ShelterInformationStaging {
         this.positionY = dto.getPositionY();
         this.locationArea = dto.getLocationArea();
         this.lastModifiedDate = dto.getLastModifiedDate();
+    }
+
+    public static boolean areEqual(ShelterInformationDto dto, ShelterInformationStaging shelterInformationStaging) {
+        return shelterInformationStaging.getManagementNumber().equals(dto.getManagementNumber())
+                && shelterInformationStaging.getLicenseDate().equals(dto.getLicenseDate())
+                && shelterInformationStaging.getBusinessStatusCode().equals(dto.getBusinessStatusCode())
+                && shelterInformationStaging.getBusinessStatusName().equals(dto.getBusinessStatusName())
+                && shelterInformationStaging.getDetailedBusinessStatusCode().equals(dto.getDetailedBusinessStatusCode())
+                && shelterInformationStaging.getDetailedBusinessStatusName().equals(dto.getDetailedBusinessStatusName())
+                && shelterInformationStaging.getClosingDate().equals(dto.getClosingDate())
+                && shelterInformationStaging.getPositionX() == dto.getPositionX()
+                && shelterInformationStaging.getPositionY() == dto.getPositionY()
+                && shelterInformationStaging.getLocationArea() == dto.getLocationArea()
+                && shelterInformationStaging.getLocationPostalCode().equals(dto.getLocationPostalCode())
+                && shelterInformationStaging.getLandNumberAddress().equals(dto.getLandNumberAddress())
+                && shelterInformationStaging.getRoadNameAddress().equals(dto.getRoadNameAddress())
+                && shelterInformationStaging.getRoadNamePostalCode().equals(dto.getRoadNamePostalCode())
+                && shelterInformationStaging.getLastModifiedDate().equals(dto.getLastModifiedDate());
     }
 }

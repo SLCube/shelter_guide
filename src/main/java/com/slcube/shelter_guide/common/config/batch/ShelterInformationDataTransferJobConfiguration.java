@@ -1,10 +1,11 @@
 package com.slcube.shelter_guide.common.config.batch;
 
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
+import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
 import com.slcube.shelter_guide.batch.transfer_data.processing.ShelterInformationDataTransferItemProcessor;
 import com.slcube.shelter_guide.batch.transfer_data.processing.ShelterInformationDataTransferItemReader;
 import com.slcube.shelter_guide.batch.transfer_data.processing.ShelterInformationDataTransferItemWriter;
-import com.slcube.shelter_guide.batch.transfer_data.service.ShelterInformationDataTransferService;
+import com.slcube.shelter_guide.business.repository.ShelterInformationRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -27,9 +28,9 @@ public class ShelterInformationDataTransferJobConfiguration {
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
 
-    private final ShelterInformationDataTransferService shelterInformationDataTransferService;
-
-    private static final int CHUNK_SIZE = 100;
+    private final ShelterInformationRepository shelterInformationRepository;
+    private final ShelterInformationStagingRepository shelterInformationStagingRepository;
+    private static final int CHUNK_SIZE = 1000;
 
     @Bean
     @Qualifier("shelterInformationDataTransferJob")
@@ -53,18 +54,18 @@ public class ShelterInformationDataTransferJobConfiguration {
     @Bean
     @StepScope
     public ShelterInformationDataTransferItemReader shelterInformationDataTransferItemReader() {
-        return new ShelterInformationDataTransferItemReader(shelterInformationDataTransferService);
+        return new ShelterInformationDataTransferItemReader(shelterInformationStagingRepository);
     }
 
     @Bean
     @StepScope
     public ShelterInformationDataTransferItemWriter shelterInformationDataTransferItemWriter() {
-        return new ShelterInformationDataTransferItemWriter(shelterInformationDataTransferService);
+        return new ShelterInformationDataTransferItemWriter(shelterInformationRepository);
     }
 
     @Bean
     @StepScope
     public ShelterInformationDataTransferItemProcessor shelterInformationDataTransferItemProcessor() {
-        return new ShelterInformationDataTransferItemProcessor(shelterInformationDataTransferService);
+        return new ShelterInformationDataTransferItemProcessor(shelterInformationRepository);
     }
 }

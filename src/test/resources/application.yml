@@ -33,9 +33,47 @@ spring:
 external-service:
   shelter-information:
     seoul:
-      url: http://openapi.seoul.go.kr:8088/{apiKey}/json/LOCALDATA_114602
+      url: http://openapi.seoul.go.kr:8088/{apiKey}/json/LOCALDATA_114602/{startIndex}/{endIndex}
       api-key: ENC(jB8U4hlf2lE9t94u6SEwpW2nVsmZSxn1PJCoAfL6oDpAv3TBCW8GrQ==)
+    in-cheon:
+      url: https://api.odcloud.kr/api/15105989/v1/uddi:01f00634-00bc-4943-be02-f59bf84871ea?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
+      api-key: ENC(EuQ572OBcMRa+XrktYQR3KeR/JWbLEtvRST1NVn8C6PAdDLqnvrxFXU8vA6709qDjaQ5Liiy88ZoARHfVcDv67lsyJoKSWY6KBQ+g1fFtN26mUO58jqMMzEp87FArlizqaXYunR7gOfSeqYxM9tLvQ==)
+    gwang-ju:
+      url: https://api.odcloud.kr/api/15059989/v1/uddi:3d348c76-ac6b-4934-827f-9d4d7525112a?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
+      api-key: ENC(1cmLYwvw9rOV0i6GyAe87y//y2ZZq67ISvqPfRQt3qb3c5TSCo6yzY0tEEKD/Yjb17LST84r/FmO6jSHXr1Q2OLXEyyiHPDAW4/INzO5ibmJbFKj0PK0yEXDMpbViErGBHRjTXt/s1x3fU5TPVJpjg==)
+    daejeon:
+      url: https://api.odcloud.kr/api/15065249/v1/uddi:0ea884c0-0e90-4c1c-be4c-e04ded0966f3?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
+      api-key: ENC(WwX5r08TiU2jnbHb5GeHRPvmtKrZKY7KSHmiOb5yqJJcaWsQVLSuYD85QI9kLPhz9BDI0nj/JuV01kxusGpy98w+yNyECg1Pn5wPP1BobEq7IlbyhaE9OlxllzI/J6n53mKHdT4g/HGWxQfDCPWdEA==)
+    jeju:
+      url: https://api.odcloud.kr/api/15056026/v1/uddi:1ee934ce-5400-4d70-a05f-8380cbe616fe_201706281055?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
+      api-key: ENC(JOO9xi3A2n8ZSKCn1W5AeYra9vdawrxD6UWqiLlE6JigeDhJ/aJWlaxvSTTx6/bQLRmCqX8+AgDfRURsD6UgEUzRsQdip0wS6k3gO4TaPsJprCo8nYhaPs2YuI5waHMB13dpFo0SYaOmZY4ZeeW70w==)
+    gyeong-gi:
+      url: https://openapi.gg.go.kr/CivilDefenseEvacuation?type=json&key={apiKey}&pIndex={pageIndex}&pSize={pSize}
+      api-key: ENC(R8ZSvLIZwmyyLbPsyqBlarZ+pwaS2x/11zd9w0TBmw1BTTkci/fFJIjWKhCYGOjF)
+    chung-cheong-buk-do:
+      url: http://apis.data.go.kr/6430000/emdAreaAcctoMsfrtncntrmsrzoneDataService/getemdAreaAcctoMsfrtncntrmsrzoneData?currentPage={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
+      api-key: ENC(4HTUrBFMeqpM/Dcb12ou5v1gI6JW8+QjSgIzORv7pCQtj0XpKVIyoOZMdA+DQSD0/8kRTuFiLbBtLayQ3Jpjl+gc5L0nIz12XH1Q+3VYVcaIwPaR3aolUdBKlsxtwDCrc7KH+Ee9EUPSXSzXCg6eIQ==)
+    chung-cheong-nam-do:
+      url: https://api.odcloud.kr/api/15118680/v1/uddi:fa8e1afd-182e-452f-b07f-a217dacc7225?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
+      api-key: ENC(pn/fqtyG1Xtbfi6rSmqTvkRREdegaI4LWzBLSO07ZFtAuA+NvBM31guBudxGFQvXaMrQ8kPvnIoohNGACK77IwTAgvHcXAdxvgGXgBAQWT2MXKQi1ogVZRjaxVfLOLcW7IMW2EvwmIvkzX3xWfrxqg==)
+    jeolla-buk-do:
+      url: https://api.odcloud.kr/api/15055712/v1/uddi:2047b907-2c87-4177-8411-fb0e71043d2f_201708171411?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
+      api-key: ENC(Gs0f7dJh9s7d9VX7C2HPC41sUTHnISBGcLElxp3ymCKc1byWL1NYg9RzB4p4u6mE3DymtmzmqsINQWqtkYZlZTQipciEn6vladwdn7fLZqNXxXF0spDyGLUZyzJmX10mFtxw/SoqH29W4aSqHsn3GQ==)
+    jeolla-nam-do:
+      url: https://api.odcloud.kr/api/15105960/v1/uddi:4f444fb5-f5e1-46c8-82c9-f752e0af1208?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
+      api-key: ENC(a173HZy7nUBj7WLKF8hDktRT/D39k9NHM/tA4hD9+4mBQsUQx6doobgH6vd8FbLNdiSqe9zW93VOiW7GRWsgPyYM3tnMFqwvGb6p3xlaHIewHvoPXLUliGh98JtgMcHYfsz1BSMSMbxeB8BlVgLJ+Q==)
+    gyeong-sang-buk-do:
+      url: https://api.odcloud.kr/api/3083902/v1/uddi:466f096f-f495-4917-b541-93f1037b82c1_201808191154?page={pageIndex}&perPage={pageSize}&serviceKey={apiKey}
+      api-key: ENC(vle6sUQe+0+rZ4gEbICPTEapA24sNp/AdAvZHOr/kGkOEgGWU9+zQInYXae9aGfvpbLSSl5XIFRQ//+JpjzR67QQ2Ol69iACzlulCkDrqhIIkGjMgHk45Dsbc+LTsR0LRpa9B4l+vkKNGDs+EEnJ5g==)
+    gyeong-sang-nam-do:
+      url: https://apis.data.go.kr/6480000/gyeongnamdisasterfacility/gyeongnamdisasterfacilitylist?pageNo={pageIndex}&numOfRows={pageSize}&resultType=json&serviceKey={apiKey}
+      api-key: ENC(e+kjYJ4jVaCALng/W+DFDPLRhM3F6bihtkop14aU6fipcTVIKJidxWK0qyWITpovkyNv82w+HDvzO60GX7oJWkipEK64/67eS2Lxbm3gK5ngQ/UD5/U3Qk8l6FEb3kWPzC5pCd4cXHDOJqCDsqggDg==)
+
 
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor
+
+#logging:
+#  level:
+#    root: debug

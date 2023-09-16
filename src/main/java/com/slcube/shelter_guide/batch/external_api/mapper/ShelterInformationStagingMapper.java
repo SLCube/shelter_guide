@@ -1,6 +1,6 @@
 package com.slcube.shelter_guide.batch.external_api.mapper;
 
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ShelterInformationStagingMapper {
 
-    public static ShelterInformationStaging toEntity(SeoulShelterInformationResultDataDto shelterInformationDto) {
+    public static ShelterInformationStaging toEntity(ShelterInformationDto shelterInformationDto) {
         return ShelterInformationStaging.builder()
                 .managementNumber(shelterInformationDto.getManagementNumber())
                 .licenseDate(shelterInformationDto.getLicenseDate())

@@ -1,18 +1,13 @@
 package com.slcube.shelter_guide.batch.transfer_data.processing;
 
-import com.slcube.shelter_guide.batch.transfer_data.service.ShelterInformationDataTransferService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 class ShelterInformationDataTransferItemWriterUnitTest {
-
-    @Mock
-    private ShelterInformationDataTransferService shelterInformationDataTransferService;
 
     @InjectMocks
     private ShelterInformationDataTransferItemWriter shelterInformationDataTransferItemWriter;

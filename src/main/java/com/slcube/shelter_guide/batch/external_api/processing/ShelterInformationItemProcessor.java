@@ -1,9 +1,8 @@
 package com.slcube.shelter_guide.batch.external_api.processing;
 
-import com.slcube.shelter_guide.batch.external_api.comparator.ShelterInformationStagingComparator;
-import com.slcube.shelter_guide.batch.external_api.dto.SeoulShelterInformationResultDataDto;
+import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.external_api.service.ShelterInformationApiService;
+import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemProcessor;
 
@@ -12,25 +11,24 @@ import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
-public class ShelterInformationItemProcessor implements ItemProcessor<List<SeoulShelterInformationResultDataDto>, List<SeoulShelterInformationResultDataDto>> {
+public class ShelterInformationItemProcessor implements ItemProcessor<List<ShelterInformationDto>, List<ShelterInformationDto>> {
 
-    private final ShelterInformationApiService shelterInformationApiService;
+    private final ShelterInformationStagingRepository shelterInformationStagingRepository;
 
     @Override
-    public List<SeoulShelterInformationResultDataDto> process(List<SeoulShelterInformationResultDataDto> item) throws Exception {
+    public List<ShelterInformationDto> process(List<ShelterInformationDto> item) throws Exception {
 
-        Iterator<SeoulShelterInformationResultDataDto> iterator = item.iterator();
+        Iterator<ShelterInformationDto> iterator = item.iterator();
 
         while (iterator.hasNext()) {
-            SeoulShelterInformationResultDataDto seoulShelterInformationResultDataDto = iterator.next();
-            Optional<ShelterInformationStaging> shelterInformationStaging =
-                    shelterInformationApiService.findByManagementNumber(seoulShelterInformationResultDataDto.getManagementNumber());
+            ShelterInformationDto shelterInformationDto = iterator.next();
+            Optional<ShelterInformationStaging> foundShelterInformationStaging = shelterInformationStagingRepository.findByBusinessEstablishmentName(shelterInformationDto.getBusinessEstablishmentName());
 
-            if (shelterInformationStaging.isPresent()) {
-                ShelterInformationStaging shelterInformationStagingEntity = shelterInformationStaging.get();
+            if (foundShelterInformationStaging.isPresent()) {
+                ShelterInformationStaging shelterInformationStaging = foundShelterInformationStaging.get();
 
-                if (!ShelterInformationStagingComparator.areEqual(seoulShelterInformationResultDataDto, shelterInformationStagingEntity)) {
-                    shelterInformationStagingEntity.update(seoulShelterInformationResultDataDto);
+                if (!ShelterInformationStaging.areEqual(shelterInformationDto, shelterInformationStaging)) {
+                    shelterInformationStaging.update(shelterInformationDto);
                 }
                 iterator.remove();
             }
@@ -39,3 +37,4 @@ public class ShelterInformationItemProcessor implements ItemProcessor<List<Seoul
         return item;
     }
 }
+
