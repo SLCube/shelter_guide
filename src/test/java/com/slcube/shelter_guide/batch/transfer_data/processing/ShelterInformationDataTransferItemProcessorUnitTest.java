@@ -10,11 +10,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -28,27 +28,30 @@ class ShelterInformationDataTransferItemProcessorUnitTest {
 
     @Test
     void 기존_데이터가_없을때_processor_테스트() throws Exception {
-        when(shelterInformationRepository.findByBusinessEstablishmentName(anyString()))
-                .thenReturn(Optional.empty());
+        when(shelterInformationRepository.findByBusinessEstablishmentNameIn(anyList()))
+                .thenReturn(Collections.emptyList());
 
         List<ShelterInformationStaging> shelterInformationStagings = createShelterInformationStagings();
         List<ShelterInformationStaging> originalShelterInformationStagings = new ArrayList<>(shelterInformationStagings);
 
-        shelterInformationDataTransferItemProcessor.process(shelterInformationStagings);
+        List<ShelterInformationStaging> result = shelterInformationDataTransferItemProcessor.process(shelterInformationStagings);
 
-        assertThat(shelterInformationStagings).isEqualTo(originalShelterInformationStagings);
+        assertThat(result).isEqualTo(originalShelterInformationStagings);
     }
 
     @Test
     void 수정이_필요한_데이터가_있을때_테스트() throws Exception {
         String managementNumber = "0";
 
-        when(shelterInformationRepository.findByBusinessEstablishmentName(managementNumber))
-                .thenReturn(Optional.of(createShelterInformation()));
-        List<ShelterInformationStaging> shelterInformationStagings = createShelterInformationStagings();
-        shelterInformationDataTransferItemProcessor.process(shelterInformationStagings);
+        when(shelterInformationRepository.findByBusinessEstablishmentNameIn(anyList()))
+                .thenReturn(List.of(createShelterInformation(),
+                        ShelterInformation.builder().build(),
+                        ShelterInformation.builder().build()));
 
-        assertThat(shelterInformationStagings).hasSize(2);
+        List<ShelterInformationStaging> shelterInformationStagings = createShelterInformationStagings();
+        List<ShelterInformationStaging> result = shelterInformationDataTransferItemProcessor.process(shelterInformationStagings);
+
+        assertThat(result).hasSize(2);
     }
 
     private List<ShelterInformationStaging> createShelterInformationStagings() {
@@ -68,6 +71,7 @@ class ShelterInformationDataTransferItemProcessorUnitTest {
                     .roadNamePostalCode("")
                     .landNumberAddress("서울특별시 구로구 고척동 342 벽산베스트블루밍아파트")
                     .locationPostalCode("08228")
+                    .businessEstablishmentName("벽산블루밍아파트" + i)
                     .roadNameAddress("서울특별시 구로구 고척로60길 30, 지하1~2층 (고척동, 벽산베스트블루밍아파트)")
                     .lastModifiedDate("2023-07-24 15:53:31")
                     .build();
@@ -79,7 +83,7 @@ class ShelterInformationDataTransferItemProcessorUnitTest {
     }
 
     private ShelterInformation createShelterInformation() {
-        ShelterInformation shelterInformation = ShelterInformation.builder()
+        return ShelterInformation.builder()
                 .managementNumber("3160000-S202300004")
                 .licenseDate("2023-07-13")
                 .businessStatusCode("01")
@@ -91,9 +95,9 @@ class ShelterInformationDataTransferItemProcessorUnitTest {
                 .locationArea(15666.0)
                 .landNumberAddress("서울특별시 구로구 고척동 342 벽산베스트블루밍아파트")
                 .locationPostalCode("08228")
+                .businessEstablishmentName("벽산블루밍아파트" + 0)
                 .roadNameAddress("서울특별시 구로구 고척로60길 30, 지하1~2층 (고척동, 벽산베스트블루밍아파트)")
                 .lastModifiedDate("2023-07-24 15:53:31")
                 .build();
-        return shelterInformation;
     }
 }

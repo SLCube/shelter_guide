@@ -79,21 +79,21 @@ public class ShelterInformation {
         this.lastModifiedDate = shelterInformationStaging.getLastModifiedDate();
     }
 
-    public boolean areEqual(ShelterInformationStaging shelterInformationStaging, ShelterInformation shelterInformation) {
-        return shelterInformationStaging.getManagementNumber().equals(shelterInformation.getManagementNumber())
-                && shelterInformationStaging.getLicenseDate().equals(shelterInformation.getLicenseDate())
-                && shelterInformationStaging.getBusinessStatusCode().equals(shelterInformation.getBusinessStatusCode())
-                && shelterInformationStaging.getBusinessStatusName().equals(shelterInformation.getBusinessStatusName())
-                && shelterInformationStaging.getDetailedBusinessStatusCode().equals(shelterInformation.getDetailedBusinessStatusCode())
-                && shelterInformationStaging.getDetailedBusinessStatusName().equals(shelterInformation.getDetailedBusinessStatusName())
-                && shelterInformationStaging.getClosingDate().equals(shelterInformation.getClosingDate())
-                && shelterInformationStaging.getPositionX() == shelterInformation.getPositionX()
-                && shelterInformationStaging.getPositionY() == shelterInformation.getPositionY()
-                && shelterInformationStaging.getLocationArea() == shelterInformation.getLocationArea()
-                && shelterInformationStaging.getLocationPostalCode().equals(shelterInformation.getLocationPostalCode())
-                && shelterInformationStaging.getLandNumberAddress().equals(shelterInformation.getLandNumberAddress())
-                && shelterInformationStaging.getRoadNameAddress().equals(shelterInformation.getRoadNameAddress())
-                && shelterInformationStaging.getRoadNamePostalCode().equals(shelterInformation.getRoadNamePostalCode())
-                && shelterInformationStaging.getLastModifiedDate().equals(shelterInformation.getLastModifiedDate());
+    public boolean areEqual(ShelterInformationStaging shelterInformationStaging) {
+        return this.managementNumber.equals(shelterInformationStaging.getManagementNumber())
+                && this.licenseDate.equals(shelterInformationStaging.getLicenseDate())
+                && this.businessStatusCode.equals(shelterInformationStaging.getLicenseDate())
+                && this.businessStatusName.equals(shelterInformationStaging.getBusinessStatusName())
+                && this.detailedBusinessStatusCode.equals(shelterInformationStaging.getBusinessStatusCode())
+                && this.detailedBusinessStatusName.equals(shelterInformationStaging.getBusinessStatusCode())
+                && this.closingDate.equals(shelterInformationStaging.getClosingDate())
+                && this.positionX == shelterInformationStaging.getPositionX()
+                && this.positionY == shelterInformationStaging.getPositionY()
+                && this.locationArea == shelterInformationStaging.getLocationArea()
+                && this.locationPostalCode.equals(shelterInformationStaging.getLocationPostalCode())
+                && this.landNumberAddress.equals(shelterInformationStaging.getLandNumberAddress())
+                && this.roadNameAddress.equals(shelterInformationStaging.getRoadNameAddress())
+                && this.roadNamePostalCode.equals(shelterInformationStaging.getRoadNameAddress())
+                && this.lastModifiedDate.equals(shelterInformationStaging.getLastModifiedDate());
     }
 }

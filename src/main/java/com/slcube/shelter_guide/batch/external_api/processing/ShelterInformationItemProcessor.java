@@ -6,9 +6,9 @@ import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformation
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemProcessor;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class ShelterInformationItemProcessor implements ItemProcessor<List<ShelterInformationDto>, List<ShelterInformationDto>> {
@@ -18,23 +18,31 @@ public class ShelterInformationItemProcessor implements ItemProcessor<List<Shelt
     @Override
     public List<ShelterInformationDto> process(List<ShelterInformationDto> item) throws Exception {
 
-        Iterator<ShelterInformationDto> iterator = item.iterator();
+        List<String> establishmentNameList = item.stream()
+                .map(ShelterInformationDto::getBusinessEstablishmentName)
+                .collect(Collectors.toList());
 
-        while (iterator.hasNext()) {
-            ShelterInformationDto shelterInformationDto = iterator.next();
-            Optional<ShelterInformationStaging> foundShelterInformationStaging = shelterInformationStagingRepository.findByBusinessEstablishmentName(shelterInformationDto.getBusinessEstablishmentName());
+        List<ShelterInformationStaging> foundShelterInformationStaging = shelterInformationStagingRepository.findByBusinessEstablishmentNameIn(establishmentNameList);
 
-            if (foundShelterInformationStaging.isPresent()) {
-                ShelterInformationStaging shelterInformationStaging = foundShelterInformationStaging.get();
+        List<ShelterInformationStaging> sameEntity = foundShelterInformationStaging.stream()
+                .filter(shelterInformationStaging -> findByEstablishmentNameFromDto(item, shelterInformationStaging.getBusinessEstablishmentName())
+                        .filter(shelterInformationDto -> !shelterInformationStaging.areEqual(shelterInformationDto))
+                        .map(dataDto -> {
+                            shelterInformationStaging.update(dataDto);
+                            return dataDto;
+                        }).isPresent()
+                ).collect(Collectors.toList());
 
-                if (!ShelterInformationStaging.areEqual(shelterInformationDto, shelterInformationStaging)) {
-                    shelterInformationStaging.update(shelterInformationDto);
-                }
-                iterator.remove();
-            }
-        }
+        return item.stream()
+                .filter(dto -> sameEntity.stream()
+                        .noneMatch(entity -> entity.getBusinessEstablishmentName().equals(dto.getBusinessEstablishmentName()))
+                ).collect(Collectors.toList());
+    }
 
-        return item;
+    private Optional<ShelterInformationDto> findByEstablishmentNameFromDto(List<ShelterInformationDto> dtoList, String establishmentName) {
+        return dtoList.stream()
+                .filter(dto -> dto.getBusinessEstablishmentName().equals(establishmentName))
+                .findFirst();
     }
 }
 
