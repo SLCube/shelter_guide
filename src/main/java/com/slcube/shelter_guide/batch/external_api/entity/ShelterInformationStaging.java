@@ -100,21 +100,21 @@ public class ShelterInformationStaging {
         this.lastModifiedDate = dto.getLastModifiedDate();
     }
 
-    public static boolean areEqual(ShelterInformationDto dto, ShelterInformationStaging shelterInformationStaging) {
-        return shelterInformationStaging.getManagementNumber().equals(dto.getManagementNumber())
-                && shelterInformationStaging.getLicenseDate().equals(dto.getLicenseDate())
-                && shelterInformationStaging.getBusinessStatusCode().equals(dto.getBusinessStatusCode())
-                && shelterInformationStaging.getBusinessStatusName().equals(dto.getBusinessStatusName())
-                && shelterInformationStaging.getDetailedBusinessStatusCode().equals(dto.getDetailedBusinessStatusCode())
-                && shelterInformationStaging.getDetailedBusinessStatusName().equals(dto.getDetailedBusinessStatusName())
-                && shelterInformationStaging.getClosingDate().equals(dto.getClosingDate())
-                && shelterInformationStaging.getPositionX() == dto.getPositionX()
-                && shelterInformationStaging.getPositionY() == dto.getPositionY()
-                && shelterInformationStaging.getLocationArea() == dto.getLocationArea()
-                && shelterInformationStaging.getLocationPostalCode().equals(dto.getLocationPostalCode())
-                && shelterInformationStaging.getLandNumberAddress().equals(dto.getLandNumberAddress())
-                && shelterInformationStaging.getRoadNameAddress().equals(dto.getRoadNameAddress())
-                && shelterInformationStaging.getRoadNamePostalCode().equals(dto.getRoadNamePostalCode())
-                && shelterInformationStaging.getLastModifiedDate().equals(dto.getLastModifiedDate());
+    public boolean areEqual(ShelterInformationDto dto) {
+        return this.managementNumber.equals(dto.getManagementNumber())
+                && this.licenseDate.equals(dto.getLicenseDate())
+                && this.businessStatusCode.equals(dto.getBusinessStatusCode())
+                && this.businessStatusName.equals(dto.getBusinessStatusName())
+                && this.detailedBusinessStatusCode.equals(dto.getDetailedBusinessStatusCode())
+                && this.detailedBusinessStatusName.equals(dto.getDetailedBusinessStatusName())
+                && this.closingDate.equals(dto.getClosingDate())
+                && this.positionX == dto.getPositionX()
+                && this.positionY == dto.getPositionY()
+                && this.locationArea == dto.getLocationArea()
+                && this.locationPostalCode.equals(dto.getLocationPostalCode())
+                && this.landNumberAddress.equals(dto.getLandNumberAddress())
+                && this.roadNameAddress.equals(dto.getRoadNameAddress())
+                && this.roadNamePostalCode.equals(dto.getRoadNamePostalCode())
+                && this.lastModifiedDate.equals(dto.getLastModifiedDate());
     }
 }

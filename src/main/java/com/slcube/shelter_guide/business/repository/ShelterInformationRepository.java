@@ -6,11 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ShelterInformationRepository extends JpaRepository<ShelterInformation, Long> {
-    Optional<ShelterInformation> findByBusinessEstablishmentName(String businessEstablishmentName);
 
-    @Query("select s from ShelterInformation s where s.landNumberAddress like %:district%")
+    @Query("select s from ShelterInformation s where s.businessEstablishmentName in :businessEstablishmentNameList")
+    List<ShelterInformation> findByBusinessEstablishmentNameIn(@Param("businessEstablishmentNameList") List<String> businessEstablishmentNameList);
+
+    @Query("select s from ShelterInformation s where s.roadNameAddress like %:district%")
     List<ShelterInformation> findByDistrict(@Param("district") String district);
 }
