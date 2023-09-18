@@ -22,16 +22,9 @@ public class ShelterInformationDtoMapper {
     public static ShelterInformationDto toDto(SeoulShelterInformationResultDataDto dto) {
         return ShelterInformationDto.builder()
                 .municipalityCode(dto.getMunicipalityCode())
-                .managementNumber(dto.getManagementNumber())
-                .licenseDate(dto.getLicenseDate())
-                .licenseCancellationDate(dto.getLicenseCancellationDate())
                 .businessStatusCode(dto.getBusinessStatusCode())
                 .businessStatusName(dto.getBusinessStatusName())
-                .detailedBusinessStatusCode(dto.getDetailedBusinessStatusCode())
-                .detailedBusinessStatusName(dto.getDetailedBusinessStatusName())
                 .closingDate(dto.getClosingDate())
-                .closedStartDate(dto.getClosedStartDate())
-                .reopeningDate(dto.getReopeningDate())
                 .phoneNumber(dto.getPhoneNumber())
                 .locationArea(dto.getLocationArea())
                 .locationPostalCode(dto.getLocationPostalCode())
@@ -39,15 +32,6 @@ public class ShelterInformationDtoMapper {
                 .roadNameAddress(dto.getRoadNameAddress())
                 .roadNamePostalCode(dto.getRoadNamePostalCode())
                 .businessEstablishmentName(dto.getBusinessEstablishmentName())
-                .lastModifiedDate(dto.getLastModifiedDate())
-                .dataUpdateCode(dto.getDataUpdateCode())
-                .dataUpdateDate(dto.getDataUpdateDate())
-                .positionX(dto.getPositionX())
-                .positionY(dto.getPositionY())
-                .emergencyFacilityLocation(dto.getEmergencyFalicityLocation())
-                .facilitiesDefinitionName(dto.getFacilitiesDefinitionName())
-                .facilityBuildingName(dto.getFacilityBuildingName())
-                .releaseDate(dto.getReleaseDate())
                 .build();
     }
 
@@ -87,32 +71,15 @@ public class ShelterInformationDtoMapper {
 
     public static ShelterInformationDto toDto(GyeongGiShelterInformationResultDataDto dto) {
         return ShelterInformationDto.builder()
-                .managementNumber(dto.getManagementNumber())
-                .licenseDate(dto.getLicenseDate())
-                .licenseCancellationDate(dto.getLicenseCancellationDate())
                 .businessStatusCode(dto.getBusinessStatusCode())
                 .businessStatusName(dto.getBusinessStatusName())
-                .detailedBusinessStatusCode(dto.getDetailedBusinessStatusCode())
-                .detailedBusinessStatusName(dto.getDetailedBusinessStatusName())
                 .closingDate(dto.getClosingDate())
-                .closedStartDate(dto.getClosedStartDate())
-                .closedEndDate(dto.getClosedEndDate())
-                .reopeningDate(dto.getReopeningDate())
                 .locationArea(dto.getLocationArea())
                 .locationPostalCode(dto.getLocationPostalCode())
                 .landNumberAddress(dto.getLandNumberAddress())
                 .roadNameAddress(dto.getRoadNameAddress())
                 .roadNamePostalCode(dto.getRoadNamePostalCode())
                 .businessEstablishmentName(dto.getBusinessEstablishmentName())
-                .lastModifiedDate(dto.getLastModifiedDate())
-                .dataUpdateCode(dto.getDataUpdateCode())
-                .dataUpdateDate(dto.getDataUpdateDate())
-                .positionX(dto.getPositionX())
-                .positionY(dto.getPositionY())
-                .emergencyFacilityLocation(dto.getEmergencyFalicityLocation())
-                .facilitiesDefinitionName(dto.getFacilitiesDefinitionName())
-                .facilityBuildingName(dto.getFacilityBuildingName())
-                .releaseDate(dto.getReleaseDate())
                 .build();
     }
 
@@ -135,7 +102,6 @@ public class ShelterInformationDtoMapper {
 
     public static ShelterInformationDto toDto(JeollaBukDoShelterInformationResultDataDto dto) {
         return ShelterInformationDto.builder()
-                .licenseDate(dto.getLicenseDate())
                 .businessEstablishmentName(dto.getBusinessEstablishmentName())
                 .locationArea(dto.getLocationArea())
                 .roadNameAddress(dto.getRoadNameAddress())

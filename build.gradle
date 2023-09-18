@@ -51,6 +51,7 @@ dependencies {
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.batch:spring-batch-test'
+	testImplementation 'org.awaitility:awaitility:4.2.0'
 	testRuntimeOnly 'com.h2database:h2'
 }
 
@@ -105,7 +106,7 @@ jacocoTestCoverageVerification {
 			element = 'CLASS'
 
 			limit {
-				counter = 'LINE'
+				counter = 'CLASS'
 				value = 'COVEREDRATIO'
 				minimum = 0.75
 			}

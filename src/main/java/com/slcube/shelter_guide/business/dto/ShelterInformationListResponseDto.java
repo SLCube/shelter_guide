@@ -14,20 +14,11 @@ public class ShelterInformationListResponseDto {
     @Schema(description = "아이디")
     private Long shelterInformationId;
 
-    @Schema(description = "관리번호")
-    private String managementNumber;
-
     @Schema(description = "영업상태코드")
     private String businessStatusCode;
 
     @Schema(description = "영업상태명")
     private String businessStatusName;
-
-    @Schema(description = "상세영업상태코드")
-    private String detailedBusinessStatusCode;
-
-    @Schema(description = "상세영업상태명")
-    private String detailedBusinessStatusName;
 
     @Schema(description = "폐업일자")
     private String closingDate;
@@ -46,11 +37,8 @@ public class ShelterInformationListResponseDto {
 
     public ShelterInformationListResponseDto(ShelterInformation shelterInformation) {
         this.shelterInformationId = shelterInformation.getId();
-        this.managementNumber = shelterInformation.getManagementNumber();
         this.businessStatusCode = shelterInformation.getBusinessStatusCode();
         this.businessStatusName = shelterInformation.getBusinessStatusName();
-        this.detailedBusinessStatusCode = shelterInformation.getDetailedBusinessStatusCode();
-        this.detailedBusinessStatusName = shelterInformation.getDetailedBusinessStatusName();
         this.closingDate = shelterInformation.getClosingDate();
         this.locationPostalCode = shelterInformation.getLocationPostalCode();
         this.landNumberAddress = shelterInformation.getLandNumberAddress();
