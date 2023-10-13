@@ -9,8 +9,6 @@ import java.util.List;
 @Getter
 public class JeollaNamDoShelterInformationDto {
 
-    private int currentCount;
-
     @JsonProperty("data")
     private List<JeollaNamDoShelterInformationResultDataDto> resultDataDtoList = new ArrayList<>();
 }

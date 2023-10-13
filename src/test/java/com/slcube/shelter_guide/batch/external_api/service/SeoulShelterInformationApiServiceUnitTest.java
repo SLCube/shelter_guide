@@ -43,7 +43,7 @@ public class SeoulShelterInformationApiServiceUnitTest {
     }
 
     @Test
-    void 서울시_공공_api에서_대피소_정보를_갖고오는_메소드_테스트() throws MalformedURLException, URISyntaxException {
+    void 서울시_민방위_대피소_정보를_갖고오는_메소드_단위_테스트() throws MalformedURLException, URISyntaxException {
 
         SeoulShelterInformationDto seoulShelterInformationDto = createShelterInformationDto();
 

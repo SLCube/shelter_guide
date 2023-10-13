@@ -6,9 +6,6 @@ import lombok.Getter;
 @Getter
 public class JeollaBukDoShelterInformationResultDataDto {
 
-    @JsonProperty("지정연도")
-    private String licenseDate;
-
     @JsonProperty("대피시설명")
     private String businessEstablishmentName;
 
