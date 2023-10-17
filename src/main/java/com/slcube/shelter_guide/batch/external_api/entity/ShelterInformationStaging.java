@@ -17,30 +17,22 @@ public class ShelterInformationStaging {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String businessStatusCode;
 
-    @Column(nullable = false)
     private String businessStatusName;
 
-    @Column(nullable = false)
     private String closingDate;
 
     private double locationArea;
 
-    @Column(nullable = false)
     private String locationPostalCode;
 
-    @Column(nullable = false)
     private String landNumberAddress;
 
-    @Column(nullable = false)
     private String roadNameAddress;
 
-    @Column(nullable = false)
     private String roadNamePostalCode;
 
-    @Column(nullable = false)
     private String businessEstablishmentName;
 
     @Builder
