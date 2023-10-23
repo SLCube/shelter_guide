@@ -6,6 +6,9 @@ import lombok.Getter;
 @Getter
 public class GyeongSangNamDoShelterInformationResultDataDto {
 
+    @JsonProperty("DATA_IDX")
+    private String dataIndex;
+
     @JsonProperty("DATA_TITLE")
     private String businessEstablishmentName;
 

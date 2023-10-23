@@ -10,21 +10,14 @@ public class ShelterInformationMapper {
 
     public static ShelterInformation toEntity(ShelterInformationStaging shelterInformationStaging) {
         return ShelterInformation.builder()
-                .managementNumber(shelterInformationStaging.getManagementNumber())
-                .licenseDate(shelterInformationStaging.getLicenseDate())
                 .businessStatusCode(shelterInformationStaging.getBusinessStatusCode())
                 .businessStatusName(shelterInformationStaging.getBusinessStatusName())
-                .detailedBusinessStatusCode(shelterInformationStaging.getDetailedBusinessStatusCode())
-                .detailedBusinessStatusName(shelterInformationStaging.getDetailedBusinessStatusName())
                 .closingDate(shelterInformationStaging.getClosingDate())
-                .positionX(shelterInformationStaging.getPositionX())
-                .positionY(shelterInformationStaging.getPositionY())
                 .locationArea(shelterInformationStaging.getLocationArea())
                 .locationPostalCode(shelterInformationStaging.getLocationPostalCode())
                 .landNumberAddress(shelterInformationStaging.getLandNumberAddress())
                 .roadNameAddress(shelterInformationStaging.getRoadNameAddress())
                 .roadNamePostalCode(shelterInformationStaging.getRoadNamePostalCode())
-                .lastModifiedDate(shelterInformationStaging.getLastModifiedDate())
                 .build();
     }
 }

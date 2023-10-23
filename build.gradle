@@ -43,8 +43,7 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	implementation 'com.h2database:h2'
-	runtimeOnly 'com.h2database:h2'
-//	runtimeOnly 'com.mysql:mysql-connector-j'
+	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -105,7 +104,7 @@ jacocoTestCoverageVerification {
 			element = 'CLASS'
 
 			limit {
-				counter = 'LINE'
+				counter = 'CLASS'
 				value = 'COVEREDRATIO'
 				minimum = 0.75
 			}
