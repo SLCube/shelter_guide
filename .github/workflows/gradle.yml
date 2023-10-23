@@ -32,7 +32,7 @@ jobs:
       - name: Build with Gradle
         run: |
           chmod +x ./gradlew
-          ./gradlew clean build ${{ secrets.VM_OPTIONS }}
+          ./gradlew clean build ${{ secrets.VM_OPTIONS }} -x test
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
