@@ -13,6 +13,7 @@ public class ShelterInformationStagingMapper {
         return ShelterInformationStaging.builder()
                 .businessStatusCode(shelterInformationDto.getBusinessStatusCode())
                 .businessStatusName(shelterInformationDto.getBusinessStatusName())
+                .businessEstablishmentName(shelterInformationDto.getBusinessEstablishmentName())
                 .closingDate(shelterInformationDto.getClosingDate())
                 .locationArea(shelterInformationDto.getLocationArea())
                 .landNumberAddress(shelterInformationDto.getLandNumberAddress())
