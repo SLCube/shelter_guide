@@ -43,7 +43,7 @@ public class ShelterInformationExternalApiJobConfiguration {
     public Job shelterInformationExternalApiJob() {
         return jobBuilderFactory.get("shelterInformationExternalApiJob")
                 .start(shelterInformationExternalApiStep())
-                .incrementer(new RunIdIncrementer())
+                .incrementer(new VersionJobParametersIncrementer())
                 .listener(listener)
                 .build();
 
