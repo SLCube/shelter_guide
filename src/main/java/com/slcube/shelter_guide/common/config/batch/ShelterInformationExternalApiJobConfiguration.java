@@ -15,7 +15,6 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
-import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -43,7 +42,6 @@ public class ShelterInformationExternalApiJobConfiguration {
     public Job shelterInformationExternalApiJob() {
         return jobBuilderFactory.get("shelterInformationExternalApiJob")
                 .start(shelterInformationExternalApiStep())
-                .incrementer(new RunIdIncrementer())
                 .listener(listener)
                 .build();
 
@@ -54,7 +52,7 @@ public class ShelterInformationExternalApiJobConfiguration {
     public Step shelterInformationExternalApiStep() {
         return stepBuilderFactory.get("shelterInformationExternalApiStep")
                 .<List<ShelterInformationDto>, List<ShelterInformationDto>>chunk(CHUNK_SIZE)
-                .reader(shelterInformationItemReader(null))
+                .reader(shelterInformationItemReader(null, null))
                 .writer(shelterInformationItemWriter())
                 .processor(shelterInformationItemProcessor())
                 .build();
@@ -62,7 +60,8 @@ public class ShelterInformationExternalApiJobConfiguration {
 
     @Bean
     @StepScope
-    public ShelterInformationItemReader shelterInformationItemReader(@Value("#{jobParameters[region]}") String region) {
+    public ShelterInformationItemReader shelterInformationItemReader(@Value("#{jobParameters[region]}") String region,
+                                                                     @Value("#{jobParameters[datetime]}") String datetime) {
         return new ShelterInformationItemReader(region, apiServiceMap);
     }
 
