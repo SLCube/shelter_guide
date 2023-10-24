@@ -25,7 +25,7 @@ public class ShelterInformationController {
     @ApiResponse(responseCode = "400", description = "BAD REQUEST", content = @Content(mediaType = "application/json"))
     @ApiResponse(responseCode = "404", description = "NOT FOUND", content = @Content(mediaType = "application/json"))
     @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR", content = @Content(mediaType = "application/json"))
-    @Parameter(name = "district", description = "동", example = "강남구 압구정동")
+    @Parameter(name = "district", description = "동", example = "강남구 압구정")
     @GetMapping
     public List<ShelterInformationListResponseDto> findShelterInformationList(
             @RequestParam @NotBlank(message = "주소 정보는 필수 입력 항목 입니다.") String district) {
