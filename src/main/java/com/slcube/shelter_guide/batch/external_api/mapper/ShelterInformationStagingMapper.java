@@ -17,6 +17,7 @@ public class ShelterInformationStagingMapper {
                 .closingDate(shelterInformationDto.getClosingDate())
                 .locationArea(shelterInformationDto.getLocationArea())
                 .landNumberAddress(shelterInformationDto.getLandNumberAddress())
+                .locationPostalCode(shelterInformationDto.getLocationPostalCode())
                 .roadNameAddress(shelterInformationDto.getRoadNameAddress())
                 .roadNamePostalCode(shelterInformationDto.getRoadNamePostalCode())
                 .build();

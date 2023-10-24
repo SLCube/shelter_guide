@@ -70,6 +70,7 @@ public class ShelterInformationStaging {
                 && this.locationPostalCode.equals(dto.getLocationPostalCode())
                 && this.landNumberAddress.equals(dto.getLandNumberAddress())
                 && this.roadNameAddress.equals(dto.getRoadNameAddress())
-                && this.roadNamePostalCode.equals(dto.getRoadNamePostalCode());
+                && this.roadNamePostalCode.equals(dto.getRoadNamePostalCode())
+                && this.businessEstablishmentName.equals(dto.getBusinessEstablishmentName());
     }
 }
