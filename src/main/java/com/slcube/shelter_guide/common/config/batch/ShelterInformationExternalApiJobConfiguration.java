@@ -55,6 +55,7 @@ public class ShelterInformationExternalApiJobConfiguration {
                 .reader(shelterInformationItemReader(null, null))
                 .writer(shelterInformationItemWriter())
                 .processor(shelterInformationItemProcessor())
+                .allowStartIfComplete(true)
                 .build();
     }
 
