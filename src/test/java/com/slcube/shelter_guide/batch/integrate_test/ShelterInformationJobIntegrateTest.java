@@ -11,6 +11,7 @@ import org.springframework.batch.test.JobRepositoryTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,6 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBatchTest
 @SpringBootTest
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class ShelterInformationJobIntegrateTest {
 
     @Autowired
@@ -97,17 +99,12 @@ class ShelterInformationJobIntegrateTest {
     }
 
     private void fetchShelterInformationFromExternalApiTest(RegionConstant region) throws Exception {
-        LocalDateTime thursday = LocalDateTime.of(
-                2023,
-                7,
-                20,
-                15,
-                13
-        );
+
+        LocalDateTime today = LocalDateTime.now();
 
         JobParameters jobParameters = new JobParametersBuilder()
                 .addString("region", region.getRegion())
-                .addString("datetime", thursday.toString())
+                .addString("datetime", today.toString())
                 .toJobParameters();
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
