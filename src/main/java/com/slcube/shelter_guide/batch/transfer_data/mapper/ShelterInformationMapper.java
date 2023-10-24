@@ -12,6 +12,7 @@ public class ShelterInformationMapper {
         return ShelterInformation.builder()
                 .businessStatusCode(shelterInformationStaging.getBusinessStatusCode())
                 .businessStatusName(shelterInformationStaging.getBusinessStatusName())
+                .businessEstablishmentName(shelterInformationStaging.getBusinessEstablishmentName())
                 .closingDate(shelterInformationStaging.getClosingDate())
                 .locationArea(shelterInformationStaging.getLocationArea())
                 .locationPostalCode(shelterInformationStaging.getLocationPostalCode())
