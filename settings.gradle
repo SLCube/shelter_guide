@@ -6,3 +6,7 @@ pluginManagement {
 	}
 }
 rootProject.name = 'shelter_guide'
+include 'module-common'
+include 'module-batch'
+include 'module-web'
+

@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+bootJar.enabled = false
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-quartz'	// batch
+    implementation 'org.springframework.boot:spring-boot-starter-batch'	// batch
+    implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3"	// batch
+    testImplementation 'org.springframework.batch:spring-batch-test'
+
+}
+
+test {
+    useJUnitPlatform()
+}
