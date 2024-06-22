@@ -1,0 +1,14 @@
+package batch.external_api.dto.jeolla_buk_do;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Getter
+public class JeollaBukDoShelterInformationDto {
+
+    @JsonProperty("data")
+    private List<JeollaBukDoShelterInformationResultDataDto> resultDtoList = new ArrayList<>();
+}

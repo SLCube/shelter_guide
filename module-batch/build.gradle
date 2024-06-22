@@ -3,11 +3,15 @@ plugins {
 }
 
 bootJar.enabled = false
+jar.enabled = true
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation project(':module-common')
+    implementation project(':module-domain')
     implementation 'org.springframework.boot:spring-boot-starter-quartz'	// batch
     implementation 'org.springframework.boot:spring-boot-starter-batch'	// batch
     implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3"	// batch
