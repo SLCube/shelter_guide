@@ -1,11 +1,9 @@
 package batch.config;
 
+import batch.external_api.entity.ShelterInformationStaging;
+import batch.transfer_data.processing.ShelterInformationDataTransferItemProcessor;
 import batch.transfer_data.processing.ShelterInformationDataTransferItemReader;
 import batch.transfer_data.processing.ShelterInformationDataTransferItemWriter;
-import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
-import com.slcube.shelter_guide.batch.transfer_data.processing.ShelterInformationDataTransferItemProcessor;
-import com.slcube.shelter_guide.business.repository.ShelterInformationRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -17,6 +15,8 @@ import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import repository.ShelterInformationRepository;
+import repository.ShelterInformationStagingRepository;
 
 import java.util.List;
 

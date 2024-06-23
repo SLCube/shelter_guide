@@ -10,4 +10,5 @@ include 'module-common'
 include 'module-batch'
 include 'module-web'
 include 'module-domain'
+include 'module-infra'
 

@@ -1,10 +1,10 @@
 package batch.transfer_data.processing;
 
-import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.business.entity.ShelterInformation;
-import com.slcube.shelter_guide.business.repository.ShelterInformationRepository;
+import batch.external_api.entity.ShelterInformationStaging;
+import domain.ShelterInformation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemProcessor;
+import repository.ShelterInformationRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +21,7 @@ public class ShelterInformationDataTransferItemProcessor implements ItemProcesso
         List<String> businessEstablishmentNameList = item.stream()
                 .map(ShelterInformationStaging::getBusinessEstablishmentName)
                 .collect(Collectors.toList());
-
+        shelterInformationRepository.findByBusinessEstablishmentNameIn(businessEstablishmentNameList);
         List<ShelterInformation> foundShelterInformation = shelterInformationRepository.findByBusinessEstablishmentNameIn(businessEstablishmentNameList);
 
         List<ShelterInformation> sameEntity = foundShelterInformation.stream()

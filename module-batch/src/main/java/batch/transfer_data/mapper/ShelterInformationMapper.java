@@ -1,7 +1,7 @@
 package batch.transfer_data.mapper;
 
-import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.business.entity.ShelterInformation;
+import domain.ShelterInformation;
+import domain.ShelterInformationStaging;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
