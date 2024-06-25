@@ -14,7 +14,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.JEJU;
+import static batch.external_api.util.RegionConstant.JEJU;
+
 
 @RequiredArgsConstructor
 @Component

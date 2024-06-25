@@ -1,7 +1,7 @@
 package batch.transfer_data.processing;
 
-import batch.external_api.entity.ShelterInformationStaging;
 import domain.ShelterInformation;
+import domain.ShelterInformationStaging;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemProcessor;
 import repository.ShelterInformationRepository;

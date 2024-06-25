@@ -1,9 +1,9 @@
 package batch.external_api.service;
 
+import batch.external_api.dto.ShelterInformationDto;
+import batch.external_api.dto.chung_cheong_buk_do.ChungCheongBukDoShelterInformationDto;
+import batch.external_api.mapper.ShelterInformationDtoMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.dto.chung_cheong_buk_do.ChungCheongBukDoShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.mapper.ShelterInformationDtoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

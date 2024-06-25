@@ -1,11 +1,12 @@
 package batch.external_api.util;
 
+import batch.external_api.service.*;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.*;
+import static batch.external_api.util.RegionConstant.*;
 
 @Component
 public class ShelterInformationApiServiceStrategy {

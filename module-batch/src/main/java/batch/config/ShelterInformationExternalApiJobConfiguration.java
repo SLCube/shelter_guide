@@ -1,12 +1,11 @@
 package batch.config;
 
-import com.slcube.shelter_guide.batch.event_listener.ShelterInformationFetchApiExecutionListener;
-import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemProcessor;
-import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemReader;
-import com.slcube.shelter_guide.batch.external_api.processing.ShelterInformationItemWriter;
-import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
-import com.slcube.shelter_guide.batch.external_api.util.ShelterInformationApiServiceStrategy;
+import batch.event_listener.ShelterInformationFetchApiExecutionListener;
+import batch.external_api.processing.ShelterInformationItemProcessor;
+import batch.external_api.processing.ShelterInformationItemReader;
+import batch.external_api.processing.ShelterInformationItemWriter;
+import batch.external_api.util.ShelterInformationApiServiceStrategy;
+import domain.ShelterInformationDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -20,6 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import repository.ShelterInformationStagingRepository;
 
 import java.util.List;
 

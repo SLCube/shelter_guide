@@ -1,18 +1,18 @@
 package batch.external_api.mapper;
 
-import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.dto.chung_cheong_buk_do.ChungCheongBukDoShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.chung_cheong_nam_do.ChungCheongNamDoShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.daejeon.DaeJeonShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.gwang_ju.GwangJuShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.gyeong_gi.GyeongGiShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.gyeong_sang_buk_do.GyeongSangBukDoShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.gyeong_sang_nam_do.GyeongSangNamDoShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.in_cheon.InCheonShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.jeju.JejuShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.jeolla_buk_do.JeollaBukDoShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.jeolla_nam_do.JeollaNamDoShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDataDto;
+import batch.external_api.dto.chung_cheong_buk_do.ChungCheongBukDoShelterInformationResultDataDto;
+import batch.external_api.dto.chung_cheong_nam_do.ChungCheongNamDoShelterInformationResultDataDto;
+import batch.external_api.dto.gwang_ju.GwangJuShelterInformationResultDataDto;
+import batch.external_api.dto.gyeong_gi.GyeongGiShelterInformationResultDataDto;
+import batch.external_api.dto.gyeong_sang_buk_do.GyeongSangBukDoShelterInformationResultDataDto;
+import batch.external_api.dto.gyeong_sang_nam_do.GyeongSangNamDoShelterInformationResultDataDto;
+import batch.external_api.dto.in_cheon.InCheonShelterInformationResultDataDto;
+import batch.external_api.dto.jeju.JejuShelterInformationResultDataDto;
+import batch.external_api.dto.jeolla_buk_do.JeollaBukDoShelterInformationResultDataDto;
+import batch.external_api.dto.jeolla_nam_do.JeollaNamDoShelterInformationResultDataDto;
+import batch.external_api.dto.seoul.SeoulShelterInformationResultDataDto;
+import batch.external_api.dto.daejeon.DaeJeonShelterInformationResultDataDto;
+import batch.external_api.dto.ShelterInformationDto;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

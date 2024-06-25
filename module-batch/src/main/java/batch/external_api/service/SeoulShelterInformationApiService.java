@@ -1,10 +1,10 @@
 package batch.external_api.service;
 
-import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDataDto;
-import com.slcube.shelter_guide.batch.external_api.dto.seoul.SeoulShelterInformationResultDto;
-import com.slcube.shelter_guide.batch.external_api.mapper.ShelterInformationDtoMapper;
+import batch.external_api.dto.ShelterInformationDto;
+import batch.external_api.dto.seoul.SeoulShelterInformationDto;
+import batch.external_api.dto.seoul.SeoulShelterInformationResultDataDto;
+import batch.external_api.dto.seoul.SeoulShelterInformationResultDto;
+import batch.external_api.mapper.ShelterInformationDtoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

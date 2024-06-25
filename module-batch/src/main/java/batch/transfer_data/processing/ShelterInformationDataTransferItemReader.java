@@ -1,13 +1,13 @@
 package batch.transfer_data.processing;
 
-import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
+import domain.ShelterInformationStaging;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
 import org.springframework.data.domain.PageRequest;
+import repository.ShelterInformationStagingRepository;
 
 import java.util.List;
 

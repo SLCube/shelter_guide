@@ -1,7 +1,7 @@
 package batch.external_api.service;
 
+import batch.external_api.dto.ShelterInformationDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;

@@ -1,9 +1,9 @@
 package batch.config;
 
-import batch.external_api.entity.ShelterInformationStaging;
 import batch.transfer_data.processing.ShelterInformationDataTransferItemProcessor;
 import batch.transfer_data.processing.ShelterInformationDataTransferItemReader;
 import batch.transfer_data.processing.ShelterInformationDataTransferItemWriter;
+import domain.ShelterInformationStaging;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;

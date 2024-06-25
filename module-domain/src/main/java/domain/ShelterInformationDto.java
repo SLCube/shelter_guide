@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class ShelterInformationDto {
-
+    // TODO -> ShelterInformationDto는 domain module에 존재하면 안됨. 수정 필요
     private String municipalityCode;
 
     private String businessStatusCode;

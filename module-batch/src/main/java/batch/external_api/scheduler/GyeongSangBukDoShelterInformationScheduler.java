@@ -14,7 +14,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.GYEONG_SANG_BUK_DO;
+import static batch.external_api.util.RegionConstant.GYEONG_SANG_BUK_DO;
+
 
 @RequiredArgsConstructor
 @Component

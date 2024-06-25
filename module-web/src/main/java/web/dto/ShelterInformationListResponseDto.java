@@ -1,6 +1,6 @@
 package web.dto;
 
-import com.slcube.shelter_guide.business.entity.ShelterInformation;
+import domain.ShelterInformation;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -14,7 +14,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-import static com.slcube.shelter_guide.batch.external_api.util.RegionConstant.JEOLLA_NAM_DO;
+import static batch.external_api.util.RegionConstant.JEOLLA_NAM_DO;
+
 
 @RequiredArgsConstructor
 @Component

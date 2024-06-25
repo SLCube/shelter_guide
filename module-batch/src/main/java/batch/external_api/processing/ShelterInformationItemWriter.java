@@ -1,11 +1,11 @@
 package batch.external_api.processing;
 
-import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
-import com.slcube.shelter_guide.batch.external_api.mapper.ShelterInformationStagingMapper;
-import com.slcube.shelter_guide.batch.external_api.repository.ShelterInformationStagingRepository;
+import batch.external_api.mapper.ShelterInformationStagingMapper;
+import domain.ShelterInformationDto;
+import domain.ShelterInformationStaging;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemWriter;
+import repository.ShelterInformationStagingRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

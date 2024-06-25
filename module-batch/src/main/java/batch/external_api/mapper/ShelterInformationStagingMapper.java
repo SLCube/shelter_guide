@@ -1,7 +1,7 @@
 package batch.external_api.mapper;
 
-import com.slcube.shelter_guide.batch.external_api.dto.ShelterInformationDto;
-import com.slcube.shelter_guide.batch.external_api.entity.ShelterInformationStaging;
+import domain.ShelterInformationDto;
+import domain.ShelterInformationStaging;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

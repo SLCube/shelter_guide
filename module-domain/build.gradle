@@ -11,8 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation project(':module-common')
-//    compileOnly(project(':module-common'))
+    api project(':module-common')
 }
 
 test {
