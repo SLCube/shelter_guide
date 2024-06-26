@@ -5,8 +5,6 @@ plugins {
 	id "jacoco"
 }
 
-
-
 subprojects{
 	group = 'com.slcube'
 	version = '0.0.1-SNAPSHOT'
