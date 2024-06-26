@@ -1,4 +1,4 @@
-package common.exception;
+package web.config.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

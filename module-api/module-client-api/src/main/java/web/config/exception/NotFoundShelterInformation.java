@@ -1,6 +1,7 @@
-package common.exception;
+package web.config.exception;
 
-import static com.slcube.shelter_guide.common.exception.CustomErrorCode.*;
+
+import static web.config.exception.CustomErrorCode.NOT_FOUND_SHELTER_INFORMATION;
 
 public class NotFoundShelterInformation extends CustomException {
     public NotFoundShelterInformation() {
