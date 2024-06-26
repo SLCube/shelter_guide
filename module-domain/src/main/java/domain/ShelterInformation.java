@@ -64,16 +64,4 @@ public class ShelterInformation {
         this.roadNamePostalCode = shelterInformationStaging.getRoadNamePostalCode();
         this.businessEstablishmentName = shelterInformationStaging.getBusinessEstablishmentName();
     }
-
-    public boolean areEqual(ShelterInformationStaging shelterInformationStaging) {
-        return this.businessStatusCode.equals(shelterInformationStaging.getBusinessStatusCode())
-                && this.businessStatusName.equals(shelterInformationStaging.getBusinessStatusName())
-                && this.closingDate.equals(shelterInformationStaging.getClosingDate())
-                && this.locationArea == shelterInformationStaging.getLocationArea()
-                && this.locationPostalCode.equals(shelterInformationStaging.getLocationPostalCode())
-                && this.landNumberAddress.equals(shelterInformationStaging.getLandNumberAddress())
-                && this.roadNameAddress.equals(shelterInformationStaging.getRoadNameAddress())
-                && this.roadNamePostalCode.equals(shelterInformationStaging.getRoadNameAddress())
-                && this.businessEstablishmentName.equals(shelterInformationStaging.getBusinessStatusName());
-    }
 }

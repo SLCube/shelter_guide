@@ -1,5 +1,6 @@
 package batch.transfer_data.processing;
 
+import batch.external_api.util.ShelterInformationComparator;
 import domain.ShelterInformation;
 import domain.ShelterInformationStaging;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class ShelterInformationDataTransferItemProcessor implements ItemProcesso
 
         List<ShelterInformation> sameEntity = foundShelterInformation.stream()
                 .filter(shelterInformation -> findByBusinessEstablishmentNameFromShelterInformationStaging(item, shelterInformation.getBusinessEstablishmentName())
-                        .filter(shelterInformationStaging -> !shelterInformation.areEqual(shelterInformationStaging))
+                        .filter(shelterInformationStaging -> !ShelterInformationComparator.compare(shelterInformation, shelterInformationStaging))
                         .map(shelterInformationStaging -> {
                             shelterInformation.update(shelterInformationStaging);
                             return shelterInformationStaging;

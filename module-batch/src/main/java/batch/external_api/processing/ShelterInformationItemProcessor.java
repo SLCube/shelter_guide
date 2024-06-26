@@ -1,5 +1,6 @@
 package batch.external_api.processing;
 
+import batch.external_api.util.ShelterInformationComparator;
 import domain.ShelterInformationStaging;
 import external_api.dto.ShelterInformationDto;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class ShelterInformationItemProcessor implements ItemProcessor<List<Shelt
 
         List<ShelterInformationStaging> sameEntity = foundShelterInformationStaging.stream()
                 .filter(shelterInformationStaging -> findByEstablishmentNameFromDto(item, shelterInformationStaging.getBusinessEstablishmentName())
-                        .filter(shelterInformationDto -> !shelterInformationStaging.areEqual(shelterInformationDto))
+                        .filter(shelterInformationDto -> !ShelterInformationComparator.compare(shelterInformationStaging, shelterInformationDto))
                         .map(dataDto -> {
                             shelterInformationStaging.update(dataDto.getBusinessStatusCode(), dataDto.getBusinessStatusName(), dataDto.getClosingDate(),
                                                             dataDto.getLocationArea(), dataDto.getLocationPostalCode(), dataDto.getLandNumberAddress(),

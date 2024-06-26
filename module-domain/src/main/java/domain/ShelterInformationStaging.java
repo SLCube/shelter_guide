@@ -64,16 +64,4 @@ public class ShelterInformationStaging {
         this.roadNamePostalCode = roadNamePostalCode;
         this.businessEstablishmentName = businessEstablishmentName;
     }
-
-    public boolean areEqual(ShelterInformationDto dto) {
-        return this.businessStatusCode.equals(dto.getBusinessStatusCode())
-                && this.businessStatusName.equals(dto.getBusinessStatusName())
-                && this.closingDate.equals(dto.getClosingDate())
-                && this.locationArea == dto.getLocationArea()
-                && this.locationPostalCode.equals(dto.getLocationPostalCode())
-                && this.landNumberAddress.equals(dto.getLandNumberAddress())
-                && this.roadNameAddress.equals(dto.getRoadNameAddress())
-                && this.roadNamePostalCode.equals(dto.getRoadNamePostalCode())
-                && this.businessEstablishmentName.equals(dto.getBusinessEstablishmentName());
-    }
 }
