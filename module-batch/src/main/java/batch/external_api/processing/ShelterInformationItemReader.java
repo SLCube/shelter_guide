@@ -1,8 +1,8 @@
 package batch.external_api.processing;
 
-import batch.external_api.service.ShelterInformationApiService;
 import batch.external_api.util.ShelterInformationApiServiceStrategy;
-import domain.ShelterInformationDto;
+import external_api.dto.ShelterInformationDto;
+import external_api.service.ShelterInformationApiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;

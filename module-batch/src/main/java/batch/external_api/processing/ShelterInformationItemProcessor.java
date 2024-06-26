@@ -1,7 +1,7 @@
 package batch.external_api.processing;
 
-import domain.ShelterInformationDto;
 import domain.ShelterInformationStaging;
+import external_api.dto.ShelterInformationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemProcessor;
 import repository.ShelterInformationStagingRepository;
@@ -28,7 +28,9 @@ public class ShelterInformationItemProcessor implements ItemProcessor<List<Shelt
                 .filter(shelterInformationStaging -> findByEstablishmentNameFromDto(item, shelterInformationStaging.getBusinessEstablishmentName())
                         .filter(shelterInformationDto -> !shelterInformationStaging.areEqual(shelterInformationDto))
                         .map(dataDto -> {
-                            shelterInformationStaging.update(dataDto);
+                            shelterInformationStaging.update(dataDto.getBusinessStatusCode(), dataDto.getBusinessStatusName(), dataDto.getClosingDate(),
+                                                            dataDto.getLocationArea(), dataDto.getLocationPostalCode(), dataDto.getLandNumberAddress(),
+                                                            dataDto.getRoadNameAddress(), dataDto.getRoadNamePostalCode(), dataDto.getBusinessEstablishmentName());
                             return dataDto;
                         }).isPresent()
                 ).collect(Collectors.toList());

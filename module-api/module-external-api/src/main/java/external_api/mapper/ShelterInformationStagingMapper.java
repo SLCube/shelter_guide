@@ -1,4 +1,4 @@
-package batch.external_api.mapper;
+package external_api.mapper;
 
 import domain.ShelterInformationStaging;
 import external_api.dto.ShelterInformationDto;

@@ -5,7 +5,7 @@ import batch.external_api.processing.ShelterInformationItemProcessor;
 import batch.external_api.processing.ShelterInformationItemReader;
 import batch.external_api.processing.ShelterInformationItemWriter;
 import batch.external_api.util.ShelterInformationApiServiceStrategy;
-import domain.ShelterInformationDto;
+import external_api.dto.ShelterInformationDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;

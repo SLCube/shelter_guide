@@ -1,8 +1,8 @@
 package batch.external_api.processing;
 
 import batch.external_api.mapper.ShelterInformationStagingMapper;
-import domain.ShelterInformationDto;
 import domain.ShelterInformationStaging;
+import external_api.dto.ShelterInformationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemWriter;
 import repository.ShelterInformationStagingRepository;

@@ -1,6 +1,6 @@
 package batch.external_api.util;
 
-import batch.external_api.service.*;
+import external_api.service.*;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

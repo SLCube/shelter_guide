@@ -52,16 +52,17 @@ public class ShelterInformationStaging {
         this.businessEstablishmentName = businessEstablishmentName != null ? businessEstablishmentName : "";
     }
 
-    public void update(ShelterInformationDto dto) {
-        this.businessStatusCode = dto.getBusinessStatusCode();
-        this.businessStatusName = dto.getBusinessStatusName();
-        this.closingDate = dto.getClosingDate();
-        this.locationArea = dto.getLocationArea();
-        this.locationPostalCode = dto.getLocationPostalCode();
-        this.landNumberAddress = dto.getLandNumberAddress();
-        this.roadNameAddress = dto.getRoadNameAddress();
-        this.roadNamePostalCode = dto.getRoadNamePostalCode();
-        this.businessEstablishmentName = dto.getBusinessEstablishmentName();
+    public void update(String businessStatusCode, String businessStatusName, String closingDate, double locationArea, String locationPostalCode,
+                       String landNumberAddress, String roadNameAddress, String roadNamePostalCode, String businessEstablishmentName) {
+        this.businessStatusCode = businessStatusCode;
+        this.businessStatusName = businessStatusName;
+        this.closingDate = closingDate;
+        this.locationArea = locationArea;
+        this.locationPostalCode = locationPostalCode;
+        this.landNumberAddress = landNumberAddress;
+        this.roadNameAddress = roadNameAddress;
+        this.roadNamePostalCode = roadNamePostalCode;
+        this.businessEstablishmentName = businessEstablishmentName;
     }
 
     public boolean areEqual(ShelterInformationDto dto) {

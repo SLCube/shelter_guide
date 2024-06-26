@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     implementation project(':module-infra')
+    implementation project(':module-api:module-external-api')
     implementation 'org.springframework.boot:spring-boot-starter-quartz'
     implementation 'org.springframework.boot:spring-boot-starter-batch'
     implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3'

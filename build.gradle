@@ -1,5 +1,3 @@
-
-
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.13-SNAPSHOT'
@@ -32,13 +30,8 @@ subprojects{
 	}
 
 	dependencies {
-
-
 		compileOnly 'org.projectlombok:lombok'
 		developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
-		implementation 'com.h2database:h2'
-		runtimeOnly 'com.mysql:mysql-connector-j'
 
 		annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 		annotationProcessor 'org.projectlombok:lombok'
@@ -107,6 +100,4 @@ subprojects{
 			}
 		}
 	}
-
-
 }
