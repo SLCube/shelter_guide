@@ -26,7 +26,7 @@ public class SchedulerExceptionHandlingAspect {
             return proceed;
 
         } catch (Exception e) {
-            log.error(">>> Fetch Shelter Information From External Api Exception : " + className, e);
+            log.error(">>> Fetch Shelter Information From External Api Exception : {}", className, e);
             throw e;
         }
 

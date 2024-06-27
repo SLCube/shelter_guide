@@ -19,7 +19,7 @@ public class ExternalApiExceptionHandlingAspect {
         try {
             return joinPoint.proceed();
         } catch (Exception e) {
-            log.error("Error while calling " + className + " REST API : ", e);
+            log.error("Error while calling {} REST API : ", className, e);
             throw e;
         }
     }
