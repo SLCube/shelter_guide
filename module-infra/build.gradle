@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    api project(':module-domain')
+    implementation project(':module-domain')
     runtimeOnly 'com.h2database:h2'
 //    runtimeOnly 'com.mysql:mysql-connector-j'
 }
