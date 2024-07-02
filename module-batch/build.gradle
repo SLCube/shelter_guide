@@ -15,8 +15,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-quartz'
     implementation 'org.springframework.boot:spring-boot-starter-batch'
     implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3'
-    testImplementation 'org.springframework.batch:spring-batch-test'
 
+    compileOnly project(':module-domain')
+    testCompileOnly project(':module-domain')
+    testImplementation 'org.springframework.batch:spring-batch-test'
 }
 
 test {

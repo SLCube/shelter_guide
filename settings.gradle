@@ -8,7 +8,7 @@ pluginManagement {
 rootProject.name = 'shelter_guide'
 include 'module-common'
 include 'module-batch'
-include 'module-web'
+include 'module-com.slcube.shelter_guide.web'
 include 'module-domain'
 include 'module-infra'
 include 'module-api'
